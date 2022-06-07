@@ -1,46 +1,19 @@
-# Grundschaltungen des OPV
+# Sounderkennung mit Hilfe des Mojo V3 FPGA Boards und dem Sound
 
 ## Einleitung
-In diesem Experiment sollen drei Grundschaltungen eines Operationsverstärkers untersucht werden. Zu diesen gehören: 
+Diese Projektarbeit beschäftigt sich mit der Evaluation des [Sound Erkennungs](https://alchitry.com/sound-locating-mojo) Tutorials der Webiste [Alchitry](https://alchitry.com/).
+Erkennung von Tönen und Sprache nimmt einen immer größeren Platz im Alltag und in Industrie ein. Die Menschen gewöhnen sich daran, dass eine Steuerung von Geräten wie Smartphones oder Smarthome generell mit
+Sprache möglich sein muss. Der Spracherkennung vorgelagert ist jedoch die Geräuscherkennung. Geräuscherkennung bietet in der Industrie die Möglichkeit fehlerhafte oder nicht montierte Gegenstände innerhalb
+eines Gesamtsystems zu erkennen. Solche Gegenstände führen bei Vibration zu Störgeräuschen, die man über einen entsprechenden Sounderkennungsaufbau erkennen kann.
+Dieser Aufbau kann mit einem Microkontroller basierten Ansatz ausgeführt werden oder mit einem Ansatz über ein Field-Programmable-Gate-Array(FPGA).
+Dieser Ansatz wird von Alchitry Labs genutzt und es wird im folgenden weiter darauf eingegangen.
 
-- Impedanzwandler / Spannungsfolger
+## Genutzte Hardware
+## Genutzte Toolchain
+Die Toolchain für die Inbetriebnahme des MOJO V3 Boards besteht aus einem Programmierungs Tool [Alchitry Labs](https://alchitry.com/alchitry-labs) und einem Builder.
+Für das MOJO V3 board bedarf es der [ISE WebPack](https://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html) von [Xilinx](https://www.xilinx.com/).
 
-- Nicht-invertierender Verstärker
-
-- Invertierender Verstärker
-
-Grundsätzlich werden beim Schaltungsentwurf mit Operationsverstärkern (häufig auch bezeichnet als OP, OV, OPV oder auch
-OpAmp, wobei Letzteres die Abkürzung für die englische Bezeichnung Operational Amplifier ist [^1]) die Eingengschaften
-idealisiert betrachtet. 
-
-Ein idealer Operationsverstärker hat einen unendlich großen Verstärkungsfaktor V, einen unendlich großen
-Eingangswiderstand Re, einen Ausgangswiderstand Ra gleich Null und einen Frequenzbereich von Null bis
-unendlich. Außerdem ist der ideale Operationsverstärker vollkommen symmetrisch. Gleiche Spannungen an den beiden
-Eingängen ergeben einen Ausgangsspannung Ua von Null. Der Grund ist die Differenz UPN zwischen den Eingangsspannungen,
-die Null ist. Vorausgesetzt die Amplitude und Phasenlage sind gleich. Man spricht dann von Gleichtaktaussteuerung. Die
-Verstärkung heißt dann Gleichtaktverstärkung. Sie ist gleich Null. 
-
-Das Verhältnis zwischen dem Verstärkungsfaktor V und der Gleichtaktverstärkung wird Gleichtaktunterdrückung genannt. Sie
-ist unendlich groß. Verzerrungen oder Rauschen, sowie die Abhängigkeit von der Umgebungstemperatur gibt es beim idealen
-Operationsverstärker nicht. Und zwischen Eingangs- und Ausgangsspannung besteht ein linearer Zusammenhang [^1].
-
-
-Geht man in die Praxis über, stellt man sehr schnell fest, dass alle soeben aufgeführten Werte endlich sind und beim
-Schaltungsentwurf unterschiedliche Probleme verursachen können. Das Ziel dieses Experiments ist eine messtechnische
-Untersuchung der Grundschaltungen eines Opamps und ein Gewinn an Wissen und Erfahrung beim Umgang mit diesen
-elektronischen Bauelementen.
-
-## Notwendige Werkzeuge
-Für das Durchführen des Experiments ist es sinnvoll, sich einiger Werkzeuge zu bedienen. Diesbezüglich ein paar Sätze zu
-den zu nutzenden Werkzeugen. Vor der eigentlichen Messung ist es ratsam, die Schaltung mit einem Programm zu
-simulieren. Dadurch wird einem klar, welcher Verlauf beim Messen zu erwarten ist. Das Programm LTspice ist eine
-leistungsfähige Software zur Simulation elektronischer Schaltungen. Die Messung wird anschließend mit einem RedPitaya
-durchgeführt. Hierbei handelt es sich um einen kleinen Microcomputer, mit dem es möglich ist, eine Messautomatisierung
-durchzuführen.
-
-Durch z.B. ein Python-Script, welches mittels SCPI-Protokoll von einem entfernten System an den Red Ptaya übertragen
-wird, kann eine Fernmessung durchgeführt werden. Die Messdaten, die ermittelt werden, können danach z.B. in einer
-CSV-Datei gesammelt werden [^2].
+Das genutzte Betriebssystem ist Linux [Debian 11](https://www.debian.org/News/2021/20210814).
 
 ## Unity Gain - Schaltung
 
