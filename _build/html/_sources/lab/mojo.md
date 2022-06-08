@@ -1,21 +1,44 @@
 # Sounderkennung mit Hilfe des Mojo V3 FPGA Boards und dem Sound
 
 ## Einleitung
-Diese Projektarbeit beschäftigt sich mit der Evaluation des [Sound Erkennungs](https://alchitry.com/sound-locating-mojo) Tutorials der Webiste [Alchitry](https://alchitry.com/).
-Erkennung von Tönen und Sprache nimmt einen immer größeren Platz im Alltag und in Industrie ein. Die Menschen gewöhnen sich daran, dass eine Steuerung von Geräten wie Smartphones oder Smarthome generell mit
-Sprache möglich sein muss. Der Spracherkennung vorgelagert ist jedoch die Geräuscherkennung. Geräuscherkennung bietet in der Industrie die Möglichkeit fehlerhafte oder nicht montierte Gegenstände innerhalb
-eines Gesamtsystems zu erkennen. Solche Gegenstände führen bei Vibration zu Störgeräuschen, die man über einen entsprechenden Sounderkennungsaufbau erkennen kann.
+Diese Projektarbeit beschäftigt sich mit der Evaluation des [Sound Erkennungs](https://alchitry.com/sound-locating-mojo) Tutorials der Webiste [Alchitry](https:E//alchitry.com/).
+Erkennung von Tönen und Sprache nimmt einen immer größeren Platz im Alltag und in Industrie ein. Die Menschen gewöhnen sich daran, dass eine Steuerung von Geräten wie Smartphones oder Smarthome generell mit Sprache möglich sein muss. Der Spracherkennung vorgelagert ist jedoch die Geräuscherkennung. Geräuscherkennung bietet in der Industrie die Möglichkeit fehlerhafte oder nicht montierte Gegenstände innerhalb eines Gesamtsystems zu erkennen. Solche Gegenstände führen bei Vibration zu Störgeräuschen, die man über einen entsprechenden Sounderkennungsaufbau erkennen kann.
+
 Dieser Aufbau kann mit einem Microkontroller basierten Ansatz ausgeführt werden oder mit einem Ansatz über ein Field-Programmable-Gate-Array(FPGA).
 Dieser Ansatz wird von Alchitry Labs genutzt und es wird im folgenden weiter darauf eingegangen.
 
 ## Genutzte Hardware
+
 ## Genutzte Toolchain
 Die Toolchain für die Inbetriebnahme des MOJO V3 Boards besteht aus einem Programmierungs Tool [Alchitry Labs](https://alchitry.com/alchitry-labs) und einem Builder.
+
 Für das MOJO V3 board bedarf es der [ISE WebPack](https://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html) von [Xilinx](https://www.xilinx.com/).
+Alchitry Labs wird hierbei genutzt um das Projekt zu organisieren und die unterschiedlichen Teile des Projektes zu nutzen. Es ist jedoch eng gekoppelt mit dem Builder, da dieser die nötige 
+Das genutzte Betriebssystem ist Linux [Debian 11](https://www.debian.org/News/2021/20210814).
 
-Das genutzte Betriebssystem ist hier für ein Linux Debian 11. Für die Inebtriebnahme wurde entsprechend der Empfehlung von Alchitry  
+## Einrichten der Toolchain
 
-## Unity Gain - Schaltung
+### Installation des ISE WebPack
+
+### Installation von Alchitry Labs
+
+## Aufbau eines Projektes
+
+## Sound Locator Projekt
+
+### Öffnen des Projektes
+
+### Probleme mit den cores lösen
+
+## Funktion des Projektes
+
+### Funktion laut Tutorial
+
+### Funktion tatsächlich
+
+## Versuch?
+
+## VHDL-Projekte Übertragen?
 
 Eine Unity Gain-Schaltung, auch Impedanzwandler oder Spannungsfolger genannt, ist ein Operationsverstärker, dessen
 Ausgang mit dem invertierenden Eingang kurzgeschlossen ist {numref}`01_fig_02`. 

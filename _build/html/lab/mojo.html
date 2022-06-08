@@ -126,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -189,8 +189,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
+                title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -198,7 +198,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -206,10 +206,10 @@ const thebe_selector_output = ".output, .cell_output"
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/lab/mojo.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
@@ -222,23 +222,23 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/mimeiners/eeps"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
+                data-toggle="tooltip" data-placement="left" title="Quell-Repository"><i
+                    class="fab fa-github"></i>Repository</button></a>
         <a class="issues-button"
             href="https://github.com/mimeiners/eeps/issues/new?title=Issue%20on%20page%20%2Flab/mojo.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                title="Öffnen Sie ein Problem"><i class="fas fa-lightbulb"></i>offenes Thema</button></a>
         <a class="edit-button" href="https://github.com/mimeiners/eeps/edit/master/lab/mojo.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+                title="Bearbeite diese Seite"><i class="fas fa-pencil-alt"></i>vorschlagen zu bearbeiten</button></a>
     </div>
 </div>
 
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Vollbildmodus"
+        title="Vollbildmodus"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -249,7 +249,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+                <i class="fas fa-list"></i> Inhalt
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -269,8 +269,69 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unity-gain-schaltung">
-   Unity Gain - Schaltung
+  <a class="reference internal nav-link" href="#einrichten-der-toolchain">
+   Einrichten der Toolchain
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installation-des-ise-webpack">
+     Installation des ISE WebPack
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installation-von-alchitry-labs">
+     Installation von Alchitry Labs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aufbau-eines-projektes">
+   Aufbau eines Projektes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sound-locator-projekt">
+   Sound Locator Projekt
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#offnen-des-projektes">
+     Öffnen des Projektes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probleme-mit-den-cores-losen">
+     Probleme mit den cores lösen
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funktion-des-projektes">
+   Funktion des Projektes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funktion-laut-tutorial">
+     Funktion laut Tutorial
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funktion-tatsachlich">
+     Funktion tatsächlich
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#versuch">
+   Versuch?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vhdl-projekte-ubertragen">
+   VHDL-Projekte Übertragen?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -316,7 +377,7 @@ const thebe_selector_output = ".output, .cell_output"
                     <div id="jb-print-toc">
                         
                         <div>
-                            <h2> Contents </h2>
+                            <h2> Inhalt </h2>
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
@@ -336,8 +397,69 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unity-gain-schaltung">
-   Unity Gain - Schaltung
+  <a class="reference internal nav-link" href="#einrichten-der-toolchain">
+   Einrichten der Toolchain
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installation-des-ise-webpack">
+     Installation des ISE WebPack
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installation-von-alchitry-labs">
+     Installation von Alchitry Labs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aufbau-eines-projektes">
+   Aufbau eines Projektes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sound-locator-projekt">
+   Sound Locator Projekt
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#offnen-des-projektes">
+     Öffnen des Projektes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probleme-mit-den-cores-losen">
+     Probleme mit den cores lösen
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funktion-des-projektes">
+   Funktion des Projektes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funktion-laut-tutorial">
+     Funktion laut Tutorial
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funktion-tatsachlich">
+     Funktion tatsächlich
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#versuch">
+   Versuch?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vhdl-projekte-ubertragen">
+   VHDL-Projekte Übertragen?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -380,11 +502,9 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Sounderkennung mit Hilfe des Mojo V3 FPGA Boards und dem Sound<a class="headerlink" href="#sounderkennung-mit-hilfe-des-mojo-v3-fpga-boards-und-dem-sound" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="einleitung">
 <h2>Einleitung<a class="headerlink" href="#einleitung" title="Permalink to this headline">¶</a></h2>
-<p>Diese Projektarbeit beschäftigt sich mit der Evaluation des <a class="reference external" href="https://alchitry.com/sound-locating-mojo">Sound Erkennungs</a> Tutorials der Webiste <a class="reference external" href="https://alchitry.com/">Alchitry</a>.
-Erkennung von Tönen und Sprache nimmt einen immer größeren Platz im Alltag und in Industrie ein. Die Menschen gewöhnen sich daran, dass eine Steuerung von Geräten wie Smartphones oder Smarthome generell mit
-Sprache möglich sein muss. Der Spracherkennung vorgelagert ist jedoch die Geräuscherkennung. Geräuscherkennung bietet in der Industrie die Möglichkeit fehlerhafte oder nicht montierte Gegenstände innerhalb
-eines Gesamtsystems zu erkennen. Solche Gegenstände führen bei Vibration zu Störgeräuschen, die man über einen entsprechenden Sounderkennungsaufbau erkennen kann.
-Dieser Aufbau kann mit einem Microkontroller basierten Ansatz ausgeführt werden oder mit einem Ansatz über ein Field-Programmable-Gate-Array(FPGA).
+<p>Diese Projektarbeit beschäftigt sich mit der Evaluation des <a class="reference external" href="https://alchitry.com/sound-locating-mojo">Sound Erkennungs</a> Tutorials der Webiste <a class="reference external" href="https:///E//alchitry.com/">Alchitry</a>.
+Erkennung von Tönen und Sprache nimmt einen immer größeren Platz im Alltag und in Industrie ein. Die Menschen gewöhnen sich daran, dass eine Steuerung von Geräten wie Smartphones oder Smarthome generell mit Sprache möglich sein muss. Der Spracherkennung vorgelagert ist jedoch die Geräuscherkennung. Geräuscherkennung bietet in der Industrie die Möglichkeit fehlerhafte oder nicht montierte Gegenstände innerhalb eines Gesamtsystems zu erkennen. Solche Gegenstände führen bei Vibration zu Störgeräuschen, die man über einen entsprechenden Sounderkennungsaufbau erkennen kann.</p>
+<p>Dieser Aufbau kann mit einem Microkontroller basierten Ansatz ausgeführt werden oder mit einem Ansatz über ein Field-Programmable-Gate-Array(FPGA).
 Dieser Ansatz wird von Alchitry Labs genutzt und es wird im folgenden weiter darauf eingegangen.</p>
 </div>
 <div class="section" id="genutzte-hardware">
@@ -392,12 +512,46 @@ Dieser Ansatz wird von Alchitry Labs genutzt und es wird im folgenden weiter dar
 </div>
 <div class="section" id="genutzte-toolchain">
 <h2>Genutzte Toolchain<a class="headerlink" href="#genutzte-toolchain" title="Permalink to this headline">¶</a></h2>
-<p>Die Toolchain für die Inbetriebnahme des MOJO V3 Boards besteht aus einem Programmierungs Tool <a class="reference external" href="https://alchitry.com/alchitry-labs">Alchitry Labs</a> und einem Builder.
-Für das MOJO V3 board bedarf es der <a class="reference external" href="https://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html">ISE WebPack</a> von <a class="reference external" href="https://www.xilinx.com/">Xilinx</a>.</p>
-<p>Das genutzte Betriebssystem ist hier für ein Linux Debian 11. Für die Inebtriebnahme wurde entsprechend der Empfehlung von Alchitry</p>
+<p>Die Toolchain für die Inbetriebnahme des MOJO V3 Boards besteht aus einem Programmierungs Tool <a class="reference external" href="https://alchitry.com/alchitry-labs">Alchitry Labs</a> und einem Builder.</p>
+<p>Für das MOJO V3 board bedarf es der <a class="reference external" href="https://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html">ISE WebPack</a> von <a class="reference external" href="https://www.xilinx.com/">Xilinx</a>.
+Alchitry Labs wird hierbei genutzt um das Projekt zu organisieren und die unterschiedlichen Teile des Projektes zu nutzen. Es ist jedoch eng gekoppelt mit dem Builder, da dieser die nötige
+Das genutzte Betriebssystem ist Linux <a class="reference external" href="https://www.debian.org/News/2021/20210814">Debian 11</a>.</p>
 </div>
-<div class="section" id="unity-gain-schaltung">
-<h2>Unity Gain - Schaltung<a class="headerlink" href="#unity-gain-schaltung" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="einrichten-der-toolchain">
+<h2>Einrichten der Toolchain<a class="headerlink" href="#einrichten-der-toolchain" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation-des-ise-webpack">
+<h3>Installation des ISE WebPack<a class="headerlink" href="#installation-des-ise-webpack" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="installation-von-alchitry-labs">
+<h3>Installation von Alchitry Labs<a class="headerlink" href="#installation-von-alchitry-labs" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="aufbau-eines-projektes">
+<h2>Aufbau eines Projektes<a class="headerlink" href="#aufbau-eines-projektes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="sound-locator-projekt">
+<h2>Sound Locator Projekt<a class="headerlink" href="#sound-locator-projekt" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="offnen-des-projektes">
+<h3>Öffnen des Projektes<a class="headerlink" href="#offnen-des-projektes" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="probleme-mit-den-cores-losen">
+<h3>Probleme mit den cores lösen<a class="headerlink" href="#probleme-mit-den-cores-losen" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="funktion-des-projektes">
+<h2>Funktion des Projektes<a class="headerlink" href="#funktion-des-projektes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="funktion-laut-tutorial">
+<h3>Funktion laut Tutorial<a class="headerlink" href="#funktion-laut-tutorial" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="funktion-tatsachlich">
+<h3>Funktion tatsächlich<a class="headerlink" href="#funktion-tatsachlich" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="versuch">
+<h2>Versuch?<a class="headerlink" href="#versuch" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="vhdl-projekte-ubertragen">
+<h2>VHDL-Projekte Übertragen?<a class="headerlink" href="#vhdl-projekte-ubertragen" title="Permalink to this headline">¶</a></h2>
 <p>Eine Unity Gain-Schaltung, auch Impedanzwandler oder Spannungsfolger genannt, ist ein Operationsverstärker, dessen
 Ausgang mit dem invertierenden Eingang kurzgeschlossen ist <a class="reference internal" href="#fig-02"><span class="std std-numref">Fig. 2</span></a>.</p>
 <div class="figure align-default" id="fig-01">
@@ -883,7 +1037,7 @@ aufgebaut und der Ausgang gemessen. Die Messergebnisse sind in der <a class="ref
     <footer class="footer">
   <p>
     
-      By M. Meiners (HSB)<br/>
+      Durch M. Meiners (HSB)<br/>
     
       <div class="extra_footer">
         <div>
