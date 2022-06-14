@@ -2,18 +2,22 @@
 
 ## Einleitung
 Diese Projektarbeit beschäftigt sich mit der Evaluation des [Sound Erkennungs](https://alchitry.com/sound-locating-mojo) Tutorials der Webiste [Alchitry](https:E//alchitry.com/).
-Erkennung von Tönen und Sprache nimmt einen immer größeren Platz im Alltag und in Industrie ein. Die Menschen gewöhnen sich daran, dass eine Steuerung von Geräten wie Smartphones oder Smarthome generell mit Sprache möglich sein muss. Der Spracherkennung vorgelagert ist jedoch die Geräuscherkennung. Geräuscherkennung bietet in der Industrie die Möglichkeit fehlerhafte oder nicht montierte Gegenstände innerhalb eines Gesamtsystems zu erkennen. Solche Gegenstände führen bei Vibration zu Störgeräuschen, die man über einen entsprechenden Sounderkennungsaufbau erkennen kann.
+In diesem Tutorial nutzt Alchitry ihr eigens entwickelten Mojo v3 Board und ein Soundshield mit sieben Mikrofonen um die Richtung zu ermitteln aus der ein Ton auf das Board trifft.
+Das Mojo v3 Board ist ein Board, dass für das Erlernen der Erstellung von digitalen Schaltungen mit Hilfe von Field-Programmable-Gate-Arrays (FPGA) genutzt werden kann. Wie man bereits am Namen erkennen kann bietet ein FPGA die Möglichkeit es jederzeit neu zu flashen (Field-Programmable). Dabei beschreiben wir die Hardware mihilfe einer Hardwarebeschreibungssprache wie VHDL, Verilog oder wie in diesem Beispiel mit Lucid und die Hardware nimmt entsprechend unserer Beschreibungssprache exakt die Funktion ein die wir erzielen möchten. Die Beschreibungssprache bewirkt, dass Logikgatter innerhalb des FPGA entsprechend der Funktion miteinander verknüpft werden. So kann der Mojo v3 genutzt werden um eine LED zum blinken zu bringen oder eben auch komplexere Aufgaben wie Sounderkennung.
 
-Dieser Aufbau kann mit einem Microkontroller basierten Ansatz ausgeführt werden oder mit einem Ansatz über ein Field-Programmable-Gate-Array(FPGA).
-Dieser Ansatz wird von Alchitry Labs genutzt und es wird im folgenden weiter darauf eingegangen.
+Im folgenden könnt ihr eine kurze Erläuterung zur Hardware finden. Die Einrichtung der Toolchain wird Schritt für Schritt erklärt. Außerdem wird der Aufbau eines Projektes erläutert und im speziellen wird auf das Sound Locator Projekt eingegangen. In diesem Zusammenhang wird auf die so genannten IP-Cores eingegangen. Da Hardware und Software offenkundig nie so funkionieren wie es der Entwickler vorgesehen hat, wird außerdem auf Probleme eingangen und wie diese Behoben werden können. Es folgt ein Vergleich über die intendierte Funktion und der tatsächlichen Funktion des Projektes wobei im Nachgang noch ein ausführlicher Versuch vorgestellt wird, der die Funktion genauer unter die Lupe nimmt.
 
-## Genutzte Hardware
+## [Der Mojo](https://www.adafruit.com/product/1553) [Baby](https://www.youtube.com/watch?v=c4ytuS8pVp4)
+
+Das Mojo v3 Board ist ein preiswertes (~70€, bei [AliExpress](https://de.aliexpress.com/item/32798926767.html?spm=a2g0o.ppclist.product.2.dc57fhXPfhXPEo&pdp_npi=2%40dis%21EUR%21%E2%82%AC%2068%2C61%21%E2%82%AC%2068%2C61%21%21%21%21%21%40211b5a9616552327883654477e07b2%2164982667969%21btf&_t=pvid%3Ab5fae29b-1699-49ff-9cdf-7850da36c207&afTraceInfo=32798926767__pc__pcBridgePPC__xxxxxx__1655232788&gatewayAdapt=glo2deu)) FPGA Entwicklungsboard auf dem ein Spartan 6 FPGA eingebaut ist sowie ein ATmega32 Microprozessor der Arduino Kompatibel ist. Dieser wird im Wesentlichen für die Programmierung des FPGA genutzt. Nach der Programmierung kann der Controller als Analog-Digital Wandler eingesetzt werden. Außerdem verfügt das Board üb 84 Digitale I/O die über die Steckleisten herausgeführt sind und 8 LEDs die für allgemeine Programmierung genutzt werden können.
+
+Das Soundshield:
 
 ## Genutzte Toolchain
 Die Toolchain für die Inbetriebnahme des MOJO V3 Boards besteht aus einem Programmierungs Tool [Alchitry Labs](https://alchitry.com/alchitry-labs) und einem Builder.
 
 Für das MOJO V3 board bedarf es der [ISE WebPack](https://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html) von [Xilinx](https://www.xilinx.com/).
-Alchitry Labs wird hierbei genutzt um das Projekt zu organisieren und die unterschiedlichen Teile des Projektes zu nutzen. Es ist jedoch eng gekoppelt mit dem Builder, da dieser die nötige 
+Alchitry Labs wird hierbei genutzt um das Projekt zu organisieren und die unterschiedlichen Teile des Projektes zu nutzen. Es ist jedoch eng gekoppelt mit dem Builder, da dieser die nötige
 Das genutzte Betriebssystem ist Linux [Debian 11](https://www.debian.org/News/2021/20210814).
 
 ## Einrichten der Toolchain

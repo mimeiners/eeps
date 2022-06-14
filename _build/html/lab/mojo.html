@@ -126,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -189,8 +189,8 @@ const thebe_selector_output = ".output, .cell_output"
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
-                title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -198,7 +198,7 @@ const thebe_selector_output = ".output, .cell_output"
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -206,10 +206,10 @@ const thebe_selector_output = ".output, .cell_output"
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/lab/mojo.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
@@ -222,23 +222,23 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/mimeiners/eeps"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Quell-Repository"><i
-                    class="fab fa-github"></i>Repository</button></a>
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
             href="https://github.com/mimeiners/eeps/issues/new?title=Issue%20on%20page%20%2Flab/mojo.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Öffnen Sie ein Problem"><i class="fas fa-lightbulb"></i>offenes Thema</button></a>
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         <a class="edit-button" href="https://github.com/mimeiners/eeps/edit/master/lab/mojo.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Bearbeite diese Seite"><i class="fas fa-pencil-alt"></i>vorschlagen zu bearbeiten</button></a>
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
 </div>
 
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Vollbildmodus"
-        title="Vollbildmodus"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
@@ -249,7 +249,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Inhalt
+                <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -259,8 +259,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#genutzte-hardware">
-   Genutzte Hardware
+  <a class="reference internal nav-link" href="#der-mojo-baby">
+   Der Mojo Baby
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -377,7 +377,7 @@ const thebe_selector_output = ".output, .cell_output"
                     <div id="jb-print-toc">
                         
                         <div>
-                            <h2> Inhalt </h2>
+                            <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
@@ -387,8 +387,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#genutzte-hardware">
-   Genutzte Hardware
+  <a class="reference internal nav-link" href="#der-mojo-baby">
+   Der Mojo Baby
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -503,12 +503,14 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="einleitung">
 <h2>Einleitung<a class="headerlink" href="#einleitung" title="Permalink to this headline">¶</a></h2>
 <p>Diese Projektarbeit beschäftigt sich mit der Evaluation des <a class="reference external" href="https://alchitry.com/sound-locating-mojo">Sound Erkennungs</a> Tutorials der Webiste <a class="reference external" href="https:///E//alchitry.com/">Alchitry</a>.
-Erkennung von Tönen und Sprache nimmt einen immer größeren Platz im Alltag und in Industrie ein. Die Menschen gewöhnen sich daran, dass eine Steuerung von Geräten wie Smartphones oder Smarthome generell mit Sprache möglich sein muss. Der Spracherkennung vorgelagert ist jedoch die Geräuscherkennung. Geräuscherkennung bietet in der Industrie die Möglichkeit fehlerhafte oder nicht montierte Gegenstände innerhalb eines Gesamtsystems zu erkennen. Solche Gegenstände führen bei Vibration zu Störgeräuschen, die man über einen entsprechenden Sounderkennungsaufbau erkennen kann.</p>
-<p>Dieser Aufbau kann mit einem Microkontroller basierten Ansatz ausgeführt werden oder mit einem Ansatz über ein Field-Programmable-Gate-Array(FPGA).
-Dieser Ansatz wird von Alchitry Labs genutzt und es wird im folgenden weiter darauf eingegangen.</p>
+In diesem Tutorial nutzt Alchitry ihr eigens entwickelten Mojo v3 Board und ein Soundshield mit sieben Mikrofonen um die Richtung zu ermitteln aus der ein Ton auf das Board trifft.
+Das Mojo v3 Board ist ein Board, dass für das Erlernen der Erstellung von digitalen Schaltungen mit Hilfe von Field-Programmable-Gate-Arrays (FPGA) genutzt werden kann. Wie man bereits am Namen erkennen kann bietet ein FPGA die Möglichkeit es jederzeit neu zu flashen (Field-Programmable). Dabei beschreiben wir die Hardware mihilfe einer Hardwarebeschreibungssprache wie VHDL, Verilog oder wie in diesem Beispiel mit Lucid und die Hardware nimmt entsprechend unserer Beschreibungssprache exakt die Funktion ein die wir erzielen möchten. Die Beschreibungssprache bewirkt, dass Logikgatter innerhalb des FPGA entsprechend der Funktion miteinander verknüpft werden. So kann der Mojo v3 genutzt werden um eine LED zum blinken zu bringen oder eben auch komplexere Aufgaben wie Sounderkennung.</p>
+<p>Im folgenden könnt ihr eine kurze Erläuterung zur Hardware finden. Die Einrichtung der Toolchain wird Schritt für Schritt erklärt. Außerdem wird der Aufbau eines Projektes erläutert und im speziellen wird auf das Sound Locator Projekt eingegangen. In diesem Zusammenhang wird auf die so genannten IP-Cores eingegangen. Da Hardware und Software offenkundig nie so funkionieren wie es der Entwickler vorgesehen hat, wird außerdem auf Probleme eingangen und wie diese Behoben werden können. Es folgt ein Vergleich über die intendierte Funktion und der tatsächlichen Funktion des Projektes wobei im Nachgang noch ein ausführlicher Versuch vorgestellt wird, der die Funktion genauer unter die Lupe nimmt.</p>
 </div>
-<div class="section" id="genutzte-hardware">
-<h2>Genutzte Hardware<a class="headerlink" href="#genutzte-hardware" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="der-mojo-baby">
+<h2><a class="reference external" href="https://www.adafruit.com/product/1553">Der Mojo</a> <a class="reference external" href="https://www.youtube.com/watch?v=c4ytuS8pVp4">Baby</a><a class="headerlink" href="#der-mojo-baby" title="Permalink to this headline">¶</a></h2>
+<p>Das Mojo v3 Board ist ein preiswertes (~70€, bei <a class="reference external" href="https://de.aliexpress.com/item/32798926767.html?spm=a2g0o.ppclist.product.2.dc57fhXPfhXPEo&amp;pdp_npi=2%40dis%21EUR%21%E2%82%AC%2068%2C61%21%E2%82%AC%2068%2C61%21%21%21%21%21%40211b5a9616552327883654477e07b2%2164982667969%21btf&amp;_t=pvid%3Ab5fae29b-1699-49ff-9cdf-7850da36c207&amp;afTraceInfo=32798926767__pc__pcBridgePPC__xxxxxx__1655232788&amp;gatewayAdapt=glo2deu">AliExpress</a>) FPGA Entwicklungsboard auf dem ein Spartan 6 FPGA eingebaut ist sowie ein ATmega32 Microprozessor der Arduino Kompatibel ist. Dieser wird im Wesentlichen für die Programmierung des FPGA genutzt. Nach der Programmierung kann der Controller als Analog-Digital Wandler eingesetzt werden. Außerdem verfügt das Board üb 84 Digitale I/O die über die Steckleisten herausgeführt sind und 8 LEDs die für allgemeine Programmierung genutzt werden können.</p>
+<p>Das Soundshield:</p>
 </div>
 <div class="section" id="genutzte-toolchain">
 <h2>Genutzte Toolchain<a class="headerlink" href="#genutzte-toolchain" title="Permalink to this headline">¶</a></h2>
@@ -1037,7 +1039,7 @@ aufgebaut und der Ausgang gemessen. Die Messergebnisse sind in der <a class="ref
     <footer class="footer">
   <p>
     
-      Durch M. Meiners (HSB)<br/>
+      By M. Meiners (HSB)<br/>
     
       <div class="extra_footer">
         <div>
