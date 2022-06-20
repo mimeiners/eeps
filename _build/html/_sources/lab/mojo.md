@@ -11,19 +11,61 @@ Im folgenden könnt ihr eine kurze Erläuterung zur Hardware finden. Die Einrich
 
 Das Mojo v3 Board ist ein preiswertes (~70€, bei [AliExpress](https://de.aliexpress.com/item/32798926767.html?spm=a2g0o.ppclist.product.2.dc57fhXPfhXPEo&pdp_npi=2%40dis%21EUR%21%E2%82%AC%2068%2C61%21%E2%82%AC%2068%2C61%21%21%21%21%21%40211b5a9616552327883654477e07b2%2164982667969%21btf&_t=pvid%3Ab5fae29b-1699-49ff-9cdf-7850da36c207&afTraceInfo=32798926767__pc__pcBridgePPC__xxxxxx__1655232788&gatewayAdapt=glo2deu)) FPGA Entwicklungsboard auf dem ein Spartan 6 FPGA eingebaut ist sowie ein ATmega32 Microprozessor der Arduino Kompatibel ist. Dieser wird im Wesentlichen für die Programmierung des FPGA genutzt. Nach der Programmierung kann der Controller als Analog-Digital Wandler eingesetzt werden. Außerdem verfügt das Board üb 84 Digitale I/O die über die Steckleisten herausgeführt sind und 8 LEDs die für allgemeine Programmierung genutzt werden können.
 
-Das Soundshield:
+Auf dem Microphone Shield befinden sich sechs konzentrische Mikrofone, die um ein siebtes Mikrofon in der Mitte herum auf dem Shield angebracht sind. Diese Mikrofone werden so genutzt das über die Verzögerung des einkommenden Tones die Richtung bestimmt werden kann. Die Erklärung dafür kann hier nochmal eingefügt werden:
+PDM? Delay? FFT? MEMS?
 
 ## Genutzte Toolchain
-Die Toolchain für die Inbetriebnahme des MOJO V3 Boards besteht aus einem Programmierungs Tool [Alchitry Labs](https://alchitry.com/alchitry-labs) und einem Builder.
+Nachdem wir eine kleine Einführung in die genutzte Hardware erhalten haben wollen wir uns jetzt die Einrichtung und Installation der Toolchain anschauen. 
+Die Toolchain für die Inbetriebnahme des MOJO V3 Boards besteht aus einem Projektierungstool [Alchitry Labs](https://alchitry.com/alchitry-labs) und einem Builder. 
 
-Für das MOJO V3 board bedarf es der [ISE WebPack](https://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html) von [Xilinx](https://www.xilinx.com/).
-Alchitry Labs wird hierbei genutzt um das Projekt zu organisieren und die unterschiedlichen Teile des Projektes zu nutzen. Es ist jedoch eng gekoppelt mit dem Builder, da dieser die nötige
-Das genutzte Betriebssystem ist Linux [Debian 11](https://www.debian.org/News/2021/20210814).
+Für das Mojo v3 board bedarf es dem [ISE WebPack](https://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html) von [Xilinx](https://www.xilinx.com/).
+Alchitry Labs wird hierbei genutzt um das Projekt zu organisieren und die unterschiedlichen Teile des Projektes zu beschreiben. Der Builder ISE WebPack übersetzt letzten Endes die Beschreibung aus den unterschiedlichen Bestandteilen des Projektierungstools in die eigentliche Hardware innerhalb des FPGA.
+Das genutzte Betriebssystem in diesem Projekt ist Linux [Debian 11](https://www.debian.org/News/2021/20210814).
 
-## Einrichten der Toolchain
 
 ### Installation des ISE WebPack
+Vor der Installation von Alchitry Labs ist es ratsam zunächst das ISE WebPack zu installieren. Auch ratsam ist es zunächst die Partitionierung des Rechners und den freien Festplattenspeicher im Blick zu haben. Das Archive was wir aus dem Internet laden werden ist bereits 6,5GB groß. Für die Installation benötigt das ISE WebPack weitere 18GB Speicherplatz. Nachdem wir sicher gestellt haben, dass wir einen geeigneten Speicherplatz für die Installation haben können wir das Installationsverzeichnis von der [Website](https://www.xilinx.com/downloadNav/vivado-design-tools/archive-ise.html) herunterladen. Hier wählen wir die Version 14.7 und unter diesem Punkt laden wir die ISE Design Suite - 14.7 Full Product Installation herunter und holen uns einen Kaffee oder Tee für die Überbrückung der Zeit. Es muss an dieser Stelle erwähnt werden, dass wir einen Nutzeraccount benötigen um diese Software herunter zu laden und zu installieren.
+Nach dem Download geht es weiter zur eigentlichen Installation. Als erstes müssen wir das Installationsverzeichnis entpacken. Hierfür solltet ihr mit Hilfe des Terminals und des change directory Befehls **cd** in den Ordner wechseln in dem ihr die Datei heruntergeladen habt (Hier: Downloads):
 
+Terminalausgabe
+:       mojo@fpga:~$ cd Downloads/
+
+Seid ihr im Verzeichnis angekommen müsst ihr das Verzeichnis entpacken:
+
+Terminalausgabe
+:       mojo@fpga:/Downloads/$ tar -xvf Xilinx_ISE_DS_Lin_14.7_1015_1.tar
+
+Die Optionen **xvf** beschreiben, dass das Archiv entpackt werden soll (x), dass die verarbeiteten Dateien ausführlich aufeglistet werden (v) und dass das Archiv aus dem aktuellen Verzeichnis genommen werden soll (f). Aufgrund der Datenmenge wird es entsprechend lange dauern. Sollte der Kaffee von vorhin noch nicht kalt geworden sein. Nehmt euch ein Stück Kuchen dazu.
+Nach diesen Vorarbeiten können wir nun das Setup des Programmes Starten. 
+
+:::{note}
+Beachtet, dass ihr die Installation von ISE WebPACK nach Möglichkeit ohne Adminrechte durchführen solltet. Hierfür müsst ihr den Installationspfad auf einen lokalen Benutzerpfad ändern!
+:::
+
+Wenn ihr die Istallation zum Beispiel folgendermaßen startet:
+
+Terminalausgabe
+:       mojo@fpga:/Downloads/Xilinx_ISE_DS_Lin_14.7_1015_1$ sudo ./xsetup
+
+Werdet ihr zunächst darum gebeten allerlei Konditionen und Vereinbarungen zuzustimmen. 
+
+```{figure} img/Terms_and_conditions.png 
+:name: 01_fig_01
+
+Zustimmung zu den Terms and Conditions geben
+```
+
+Wir stimmen diesen zu und müssen als nächstes das Product auswählen, dass wir installieren wollen. In unserem Fall ist es das ISE WebPACK.
+
+```{figure} img/AuswahlISE.png
+:name: 02_fig_02
+
+Auswahl des ISE WebPACKs für die Installation
+```
+Im Folgefenster lassen wir alle Häckchen so wie sie sind. Wichtig ist, dass ihr mehrere CPU kerne nutzt um die Installation schneller abzuschließen. Ansonsten erhöht sich die Installationszeit immens.
+
+Während die Installation läuft, könnt ihr die Zeit nutzen und euch eine Lizenz ISE holen.
+Dise bekommt ihr auf der [Internetseite](https://www.xilinx.com/member/forms/license-form.html)
 ### Installation von Alchitry Labs
 
 ## Aufbau eines Projektes

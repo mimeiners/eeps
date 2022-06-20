@@ -267,11 +267,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#genutzte-toolchain">
    Genutzte Toolchain
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#einrichten-der-toolchain">
-   Einrichten der Toolchain
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#installation-des-ise-webpack">
@@ -395,11 +390,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#genutzte-toolchain">
    Genutzte Toolchain
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#einrichten-der-toolchain">
-   Einrichten der Toolchain
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#installation-des-ise-webpack">
@@ -510,19 +500,59 @@ Das Mojo v3 Board ist ein Board, dass für das Erlernen der Erstellung von digit
 <div class="section" id="der-mojo-baby">
 <h2><a class="reference external" href="https://www.adafruit.com/product/1553">Der Mojo</a> <a class="reference external" href="https://www.youtube.com/watch?v=c4ytuS8pVp4">Baby</a><a class="headerlink" href="#der-mojo-baby" title="Permalink to this headline">¶</a></h2>
 <p>Das Mojo v3 Board ist ein preiswertes (~70€, bei <a class="reference external" href="https://de.aliexpress.com/item/32798926767.html?spm=a2g0o.ppclist.product.2.dc57fhXPfhXPEo&amp;pdp_npi=2%40dis%21EUR%21%E2%82%AC%2068%2C61%21%E2%82%AC%2068%2C61%21%21%21%21%21%40211b5a9616552327883654477e07b2%2164982667969%21btf&amp;_t=pvid%3Ab5fae29b-1699-49ff-9cdf-7850da36c207&amp;afTraceInfo=32798926767__pc__pcBridgePPC__xxxxxx__1655232788&amp;gatewayAdapt=glo2deu">AliExpress</a>) FPGA Entwicklungsboard auf dem ein Spartan 6 FPGA eingebaut ist sowie ein ATmega32 Microprozessor der Arduino Kompatibel ist. Dieser wird im Wesentlichen für die Programmierung des FPGA genutzt. Nach der Programmierung kann der Controller als Analog-Digital Wandler eingesetzt werden. Außerdem verfügt das Board üb 84 Digitale I/O die über die Steckleisten herausgeführt sind und 8 LEDs die für allgemeine Programmierung genutzt werden können.</p>
-<p>Das Soundshield:</p>
+<p>Auf dem Microphone Shield befinden sich sechs konzentrische Mikrofone, die um ein siebtes Mikrofon in der Mitte herum auf dem Shield angebracht sind. Diese Mikrofone werden so genutzt das über die Verzögerung des einkommenden Tones die Richtung bestimmt werden kann. Die Erklärung dafür kann hier nochmal eingefügt werden:
+PDM? Delay? FFT? MEMS?</p>
 </div>
 <div class="section" id="genutzte-toolchain">
 <h2>Genutzte Toolchain<a class="headerlink" href="#genutzte-toolchain" title="Permalink to this headline">¶</a></h2>
-<p>Die Toolchain für die Inbetriebnahme des MOJO V3 Boards besteht aus einem Programmierungs Tool <a class="reference external" href="https://alchitry.com/alchitry-labs">Alchitry Labs</a> und einem Builder.</p>
-<p>Für das MOJO V3 board bedarf es der <a class="reference external" href="https://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html">ISE WebPack</a> von <a class="reference external" href="https://www.xilinx.com/">Xilinx</a>.
-Alchitry Labs wird hierbei genutzt um das Projekt zu organisieren und die unterschiedlichen Teile des Projektes zu nutzen. Es ist jedoch eng gekoppelt mit dem Builder, da dieser die nötige
-Das genutzte Betriebssystem ist Linux <a class="reference external" href="https://www.debian.org/News/2021/20210814">Debian 11</a>.</p>
-</div>
-<div class="section" id="einrichten-der-toolchain">
-<h2>Einrichten der Toolchain<a class="headerlink" href="#einrichten-der-toolchain" title="Permalink to this headline">¶</a></h2>
+<p>Nachdem wir eine kleine Einführung in die genutzte Hardware erhalten haben wollen wir uns jetzt die Einrichtung und Installation der Toolchain anschauen.
+Die Toolchain für die Inbetriebnahme des MOJO V3 Boards besteht aus einem Projektierungstool <a class="reference external" href="https://alchitry.com/alchitry-labs">Alchitry Labs</a> und einem Builder.</p>
+<p>Für das Mojo v3 board bedarf es dem <a class="reference external" href="https://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html">ISE WebPack</a> von <a class="reference external" href="https://www.xilinx.com/">Xilinx</a>.
+Alchitry Labs wird hierbei genutzt um das Projekt zu organisieren und die unterschiedlichen Teile des Projektes zu beschreiben. Der Builder ISE WebPack übersetzt letzten Endes die Beschreibung aus den unterschiedlichen Bestandteilen des Projektierungstools in die eigentliche Hardware innerhalb des FPGA.
+Das genutzte Betriebssystem in diesem Projekt ist Linux <a class="reference external" href="https://www.debian.org/News/2021/20210814">Debian 11</a>.</p>
 <div class="section" id="installation-des-ise-webpack">
 <h3>Installation des ISE WebPack<a class="headerlink" href="#installation-des-ise-webpack" title="Permalink to this headline">¶</a></h3>
+<p>Vor der Installation von Alchitry Labs ist es ratsam zunächst das ISE WebPack zu installieren. Auch ratsam ist es zunächst die Partitionierung des Rechners und den freien Festplattenspeicher im Blick zu haben. Das Archive was wir aus dem Internet laden werden ist bereits 6,5GB groß. Für die Installation benötigt das ISE WebPack weitere 18GB Speicherplatz. Nachdem wir sicher gestellt haben, dass wir einen geeigneten Speicherplatz für die Installation haben können wir das Installationsverzeichnis von der <a class="reference external" href="https://www.xilinx.com/downloadNav/vivado-design-tools/archive-ise.html">Website</a> herunterladen. Hier wählen wir die Version 14.7 und unter diesem Punkt laden wir die ISE Design Suite - 14.7 Full Product Installation herunter und holen uns einen Kaffee oder Tee für die Überbrückung der Zeit. Es muss an dieser Stelle erwähnt werden, dass wir einen Nutzeraccount benötigen um diese Software herunter zu laden und zu installieren.
+Nach dem Download geht es weiter zur eigentlichen Installation. Als erstes müssen wir das Installationsverzeichnis entpacken. Hierfür solltet ihr mit Hilfe des Terminals und des change directory Befehls <strong>cd</strong> in den Ordner wechseln in dem ihr die Datei heruntergeladen habt (Hier: Downloads):</p>
+<dl class="simple myst">
+<dt>Terminalausgabe</dt><dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  mojo@fpga:~$ cd Downloads/
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Seid ihr im Verzeichnis angekommen müsst ihr das Verzeichnis entpacken:</p>
+<dl class="simple myst">
+<dt>Terminalausgabe</dt><dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  mojo@fpga:/Downloads/$ tar -xvf Xilinx_ISE_DS_Lin_14.7_1015_1.tar
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Die Optionen <strong>xvf</strong> beschreiben, dass das Archiv entpackt werden soll (x), dass die verarbeiteten Dateien ausführlich aufeglistet werden (v) und dass das Archiv aus dem aktuellen Verzeichnis genommen werden soll (f). Aufgrund der Datenmenge wird es entsprechend lange dauern. Sollte der Kaffee von vorhin noch nicht kalt geworden sein. Nehmt euch ein Stück Kuchen dazu.
+Nach diesen Vorarbeiten können wir nun das Setup des Programmes Starten.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Beachtet, dass ihr die Installation von ISE WebPACK nach Möglichkeit ohne Adminrechte durchführen solltet. Hierfür müsst ihr den Installationspfad auf einen lokalen Benutzerpfad ändern!</p>
+</div>
+<p>Wenn ihr die Istallation zum Beispiel folgendermaßen startet:</p>
+<dl class="simple myst">
+<dt>Terminalausgabe</dt><dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  mojo@fpga:/Downloads/Xilinx_ISE_DS_Lin_14.7_1015_1$ sudo ./xsetup
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Werdet ihr zunächst darum gebeten allerlei Konditionen und Vereinbarungen zuzustimmen.</p>
+<div class="figure align-default" id="fig-01">
+<img alt="../_images/Terms_and_conditions.png" src="../_images/Terms_and_conditions.png" />
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Zustimmung zu den Terms and Conditions geben</span><a class="headerlink" href="#fig-01" title="Permalink to this image">¶</a></p>
+</div>
+<p>Wir stimmen diesen zu und müssen als nächstes das Product auswählen, dass wir installieren wollen. In unserem Fall ist es das ISE WebPACK.</p>
+<div class="figure align-default" id="fig-02">
+<img alt="../_images/AuswahlISE.png" src="../_images/AuswahlISE.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Auswahl des ISE WebPACKs für die Installation</span><a class="headerlink" href="#fig-02" title="Permalink to this image">¶</a></p>
+</div>
+<p>Im Folgefenster lassen wir alle Häckchen so wie sie sind. Wichtig ist, dass ihr mehrere CPU kerne nutzt um die Installation schneller abzuschließen. Ansonsten erhöht sich die Installationszeit immens.</p>
+<p>Während die Installation läuft, könnt ihr die Zeit nutzen und euch eine Lizenz ISE holen.
+Dise bekommt ihr auf der <a class="reference external" href="https://www.xilinx.com/member/forms/license-form.html">Internetseite</a></p>
 </div>
 <div class="section" id="installation-von-alchitry-labs">
 <h3>Installation von Alchitry Labs<a class="headerlink" href="#installation-von-alchitry-labs" title="Permalink to this headline">¶</a></h3>
@@ -555,10 +585,10 @@ Das genutzte Betriebssystem ist Linux <a class="reference external" href="https:
 <div class="section" id="vhdl-projekte-ubertragen">
 <h2>VHDL-Projekte Übertragen?<a class="headerlink" href="#vhdl-projekte-ubertragen" title="Permalink to this headline">¶</a></h2>
 <p>Eine Unity Gain-Schaltung, auch Impedanzwandler oder Spannungsfolger genannt, ist ein Operationsverstärker, dessen
-Ausgang mit dem invertierenden Eingang kurzgeschlossen ist <a class="reference internal" href="#fig-02"><span class="std std-numref">Fig. 2</span></a>.</p>
-<div class="figure align-default" id="fig-01">
+Ausgang mit dem invertierenden Eingang kurzgeschlossen ist <a class="reference internal" href="#id3"><span class="std std-numref">Fig. 4</span></a>.</p>
+<div class="figure align-default" id="id1">
 <img alt="../_images/Abbildung01.png" src="../_images/Abbildung01.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Schematische Darstellung einer UnityGain-Schaltung.</span><a class="headerlink" href="#fig-01" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Schematische Darstellung einer UnityGain-Schaltung.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>Aufgrund der erwähnten <em>Rückkopplung</em> kann die Unity Gain - Schaltung als eine Regelstrecke betrachtet
 werden. Systemtheoretisch ist nun das Verhältnis von Ausgang zu Eingang eine Übertragungsfunktion H(s).</p>
@@ -584,10 +614,10 @@ gleich der Differenz der Eingangsspannungen <span class="math notranslate nohigh
 <span class="eqno">(4)<a class="headerlink" href="#equation-01-eq-03" title="Permalink to this equation">¶</a></span>\[
 	\frac{U_{OUT}}{U_{IN}} = 1
 \]</div>
-<div class="figure align-default" id="fig-02">
-<img alt="../_images/Abbildung02.svg" src="../_images/Abbildung02.svg" /><p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen der Unity Gain - Schaltung* <a class="footnote-reference brackets" href="#id7" id="id1">2</a></span><a class="headerlink" href="#fig-02" title="Permalink to this image">¶</a></p>
+<div class="figure align-default" id="id3">
+<img alt="../_images/Abbildung02.svg" src="../_images/Abbildung02.svg" /><p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen der Unity Gain - Schaltung* <a class="footnote-reference brackets" href="#id9" id="id2">2</a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
-<p>Die Mess- und Simulationsergebnisse sind in <a class="reference internal" href="#fig-02"><span class="std std-numref">Fig. 2</span></a> dargestellt. Daraus ist ersichtlich, dass die beiden
+<p>Die Mess- und Simulationsergebnisse sind in <a class="reference internal" href="#id3"><span class="std std-numref">Fig. 4</span></a> dargestellt. Daraus ist ersichtlich, dass die beiden
 Signale nahezu identisch sind, was einer Übertragung von 1 entspricht.</p>
 </div>
 <div class="section" id="nicht-invertierender-und-invertierender-verstarker">
@@ -596,7 +626,7 @@ Signale nahezu identisch sind, was einer Übertragung von 1 entspricht.</p>
 invertierenden Schaltung.</p>
 <div class="figure align-default" id="fig-03">
 <img alt="../_images/Abbildung03.png" src="../_images/Abbildung03.png" />
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Nicht-invertierender Verstärker<a class="footnote-reference brackets" href="#id7" id="id2">2</a></span><a class="headerlink" href="#fig-03" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Nicht-invertierender Verstärker<a class="footnote-reference brackets" href="#id9" id="id4">2</a></span><a class="headerlink" href="#fig-03" title="Permalink to this image">¶</a></p>
 </div>
 <p>Sowohl beim nicht-invertierenden als auch beim invertierenden Verstärker hängt der Verstärkungsfaktor <span class="math notranslate nohighlight">\(A_0\)</span> vom
 Verhältnis der beiden Widerstände ab. Für den nicht-invertieren Verstärker ergibt sich:</p>
@@ -610,16 +640,16 @@ Verhältnis der beiden Widerstände ab. Für den nicht-invertieren Verstärker e
 	U_{OUT} = U_{IN} + \frac{R_2}{R_1} \cdot U_{IN}
 \]</div>
 <p>Dabei ist <span class="math notranslate nohighlight">\(R_1\)</span> der Widerstand, der am invertierenden Eingang <span class="math notranslate nohighlight">\(U_-\)</span> anliegt und <span class="math notranslate nohighlight">\(R_2\)</span> der zwischen dem Ausgang <span class="math notranslate nohighlight">\(U_{OUT}\)</span>
-und dem invertierenden Eingang liegt <a class="reference internal" href="#fig-04"><span class="std std-numref">Fig. 4</span></a>. <span class="math notranslate nohighlight">\(U_{IN}\)</span> ist die Eingangsspannung, die an einem der Eingänge des
+und dem invertierenden Eingang liegt <a class="reference internal" href="#fig-04"><span class="std std-numref">Fig. 6</span></a>. <span class="math notranslate nohighlight">\(U_{IN}\)</span> ist die Eingangsspannung, die an einem der Eingänge des
 Opamps anliegt.</p>
 <div class="figure align-default" id="fig-04">
-<img alt="../_images/Abbildung04.svg" src="../_images/Abbildung04.svg" /><p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen des Nicht-invertierenden Verstärkers<a class="footnote-reference brackets" href="#id7" id="id3">2</a></span><a class="headerlink" href="#fig-04" title="Permalink to this image">¶</a></p>
+<img alt="../_images/Abbildung04.svg" src="../_images/Abbildung04.svg" /><p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen des Nicht-invertierenden Verstärkers<a class="footnote-reference brackets" href="#id9" id="id5">2</a></span><a class="headerlink" href="#fig-04" title="Permalink to this image">¶</a></p>
 </div>
-<p>Aus <a class="reference internal" href="#fig-04"><span class="std std-numref">Fig. 4</span></a> ist ersichtlicht, dass bei einem nicht-invertierenden Verstärker die Eingangsspannung verstärkt
+<p>Aus <a class="reference internal" href="#fig-04"><span class="std std-numref">Fig. 6</span></a> ist ersichtlicht, dass bei einem nicht-invertierenden Verstärker die Eingangsspannung verstärkt
 wird. Die Ausgangsspannung liegt mit der Eingangsspannung in Phase.</p>
 <div class="figure align-default" id="fig-05">
 <img alt="../_images/Abbildung05.png" src="../_images/Abbildung05.png" />
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id7" id="id4">2</a></span><a class="headerlink" href="#fig-05" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id9" id="id6">2</a></span><a class="headerlink" href="#fig-05" title="Permalink to this image">¶</a></p>
 </div>
 <p>Für den invertierenden Verstärker ist das Verhältnis von Ausgangsspannung zu Eingangsspannung gegeben als</p>
 <div class="math notranslate nohighlight" id="equation-01-eq-06">
@@ -632,9 +662,9 @@ wird. Die Ausgangsspannung liegt mit der Eingangsspannung in Phase.</p>
 	U_{OUT} = -\frac{R_2}{R_1} \cdot U_{IN}.
 \]</div>
 <p>Nach <a class="reference internal" href="#equation-01-eq-07">(8)</a> bekommt man eine um <span class="math notranslate nohighlight">\(\pi\)</span> gedrehte und um das Widerstandsverhältnis verstärkte Ausgangsspannung
-<span class="math notranslate nohighlight">\(U_{OUT}\)</span>. Diese ist in <a class="reference internal" href="#fig-06"><span class="std std-numref">Fig. 6</span></a> graphisch dargestellt.</p>
+<span class="math notranslate nohighlight">\(U_{OUT}\)</span>. Diese ist in <a class="reference internal" href="#fig-06"><span class="std std-numref">Fig. 8</span></a> graphisch dargestellt.</p>
 <div class="figure align-default" id="fig-06">
-<img alt="../_images/Abbildung06.svg" src="../_images/Abbildung06.svg" /><p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id7" id="id5">2</a></span><a class="headerlink" href="#fig-06" title="Permalink to this image">¶</a></p>
+<img alt="../_images/Abbildung06.svg" src="../_images/Abbildung06.svg" /><p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id9" id="id7">2</a></span><a class="headerlink" href="#fig-06" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="messtechnische-untersuchung-der-grenzbereiche">
 <h3>Messtechnische Untersuchung der Grenzbereiche<a class="headerlink" href="#messtechnische-untersuchung-der-grenzbereiche" title="Permalink to this headline">¶</a></h3>
@@ -805,7 +835,7 @@ das Programm zur Messautomatisierung des Red Pitayas eingesetzt und ist ohne Wei
 sind zusammen mit den Messungen in <code class="docutils literal notranslate"><span class="pre">01_fig_06</span></code>{.interpreted-text role=”numref”} dargestellt.</p>
 <div class="figure align-default" id="fig-07">
 <img alt="../_images/Abbildung07.png" src="../_images/Abbildung07.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Vergleich der Messungen mit den Simulationen</span><a class="headerlink" href="#fig-07" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Vergleich der Messungen mit den Simulationen</span><a class="headerlink" href="#fig-07" title="Permalink to this image">¶</a></p>
 </div>
 <p>Die Simulationsergebnisse zeigen prinzipiell das gleiche Tiefpassverhalten wie die Messergebnisse. Der Amplitudengang
 der Messungen weicht kaum von den Simulationsergebnissen ab. Die Abweichungen liegen nur im hohen Frequenzbereich. Daher
@@ -942,14 +972,14 @@ auf ihre Grenzen überprüft. Dazu wird ein DC-Sweep durchgeführt. Zu diesem Zw
 </pre></div>
 </div>
 <p>Es soll mit Hilfe des nicht-invertierenden Verstärkers ein Gleichspannungsdurchlauf durchgeführt werden. Für die
-Ausgangsspannung ergibt sich ein Spannungsverlauf nach <a class="reference internal" href="#fig-07"><span class="std std-numref">Fig. 7</span></a>.</p>
+Ausgangsspannung ergibt sich ein Spannungsverlauf nach <a class="reference internal" href="#fig-07"><span class="std std-numref">Fig. 9</span></a>.</p>
 <div class="figure align-default" id="fig-08">
 <img alt="../_images/Abbildung08.png" src="../_images/Abbildung08.png" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Grenzmessung der Ausgangsspannung</span><a class="headerlink" href="#fig-08" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Grenzmessung der Ausgangsspannung</span><a class="headerlink" href="#fig-08" title="Permalink to this image">¶</a></p>
 </div>
 <p>Das Ergebnis zeigt, dass die Ausgangsspannung bei ca. <span class="math notranslate nohighlight">\(9\,V\)</span> ihr Maximum und bei ca. <span class="math notranslate nohighlight">\(-9\,V\)</span> ihr Minimum
 aufweist. Hier wird der Zusammenhang zwischen der Ausgangsspannung und der Versorgungsspannung des Operationsverstärkers
-deutlich. Die Maximalwerte der Ausgangsspannung sind gleich der Versorgungsspannung <a class="footnote-reference brackets" href="#id8" id="id6">3</a>. Die Flankensteilheit ist
+deutlich. Die Maximalwerte der Ausgangsspannung sind gleich der Versorgungsspannung <a class="footnote-reference brackets" href="#id10" id="id8">3</a>. Die Flankensteilheit ist
 abhängig vom Verstärkungsfaktor.</p>
 </div>
 <div class="section" id="fazit-und-beispiele">
@@ -960,39 +990,39 @@ eher unzuverlässig. Des Weiteren verdrehte der Red Pitaya je nach Päriodenaufl
 oft fehlerhaft war. Trotzdessen ist die Möglichkeit der Messautomatisierung von großem Vorteil. Daher bietet sich der
 Eisatz von SCPI-fähigen Geräten bei diesen Messungen an.</p>
 <p>Als erstes Beispiel wird ein negativ rückgekoppelter Verstärker betrachtet. Prinzipiell ist das eine Kaskadierung
-(Hintereinanderschaltung) der drei Grundschaltungen <a class="reference internal" href="#fig-08"><span class="std std-numref">Fig. 8</span></a>.</p>
+(Hintereinanderschaltung) der drei Grundschaltungen <a class="reference internal" href="#fig-08"><span class="std std-numref">Fig. 10</span></a>.</p>
 <div class="figure align-default" id="fig-09">
 <img alt="../_images/Abbildung09.png" src="../_images/Abbildung09.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Negativ-rückgekoppelter Verstärker</span><a class="headerlink" href="#fig-09" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Negativ-rückgekoppelter Verstärker</span><a class="headerlink" href="#fig-09" title="Permalink to this image">¶</a></p>
 </div>
-<p>Hier wird statt eines Sinussignals ein Rechtecksignal eingespeist. Die Ausgänge der Schaltung sind in <a class="reference internal" href="#fig-09"><span class="std std-numref">Fig. 9</span></a>
+<p>Hier wird statt eines Sinussignals ein Rechtecksignal eingespeist. Die Ausgänge der Schaltung sind in <a class="reference internal" href="#fig-09"><span class="std std-numref">Fig. 11</span></a>
 graphisch dargestellt.</p>
 <div class="figure align-default" id="fig-10">
 <img alt="../_images/Abbildung10.png" src="../_images/Abbildung10.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Messergebnisse der Ausgangsspannungen des negativ-rückgekoppelten Verstärkers</span><a class="headerlink" href="#fig-10" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Messergebnisse der Ausgangsspannungen des negativ-rückgekoppelten Verstärkers</span><a class="headerlink" href="#fig-10" title="Permalink to this image">¶</a></p>
 </div>
 <p>Aus der Messung ist zu entnehmen, dass die bei einem Rechteckeingangssignal, die Ausgangssignale bei den Grenzübergängen
 eine Abrundung aufweisen. Dieses Phänomen bezeichnet man als <a class="reference external" href="https://en.wikipedia.org/wiki/Slew_rate">Slew Rate</a> und
 ist auf die kapazitive Eigeschaften des OPAMS zurück zu führen.</p>
 <p>Als zweites Beispiel wird ein Instrumentenverstärker betrachtet. Dieser kann aus zwei oder drei Operationsverstärkern
-vgl. <a class="reference internal" href="#fig-10"><span class="std std-numref">Fig. 10</span></a>, aufgebaut werden und wird oft, aufgrund seiner Eigenschaften, in der Medizintechnik eingesetzt.</p>
+vgl. <a class="reference internal" href="#fig-10"><span class="std std-numref">Fig. 12</span></a>, aufgebaut werden und wird oft, aufgrund seiner Eigenschaften, in der Medizintechnik eingesetzt.</p>
 <div class="figure align-default" id="fig-11">
 <img alt="../_images/Abbildung11.png" src="../_images/Abbildung11.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Instrumentenverstärker mit drei Opamps (li.) und zwei Opamps (re.)</span><a class="headerlink" href="#fig-11" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Instrumentenverstärker mit drei Opamps (li.) und zwei Opamps (re.)</span><a class="headerlink" href="#fig-11" title="Permalink to this image">¶</a></p>
 </div>
 <p>Aus der Abbildung wird deutlich, dass die Verstärkung lediglich vom Widerstand <span class="math notranslate nohighlight">\(nR\)</span> abhängt. Dies erleichtert die
 Einstellung des Instumentenverstärkers. Als Beispiel wurde ein Instrumentenverstärker aus zwei Operationsverstärkern
-aufgebaut und der Ausgang gemessen. Die Messergebnisse sind in der <a class="reference internal" href="#fig-11"><span class="std std-numref">Fig. 11</span></a> graphisch dargestellt.</p>
+aufgebaut und der Ausgang gemessen. Die Messergebnisse sind in der <a class="reference internal" href="#fig-11"><span class="std std-numref">Fig. 13</span></a> graphisch dargestellt.</p>
 <div class="figure align-default" id="fig-12">
 <img alt="../_images/Abbildung12.png" src="../_images/Abbildung12.png" />
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Eingangs- und Ausgangssignale eines Instrumentenverstärkers aus 2 Opamps</span><a class="headerlink" href="#fig-12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Eingangs- und Ausgangssignale eines Instrumentenverstärkers aus 2 Opamps</span><a class="headerlink" href="#fig-12" title="Permalink to this image">¶</a></p>
 </div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="id7"><span class="brackets">2</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id4">4</a>,<a href="#id5">5</a>)</span></dt>
+<dt class="label" id="id9"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id4">2</a>,<a href="#id5">3</a>,<a href="#id6">4</a>,<a href="#id7">5</a>)</span></dt>
 <dd><p>ANS-Abschlussbericht SoSe21 von M. Lüters, L. Lagona und Ch. Stelling.</p>
 </dd>
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id6">3</a></span></dt>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
 <dd><p>Die Angaben sind aus den jeweiligen Datenblättern zu entnehmen.</p>
 </dd>
 </dl>
