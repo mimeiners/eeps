@@ -296,8 +296,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probleme-mit-den-cores-losen">
-     Probleme mit den cores lösen
+    <a class="reference internal nav-link" href="#probleme-mit-den-ip-cores-losen">
+     Probleme mit den IP-cores lösen
     </a>
    </li>
   </ul>
@@ -419,8 +419,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probleme-mit-den-cores-losen">
-     Probleme mit den cores lösen
+    <a class="reference internal nav-link" href="#probleme-mit-den-ip-cores-losen">
+     Probleme mit den IP-cores lösen
     </a>
    </li>
   </ul>
@@ -615,16 +615,45 @@ Allerdings werden wir zunächst darauf hingewiesen, dass wir den Installationsor
 <p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Einstellungen zum öffnen des Sound locator Beispiels</span><a class="headerlink" href="#fig-07" title="Permalink to this image">¶</a></p>
 </div>
 <p>Durch einen letzten Mausklick auf den Button “Create” wird unser Beispielprojekt erstellt.
-Bevor wir zu Problemen innerhalb dieses Projektes kommen, machen wir eine kurze Erklärung dazu, was wir alles in diesem Projekt finden können.</p>
+Bevor wir zu Problemen innerhalb dieses Projektes kommen, machen wir eine kurze Erklärung dazu, was wir alles in diesem Projekt finden können. Für die Inbetriebnahme des Projektes kannst du den Abschnitt über den Aufbau eines Projektes überspringen und später hierher zurückkehren wenn du mehr über Sources, Components, Cores und Constraints erfahren möchtest.</p>
 </div>
 </div>
 <div class="section" id="aufbau-eines-projektes">
 <h2>Aufbau eines Projektes<a class="headerlink" href="#aufbau-eines-projektes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><u><strong>Source</strong></u>
+Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module genannt. Diese beschreiben alle Ein- und Ausgänge der unterschiedlichen Hardware. Für das Sound Locator Projekt wären das zum einen die Hann Funktion, der LED-Ring, das mojo-top modul, welches die unser Mojo Board beschreibt, die pdm-mics zur Definition unserer Mikrophone und das sound_locator modul in der der Delay zur Sound Erkennung ermittelt wird.</p></li>
+</ul>
+<div class="figure align-default" id="fig-08">
+<img alt="../_images/Source.png" src="../_images/Source.png" />
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Die Source-Dateien findest du zu oberst im Projekt</span><a class="headerlink" href="#fig-08" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p><u><strong>Components</strong></u></p></li>
+</ul>
+<div class="figure align-default" id="id1">
+<img alt="../_images/Components.png" src="../_images/Components.png" />
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Als Zweites findest du die Components im Projekt</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p><u><strong>Cores</strong></u></p></li>
+</ul>
+<div class="figure align-default" id="id2">
+<img alt="../_images/Cores.png" src="../_images/Cores.png" />
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Der dritte Reiter beinhaltet die IP-Cores</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p><u><strong>Constraints</strong></u></p></li>
+</ul>
+<div class="figure align-default" id="id3">
+<img alt="../_images/Constraints.png" src="../_images/Constraints.png" />
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Als lettes gibt es noch die Constraints</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="sound-locator-projekt">
 <h2>Sound Locator Projekt<a class="headerlink" href="#sound-locator-projekt" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="probleme-mit-den-cores-losen">
-<h3>Probleme mit den cores lösen<a class="headerlink" href="#probleme-mit-den-cores-losen" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="probleme-mit-den-ip-cores-losen">
+<h3>Probleme mit den IP-cores lösen<a class="headerlink" href="#probleme-mit-den-ip-cores-losen" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="funktion-des-projektes">
@@ -643,9 +672,9 @@ Bevor wir zu Problemen innerhalb dieses Projektes kommen, machen wir eine kurze 
 <h2>VHDL-Projekte Übertragen?<a class="headerlink" href="#vhdl-projekte-ubertragen" title="Permalink to this headline">¶</a></h2>
 <p>Eine Unity Gain-Schaltung, auch Impedanzwandler oder Spannungsfolger genannt, ist ein Operationsverstärker, dessen
 Ausgang mit dem invertierenden Eingang kurzgeschlossen ist <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_02</span></code>.</p>
-<div class="figure align-default" id="id1">
+<div class="figure align-default" id="id4">
 <img alt="../_images/Abbildung01.png" src="../_images/Abbildung01.png" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Schematische Darstellung einer UnityGain-Schaltung.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Schematische Darstellung einer UnityGain-Schaltung.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>Aufgrund der erwähnten <em>Rückkopplung</em> kann die Unity Gain - Schaltung als eine Regelstrecke betrachtet
 werden. Systemtheoretisch ist nun das Verhältnis von Ausgang zu Eingang eine Übertragungsfunktion H(s).</p>
@@ -671,8 +700,8 @@ gleich der Differenz der Eingangsspannungen <span class="math notranslate nohigh
 <span class="eqno">(4)<a class="headerlink" href="#equation-01-eq-03" title="Permalink to this equation">¶</a></span>\[
 	\frac{U_{OUT}}{U_{IN}} = 1
 \]</div>
-<div class="figure align-default" id="id3">
-<img alt="../_images/Abbildung02.svg" src="../_images/Abbildung02.svg" /><p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen der Unity Gain - Schaltung* <a class="footnote-reference brackets" href="#id14" id="id2">2</a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<div class="figure align-default" id="id6">
+<img alt="../_images/Abbildung02.svg" src="../_images/Abbildung02.svg" /><p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen der Unity Gain - Schaltung* <a class="footnote-reference brackets" href="#id18" id="id5">2</a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>Die Mess- und Simulationsergebnisse sind in <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_02</span></code> dargestellt. Daraus ist ersichtlich, dass die beiden
 Signale nahezu identisch sind, was einer Übertragung von 1 entspricht.</p>
@@ -681,9 +710,9 @@ Signale nahezu identisch sind, was einer Übertragung von 1 entspricht.</p>
 <h2>Nicht-invertierender und invertierender Verstärker<a class="headerlink" href="#nicht-invertierender-und-invertierender-verstarker" title="Permalink to this headline">¶</a></h2>
 <p>Zwei weitere grundlegende Schaltungen des Operationsverstärkers sind die sogenannten nicht-invertierenden und
 invertierenden Schaltung.</p>
-<div class="figure align-default" id="id5">
+<div class="figure align-default" id="id8">
 <img alt="../_images/Abbildung03.png" src="../_images/Abbildung03.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Nicht-invertierender Verstärker<a class="footnote-reference brackets" href="#id14" id="id4">2</a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Nicht-invertierender Verstärker<a class="footnote-reference brackets" href="#id18" id="id7">2</a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <p>Sowohl beim nicht-invertierenden als auch beim invertierenden Verstärker hängt der Verstärkungsfaktor <span class="math notranslate nohighlight">\(A_0\)</span> vom
 Verhältnis der beiden Widerstände ab. Für den nicht-invertieren Verstärker ergibt sich:</p>
@@ -699,14 +728,14 @@ Verhältnis der beiden Widerstände ab. Für den nicht-invertieren Verstärker e
 <p>Dabei ist <span class="math notranslate nohighlight">\(R_1\)</span> der Widerstand, der am invertierenden Eingang <span class="math notranslate nohighlight">\(U_-\)</span> anliegt und <span class="math notranslate nohighlight">\(R_2\)</span> der zwischen dem Ausgang <span class="math notranslate nohighlight">\(U_{OUT}\)</span>
 und dem invertierenden Eingang liegt <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_04</span></code>. <span class="math notranslate nohighlight">\(U_{IN}\)</span> ist die Eingangsspannung, die an einem der Eingänge des
 Opamps anliegt.</p>
-<div class="figure align-default" id="id7">
-<img alt="../_images/Abbildung04.svg" src="../_images/Abbildung04.svg" /><p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen des Nicht-invertierenden Verstärkers<a class="footnote-reference brackets" href="#id14" id="id6">2</a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<div class="figure align-default" id="id10">
+<img alt="../_images/Abbildung04.svg" src="../_images/Abbildung04.svg" /><p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen des Nicht-invertierenden Verstärkers<a class="footnote-reference brackets" href="#id18" id="id9">2</a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 <p>Aus <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_04</span></code> ist ersichtlicht, dass bei einem nicht-invertierenden Verstärker die Eingangsspannung verstärkt
 wird. Die Ausgangsspannung liegt mit der Eingangsspannung in Phase.</p>
-<div class="figure align-default" id="id9">
+<div class="figure align-default" id="id12">
 <img alt="../_images/Abbildung05.png" src="../_images/Abbildung05.png" />
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id14" id="id8">2</a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id18" id="id11">2</a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 <p>Für den invertierenden Verstärker ist das Verhältnis von Ausgangsspannung zu Eingangsspannung gegeben als</p>
 <div class="math notranslate nohighlight" id="equation-01-eq-06">
@@ -720,8 +749,8 @@ wird. Die Ausgangsspannung liegt mit der Eingangsspannung in Phase.</p>
 \]</div>
 <p>Nach <a class="reference internal" href="#equation-01-eq-07">(8)</a> bekommt man eine um <span class="math notranslate nohighlight">\(\pi\)</span> gedrehte und um das Widerstandsverhältnis verstärkte Ausgangsspannung
 <span class="math notranslate nohighlight">\(U_{OUT}\)</span>. Diese ist in <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_06</span></code> graphisch dargestellt.</p>
-<div class="figure align-default" id="id11">
-<img alt="../_images/Abbildung06.svg" src="../_images/Abbildung06.svg" /><p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id14" id="id10">2</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<div class="figure align-default" id="id14">
+<img alt="../_images/Abbildung06.svg" src="../_images/Abbildung06.svg" /><p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id18" id="id13">2</a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="messtechnische-untersuchung-der-grenzbereiche">
 <h3>Messtechnische Untersuchung der Grenzbereiche<a class="headerlink" href="#messtechnische-untersuchung-der-grenzbereiche" title="Permalink to this headline">¶</a></h3>
@@ -890,9 +919,9 @@ das Programm zur Messautomatisierung des Red Pitayas eingesetzt und ist ohne Wei
 <p>Mit Hilfe des Programms konnten die Bandbreiten der jeweiligen Schaltung ermittelt werden. Um eine fundierte Aussage
 über die Messgenauigkeit treffen zu können, wurden die Amplitudengänge der entsprechenden Schaltungen simuliert. Diese
 sind zusammen mit den Messungen in <code class="docutils literal notranslate"><span class="pre">01_fig_06</span></code>{.interpreted-text role=”numref”} dargestellt.</p>
-<div class="figure align-default" id="id12">
+<div class="figure align-default" id="id15">
 <img alt="../_images/Abbildung07.png" src="../_images/Abbildung07.png" />
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Vergleich der Messungen mit den Simulationen</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Vergleich der Messungen mit den Simulationen</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </div>
 <p>Die Simulationsergebnisse zeigen prinzipiell das gleiche Tiefpassverhalten wie die Messergebnisse. Der Amplitudengang
 der Messungen weicht kaum von den Simulationsergebnissen ab. Die Abweichungen liegen nur im hohen Frequenzbereich. Daher
@@ -1030,13 +1059,13 @@ auf ihre Grenzen überprüft. Dazu wird ein DC-Sweep durchgeführt. Zu diesem Zw
 </div>
 <p>Es soll mit Hilfe des nicht-invertierenden Verstärkers ein Gleichspannungsdurchlauf durchgeführt werden. Für die
 Ausgangsspannung ergibt sich ein Spannungsverlauf nach <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_07</span></code>.</p>
-<div class="figure align-default" id="fig-08">
+<div class="figure align-default" id="id16">
 <img alt="../_images/Abbildung08.png" src="../_images/Abbildung08.png" />
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Grenzmessung der Ausgangsspannung</span><a class="headerlink" href="#fig-08" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Grenzmessung der Ausgangsspannung</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
 </div>
 <p>Das Ergebnis zeigt, dass die Ausgangsspannung bei ca. <span class="math notranslate nohighlight">\(9\,V\)</span> ihr Maximum und bei ca. <span class="math notranslate nohighlight">\(-9\,V\)</span> ihr Minimum
 aufweist. Hier wird der Zusammenhang zwischen der Ausgangsspannung und der Versorgungsspannung des Operationsverstärkers
-deutlich. Die Maximalwerte der Ausgangsspannung sind gleich der Versorgungsspannung <a class="footnote-reference brackets" href="#id15" id="id13">3</a>. Die Flankensteilheit ist
+deutlich. Die Maximalwerte der Ausgangsspannung sind gleich der Versorgungsspannung <a class="footnote-reference brackets" href="#id19" id="id17">3</a>. Die Flankensteilheit ist
 abhängig vom Verstärkungsfaktor.</p>
 </div>
 <div class="section" id="fazit-und-beispiele">
@@ -1047,39 +1076,39 @@ eher unzuverlässig. Des Weiteren verdrehte der Red Pitaya je nach Päriodenaufl
 oft fehlerhaft war. Trotzdessen ist die Möglichkeit der Messautomatisierung von großem Vorteil. Daher bietet sich der
 Eisatz von SCPI-fähigen Geräten bei diesen Messungen an.</p>
 <p>Als erstes Beispiel wird ein negativ rückgekoppelter Verstärker betrachtet. Prinzipiell ist das eine Kaskadierung
-(Hintereinanderschaltung) der drei Grundschaltungen <a class="reference internal" href="#fig-08"><span class="std std-numref">Fig. 15</span></a>.</p>
+(Hintereinanderschaltung) der drei Grundschaltungen <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_08</span></code>.</p>
 <div class="figure align-default" id="fig-09">
 <img alt="../_images/Abbildung09.png" src="../_images/Abbildung09.png" />
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Negativ-rückgekoppelter Verstärker</span><a class="headerlink" href="#fig-09" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Negativ-rückgekoppelter Verstärker</span><a class="headerlink" href="#fig-09" title="Permalink to this image">¶</a></p>
 </div>
-<p>Hier wird statt eines Sinussignals ein Rechtecksignal eingespeist. Die Ausgänge der Schaltung sind in <a class="reference internal" href="#fig-09"><span class="std std-numref">Fig. 16</span></a>
+<p>Hier wird statt eines Sinussignals ein Rechtecksignal eingespeist. Die Ausgänge der Schaltung sind in <a class="reference internal" href="#fig-09"><span class="std std-numref">Fig. 20</span></a>
 graphisch dargestellt.</p>
 <div class="figure align-default" id="fig-10">
 <img alt="../_images/Abbildung10.png" src="../_images/Abbildung10.png" />
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Messergebnisse der Ausgangsspannungen des negativ-rückgekoppelten Verstärkers</span><a class="headerlink" href="#fig-10" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Messergebnisse der Ausgangsspannungen des negativ-rückgekoppelten Verstärkers</span><a class="headerlink" href="#fig-10" title="Permalink to this image">¶</a></p>
 </div>
 <p>Aus der Messung ist zu entnehmen, dass die bei einem Rechteckeingangssignal, die Ausgangssignale bei den Grenzübergängen
 eine Abrundung aufweisen. Dieses Phänomen bezeichnet man als <a class="reference external" href="https://en.wikipedia.org/wiki/Slew_rate">Slew Rate</a> und
 ist auf die kapazitive Eigeschaften des OPAMS zurück zu führen.</p>
 <p>Als zweites Beispiel wird ein Instrumentenverstärker betrachtet. Dieser kann aus zwei oder drei Operationsverstärkern
-vgl. <a class="reference internal" href="#fig-10"><span class="std std-numref">Fig. 17</span></a>, aufgebaut werden und wird oft, aufgrund seiner Eigenschaften, in der Medizintechnik eingesetzt.</p>
+vgl. <a class="reference internal" href="#fig-10"><span class="std std-numref">Fig. 21</span></a>, aufgebaut werden und wird oft, aufgrund seiner Eigenschaften, in der Medizintechnik eingesetzt.</p>
 <div class="figure align-default" id="fig-11">
 <img alt="../_images/Abbildung11.png" src="../_images/Abbildung11.png" />
-<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Instrumentenverstärker mit drei Opamps (li.) und zwei Opamps (re.)</span><a class="headerlink" href="#fig-11" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Instrumentenverstärker mit drei Opamps (li.) und zwei Opamps (re.)</span><a class="headerlink" href="#fig-11" title="Permalink to this image">¶</a></p>
 </div>
 <p>Aus der Abbildung wird deutlich, dass die Verstärkung lediglich vom Widerstand <span class="math notranslate nohighlight">\(nR\)</span> abhängt. Dies erleichtert die
 Einstellung des Instumentenverstärkers. Als Beispiel wurde ein Instrumentenverstärker aus zwei Operationsverstärkern
-aufgebaut und der Ausgang gemessen. Die Messergebnisse sind in der <a class="reference internal" href="#fig-11"><span class="std std-numref">Fig. 18</span></a> graphisch dargestellt.</p>
+aufgebaut und der Ausgang gemessen. Die Messergebnisse sind in der <a class="reference internal" href="#fig-11"><span class="std std-numref">Fig. 22</span></a> graphisch dargestellt.</p>
 <div class="figure align-default" id="fig-12">
 <img alt="../_images/Abbildung12.png" src="../_images/Abbildung12.png" />
-<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Eingangs- und Ausgangssignale eines Instrumentenverstärkers aus 2 Opamps</span><a class="headerlink" href="#fig-12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Eingangs- und Ausgangssignale eines Instrumentenverstärkers aus 2 Opamps</span><a class="headerlink" href="#fig-12" title="Permalink to this image">¶</a></p>
 </div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="id14"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id4">2</a>,<a href="#id6">3</a>,<a href="#id8">4</a>,<a href="#id10">5</a>)</span></dt>
+<dt class="label" id="id18"><span class="brackets">2</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id7">2</a>,<a href="#id9">3</a>,<a href="#id11">4</a>,<a href="#id13">5</a>)</span></dt>
 <dd><p>ANS-Abschlussbericht SoSe21 von M. Lüters, L. Lagona und Ch. Stelling.</p>
 </dd>
-<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id13">3</a></span></dt>
+<dt class="label" id="id19"><span class="brackets"><a class="fn-backref" href="#id17">3</a></span></dt>
 <dd><p>Die Angaben sind aus den jeweiligen Datenblättern zu entnehmen.</p>
 </dd>
 </dl>

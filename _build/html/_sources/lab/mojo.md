@@ -134,13 +134,41 @@ Das folgende Dialogfenster könnt ihr in Abbildung 7 sehen. Im Feld "Project Nam
 Einstellungen zum öffnen des Sound locator Beispiels
 ```
 Durch einen letzten Mausklick auf den Button "Create" wird unser Beispielprojekt erstellt. 
-Bevor wir zu Problemen innerhalb dieses Projektes kommen, machen wir eine kurze Erklärung dazu, was wir alles in diesem Projekt finden können.
+Bevor wir zu Problemen innerhalb dieses Projektes kommen, machen wir eine kurze Erklärung dazu, was wir alles in diesem Projekt finden können. Für die Inbetriebnahme des Projektes kannst du den Abschnitt über den Aufbau eines Projektes überspringen und später hierher zurückkehren wenn du mehr über Sources, Components, Cores und Constraints erfahren möchtest.
+
 ## Aufbau eines Projektes
+
+- <u>**Source**</u>
+ Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module genannt. Diese beschreiben alle Ein- und Ausgänge der unterschiedlichen Hardware. Für das Sound Locator Projekt wären das zum einen die Hann Funktion, der LED-Ring, das mojo-top modul, welches die unser Mojo Board beschreibt, die pdm-mics zur Definition unserer Mikrophone und das sound_locator modul in der der Delay zur Sound Erkennung ermittelt wird.
+
+```{figure} img/MojoLab/Source.png 
+:name: 01_fig_08
+
+Die Source-Dateien findest du zu oberst im Projekt
+```
+- <u>**Components**</u>
+```{figure} img/MojoLab/Components.png 
+:name: 01_fig_08
+
+Als Zweites findest du die Components im Projekt
+```
+- <u>**Cores**</u>
+```{figure} img/MojoLab/Cores.png 
+:name: 01_fig_08
+
+Der dritte Reiter beinhaltet die IP-Cores
+```
+- <u>**Constraints**</u>
+```{figure} img/MojoLab/Constraints.png 
+:name: 01_fig_08
+
+Als lettes gibt es noch die Constraints
+```
 
 
 ## Sound Locator Projekt
 
-### Probleme mit den cores lösen
+### Probleme mit den IP-cores lösen
 
 ## Funktion des Projektes
 
