@@ -278,6 +278,11 @@ const thebe_selector_output = ".output, .cell_output"
      Installation von Alchitry Labs
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#offnen-des-projektes">
+     Öffnen des Projektes
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -290,11 +295,6 @@ const thebe_selector_output = ".output, .cell_output"
    Sound Locator Projekt
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#offnen-des-projektes">
-     Öffnen des Projektes
-    </a>
-   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#probleme-mit-den-cores-losen">
      Probleme mit den cores lösen
@@ -401,6 +401,11 @@ const thebe_selector_output = ".output, .cell_output"
      Installation von Alchitry Labs
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#offnen-des-projektes">
+     Öffnen des Projektes
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -413,11 +418,6 @@ const thebe_selector_output = ".output, .cell_output"
    Sound Locator Projekt
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#offnen-des-projektes">
-     Öffnen des Projektes
-    </a>
-   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#probleme-mit-den-cores-losen">
      Probleme mit den cores lösen
@@ -551,11 +551,71 @@ Nach diesen Vorarbeiten können wir nun das Setup des Programmes Starten.</p>
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Auswahl des ISE WebPACKs für die Installation</span><a class="headerlink" href="#fig-02" title="Permalink to this image">¶</a></p>
 </div>
 <p>Im Folgefenster lassen wir alle Häckchen so wie sie sind. Wichtig ist, dass ihr mehrere CPU kerne nutzt um die Installation schneller abzuschließen. Ansonsten erhöht sich die Installationszeit immens.</p>
-<p>Während die Installation läuft, könnt ihr die Zeit nutzen und euch eine Lizenz ISE holen.
-Dise bekommt ihr auf der <a class="reference external" href="https://www.xilinx.com/member/forms/license-form.html">Internetseite</a></p>
+<p>Während die Installation läuft, könnt ihr die Zeit nutzen und euch eine Lizenz für das ISE WebPack holen.
+Dise bekommt ihr auf der <a class="reference external" href="https://www.xilinx.com/member/forms/license-form.html">Internetseite</a>.
+Hier gebt ihr eure persönlichen Daten ein und Wählt die Lizenz für das ISE Webpack aus, ladet diese herunter und fügt diese dann dem dem Programm zu.
+Für das einmalige Starten des WebPacks geht ihr am besten wie folgt vor.</p>
+<p>Habt ihr das Programm einmal gestartet wird euch das Programm daruf hinweisen, dass es keine Lizenz gefunden hat. Es öffnet euch freundlicherweise direkt den Lizenzmanager.</p>
+<div class="figure align-default" id="fig-03">
+<img alt="../_images/Licence_Manager_1.png" src="../_images/Licence_Manager_1.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Möglichkeit zur Auswahl des Lizenztypes</span><a class="headerlink" href="#fig-03" title="Permalink to this image">¶</a></p>
+</div>
+<p>Solltet ihr bis zu diesem Zeitpunkt noch keine Lizenz haben ist hier noch einmal eine gute Möglichkeit den Lizenzierungsprozess anzuschieben.</p>
+<p>Habt ihr eure Lizenz herunter geladen, könnt ihr eure Lizenz nun über den “Manage Licences” Reiter zum Programm hinzufügen. Navigiert dazu innerhalb des Dialogfeldes zu dem Ort an dem ihr eure Lizenz abgespeichert habt.</p>
+<div class="figure align-default" id="fig-04">
+<img alt="../_images/Licence_Manager_2.png" src="../_images/Licence_Manager_2.png" />
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Load Licence bringt uns unserem Ziel näher</span><a class="headerlink" href="#fig-04" title="Permalink to this image">¶</a></p>
+</div>
+<p>Nachdem wir nun endlich das ISE WebPack</p>
+<ol class="simple">
+<li><p>Heruntergeladen</p></li>
+<li><p>Installiert</p></li>
+<li><p>Gestartet und</p></li>
+<li><p>Lizensiert</p></li>
+</ol>
+<p>haben, können wir jetzt damt anfangen unsere Programmierumgebung für das Projekt einzurichten.</p>
 </div>
 <div class="section" id="installation-von-alchitry-labs">
 <h3>Installation von Alchitry Labs<a class="headerlink" href="#installation-von-alchitry-labs" title="Permalink to this headline">¶</a></h3>
+<p>Den Großteil der Installation unserer Toolchain haben wir bis zu diesem Zeitpunkt bereits erledigt. Das Einrichten von Alchitry Labs stellt sich wesentlich leichter dar, als es bei der Xilinx Software der Fall war.
+Geht hierfür auf die (Website)[<a class="reference external" href="https://alchitry.com/alchitry-labs">https://alchitry.com/alchitry-labs</a>] von Alchitry Labs unter den Reiter Alchitry Labs ( Als kleine Dienstleistung schickt euch der Link direkt dorthin). Scrollt zu den Download Links für die aktuelle Version und ladet euch die entsprechende Variante herunter. Ich empfehle euch an dieser Stelle noch einmal wirklich Linux zu nutzen und euch dementprechend die Linux Variante herunter zu laden. Die Einrichtung auf Linux verhält sich deutlich einfacher als die auf Windows.  Knappe 18 MB wandern jetzt aus dem Internet auf euer Endgerät.
+Ihr erhaltet wie auch beim letzten Programm ein Dateinarchiv das ihr zunächst entpacken  müsst. Ihr könnt hierfür natürlich die selben Befehle nutzen wie im letzten Kapitel besprochen. Ihr müsst lediglich den Dateinamen ändern.</p>
+<dl class="simple myst">
+<dt>Terminalausgabe</dt><dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  mojo@fpga:/Downloads/$ tar -xvf alchitry-labs-1.2.7-linux.tar 
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Habt ihr das Archiv entpackt navigiert mit dem change directory Befehl über das Terminal in den neuen Unterordner “alchitry-labs-1.2.7”. Hier angekommen müsst ihr nur noch das shell skrpt ausführen, dass sich in diesem Ordner befindet. Das könnt ihr folgendermaßen machen:</p>
+<dl class="simple myst">
+<dt>Terminalausgabe</dt><dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  bash alchitry-labs
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Solltet ihr bis hierher alles richtig gemacht haben, öffnet sich endlich unsere Programmierumgebung.
+Allerdings werden wir zunächst darauf hingewiesen, dass wir den Installationsort unseres Builders angeben sollen. Hierfür geht klickt im Alchitry Labs Fenster bitte auf “Settings” und dann auf “ISE Location” und wählt dann den Ordner mit der Versionsnummer eurer ISE aus ( hier: 14.7). Keine Sorge, einen ausführlichen Hinweis darüber was ihr auswählen sollt, gibt euch das Programm ebenfalls.</p>
+<div class="figure align-default" id="fig-05">
+<img alt="../_images/Alchitry_Licence.png" src="../_images/Alchitry_Licence.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Auswahl des ISE WEbPack Installationsortes</span><a class="headerlink" href="#fig-05" title="Permalink to this image">¶</a></p>
+</div>
+<p>Ab jetzt solltet ihr in der Lage sein ein Projekt zu öffnen und endlich den Mojo zu flashen. Dieser Vorgang wird in den nächsten Abschnitten geklärt.</p>
+</div>
+<div class="section" id="offnen-des-projektes">
+<h3>Öffnen des Projektes<a class="headerlink" href="#offnen-des-projektes" title="Permalink to this headline">¶</a></h3>
+<p>Beim ersten Starten von Alchitry Labs werdet ihr direkt gefragt ob ihr ein bestehendes Projekt öffnen wollt, oder ob ihr ein neues erstellen wollt.</p>
+<div class="figure align-default" id="fig-06">
+<img alt="../_images/First_Start.png" src="../_images/First_Start.png" />
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Erste Projektauswahl</span><a class="headerlink" href="#fig-06" title="Permalink to this image">¶</a></p>
+</div>
+<p>Da wir noch kein bestehendes Projekt besitzen beantworten wir die Frage hier mit “No” um ein neues Projekt zu erstellen.</p>
+<p>Das folgende Dialogfenster könnt ihr in Abbildung 7 sehen. Im Feld “Project Name:” tragen wir unseren Wunschnamen für unser Projekt ein. Im folgenden Reiter “Workspace” steht unser Arbeitsumgebung. Hier werden unsere Projekte abgespeichert und unsere Projektierungsumgebung erstellt hier die nötigen Dateien für das Builden des Projektes. Im dritten Reiter wählen wir unser Mojo Board aus. Das Programm erstellt hier für uns die Bezüge zu Hardware, damit das Projekt funktionsfähig gebaut werden kann. Die Sprache (“Language”) die ausgewählt werden muss um ein funktionierendes Beispielprojekt laden zu können ist hier die Programmeigene Lucid Sprache. Ihr könnt in dieser Umgebung ebenfalls in Verilog coden, allerdings werdet ihr hier keine Beispielprojekte finden. Wir wählen für dieses Projekt Lucid aus und Nehmen das Beispiel Sound Locator aus dem letzten Dropdown Menüs dieses Fensters.</p>
+<div class="figure align-default" id="fig-07">
+<img alt="../_images/New_Project.png" src="../_images/New_Project.png" />
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Einstellungen zum öffnen des Sound locator Beispiels</span><a class="headerlink" href="#fig-07" title="Permalink to this image">¶</a></p>
+</div>
+<p>Durch einen letzten Mausklick auf den Button “Create” wird unser Beispielprojekt erstellt.
+Bevor wir zu Problemen innerhalb dieses Projektes kommen, machen wir eine kurze Erklärung dazu, was wir alles in diesem Projekt finden können.</p>
 </div>
 </div>
 <div class="section" id="aufbau-eines-projektes">
@@ -563,9 +623,6 @@ Dise bekommt ihr auf der <a class="reference external" href="https://www.xilinx.
 </div>
 <div class="section" id="sound-locator-projekt">
 <h2>Sound Locator Projekt<a class="headerlink" href="#sound-locator-projekt" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="offnen-des-projektes">
-<h3>Öffnen des Projektes<a class="headerlink" href="#offnen-des-projektes" title="Permalink to this headline">¶</a></h3>
-</div>
 <div class="section" id="probleme-mit-den-cores-losen">
 <h3>Probleme mit den cores lösen<a class="headerlink" href="#probleme-mit-den-cores-losen" title="Permalink to this headline">¶</a></h3>
 </div>
@@ -585,10 +642,10 @@ Dise bekommt ihr auf der <a class="reference external" href="https://www.xilinx.
 <div class="section" id="vhdl-projekte-ubertragen">
 <h2>VHDL-Projekte Übertragen?<a class="headerlink" href="#vhdl-projekte-ubertragen" title="Permalink to this headline">¶</a></h2>
 <p>Eine Unity Gain-Schaltung, auch Impedanzwandler oder Spannungsfolger genannt, ist ein Operationsverstärker, dessen
-Ausgang mit dem invertierenden Eingang kurzgeschlossen ist <a class="reference internal" href="#id3"><span class="std std-numref">Fig. 4</span></a>.</p>
+Ausgang mit dem invertierenden Eingang kurzgeschlossen ist <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_02</span></code>.</p>
 <div class="figure align-default" id="id1">
 <img alt="../_images/Abbildung01.png" src="../_images/Abbildung01.png" />
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Schematische Darstellung einer UnityGain-Schaltung.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Schematische Darstellung einer UnityGain-Schaltung.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>Aufgrund der erwähnten <em>Rückkopplung</em> kann die Unity Gain - Schaltung als eine Regelstrecke betrachtet
 werden. Systemtheoretisch ist nun das Verhältnis von Ausgang zu Eingang eine Übertragungsfunktion H(s).</p>
@@ -615,18 +672,18 @@ gleich der Differenz der Eingangsspannungen <span class="math notranslate nohigh
 	\frac{U_{OUT}}{U_{IN}} = 1
 \]</div>
 <div class="figure align-default" id="id3">
-<img alt="../_images/Abbildung02.svg" src="../_images/Abbildung02.svg" /><p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen der Unity Gain - Schaltung* <a class="footnote-reference brackets" href="#id9" id="id2">2</a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<img alt="../_images/Abbildung02.svg" src="../_images/Abbildung02.svg" /><p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen der Unity Gain - Schaltung* <a class="footnote-reference brackets" href="#id14" id="id2">2</a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
-<p>Die Mess- und Simulationsergebnisse sind in <a class="reference internal" href="#id3"><span class="std std-numref">Fig. 4</span></a> dargestellt. Daraus ist ersichtlich, dass die beiden
+<p>Die Mess- und Simulationsergebnisse sind in <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_02</span></code> dargestellt. Daraus ist ersichtlich, dass die beiden
 Signale nahezu identisch sind, was einer Übertragung von 1 entspricht.</p>
 </div>
 <div class="section" id="nicht-invertierender-und-invertierender-verstarker">
 <h2>Nicht-invertierender und invertierender Verstärker<a class="headerlink" href="#nicht-invertierender-und-invertierender-verstarker" title="Permalink to this headline">¶</a></h2>
 <p>Zwei weitere grundlegende Schaltungen des Operationsverstärkers sind die sogenannten nicht-invertierenden und
 invertierenden Schaltung.</p>
-<div class="figure align-default" id="fig-03">
+<div class="figure align-default" id="id5">
 <img alt="../_images/Abbildung03.png" src="../_images/Abbildung03.png" />
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Nicht-invertierender Verstärker<a class="footnote-reference brackets" href="#id9" id="id4">2</a></span><a class="headerlink" href="#fig-03" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Nicht-invertierender Verstärker<a class="footnote-reference brackets" href="#id14" id="id4">2</a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>Sowohl beim nicht-invertierenden als auch beim invertierenden Verstärker hängt der Verstärkungsfaktor <span class="math notranslate nohighlight">\(A_0\)</span> vom
 Verhältnis der beiden Widerstände ab. Für den nicht-invertieren Verstärker ergibt sich:</p>
@@ -640,16 +697,16 @@ Verhältnis der beiden Widerstände ab. Für den nicht-invertieren Verstärker e
 	U_{OUT} = U_{IN} + \frac{R_2}{R_1} \cdot U_{IN}
 \]</div>
 <p>Dabei ist <span class="math notranslate nohighlight">\(R_1\)</span> der Widerstand, der am invertierenden Eingang <span class="math notranslate nohighlight">\(U_-\)</span> anliegt und <span class="math notranslate nohighlight">\(R_2\)</span> der zwischen dem Ausgang <span class="math notranslate nohighlight">\(U_{OUT}\)</span>
-und dem invertierenden Eingang liegt <a class="reference internal" href="#fig-04"><span class="std std-numref">Fig. 6</span></a>. <span class="math notranslate nohighlight">\(U_{IN}\)</span> ist die Eingangsspannung, die an einem der Eingänge des
+und dem invertierenden Eingang liegt <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_04</span></code>. <span class="math notranslate nohighlight">\(U_{IN}\)</span> ist die Eingangsspannung, die an einem der Eingänge des
 Opamps anliegt.</p>
-<div class="figure align-default" id="fig-04">
-<img alt="../_images/Abbildung04.svg" src="../_images/Abbildung04.svg" /><p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen des Nicht-invertierenden Verstärkers<a class="footnote-reference brackets" href="#id9" id="id5">2</a></span><a class="headerlink" href="#fig-04" title="Permalink to this image">¶</a></p>
+<div class="figure align-default" id="id7">
+<img alt="../_images/Abbildung04.svg" src="../_images/Abbildung04.svg" /><p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Messung und Simulation der Ein- und Ausgangsspannungen des Nicht-invertierenden Verstärkers<a class="footnote-reference brackets" href="#id14" id="id6">2</a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
-<p>Aus <a class="reference internal" href="#fig-04"><span class="std std-numref">Fig. 6</span></a> ist ersichtlicht, dass bei einem nicht-invertierenden Verstärker die Eingangsspannung verstärkt
+<p>Aus <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_04</span></code> ist ersichtlicht, dass bei einem nicht-invertierenden Verstärker die Eingangsspannung verstärkt
 wird. Die Ausgangsspannung liegt mit der Eingangsspannung in Phase.</p>
-<div class="figure align-default" id="fig-05">
+<div class="figure align-default" id="id9">
 <img alt="../_images/Abbildung05.png" src="../_images/Abbildung05.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id9" id="id6">2</a></span><a class="headerlink" href="#fig-05" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id14" id="id8">2</a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <p>Für den invertierenden Verstärker ist das Verhältnis von Ausgangsspannung zu Eingangsspannung gegeben als</p>
 <div class="math notranslate nohighlight" id="equation-01-eq-06">
@@ -662,9 +719,9 @@ wird. Die Ausgangsspannung liegt mit der Eingangsspannung in Phase.</p>
 	U_{OUT} = -\frac{R_2}{R_1} \cdot U_{IN}.
 \]</div>
 <p>Nach <a class="reference internal" href="#equation-01-eq-07">(8)</a> bekommt man eine um <span class="math notranslate nohighlight">\(\pi\)</span> gedrehte und um das Widerstandsverhältnis verstärkte Ausgangsspannung
-<span class="math notranslate nohighlight">\(U_{OUT}\)</span>. Diese ist in <a class="reference internal" href="#fig-06"><span class="std std-numref">Fig. 8</span></a> graphisch dargestellt.</p>
-<div class="figure align-default" id="fig-06">
-<img alt="../_images/Abbildung06.svg" src="../_images/Abbildung06.svg" /><p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id9" id="id7">2</a></span><a class="headerlink" href="#fig-06" title="Permalink to this image">¶</a></p>
+<span class="math notranslate nohighlight">\(U_{OUT}\)</span>. Diese ist in <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_06</span></code> graphisch dargestellt.</p>
+<div class="figure align-default" id="id11">
+<img alt="../_images/Abbildung06.svg" src="../_images/Abbildung06.svg" /><p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Invertierender Verstärker<a class="footnote-reference brackets" href="#id14" id="id10">2</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="messtechnische-untersuchung-der-grenzbereiche">
 <h3>Messtechnische Untersuchung der Grenzbereiche<a class="headerlink" href="#messtechnische-untersuchung-der-grenzbereiche" title="Permalink to this headline">¶</a></h3>
@@ -833,9 +890,9 @@ das Programm zur Messautomatisierung des Red Pitayas eingesetzt und ist ohne Wei
 <p>Mit Hilfe des Programms konnten die Bandbreiten der jeweiligen Schaltung ermittelt werden. Um eine fundierte Aussage
 über die Messgenauigkeit treffen zu können, wurden die Amplitudengänge der entsprechenden Schaltungen simuliert. Diese
 sind zusammen mit den Messungen in <code class="docutils literal notranslate"><span class="pre">01_fig_06</span></code>{.interpreted-text role=”numref”} dargestellt.</p>
-<div class="figure align-default" id="fig-07">
+<div class="figure align-default" id="id12">
 <img alt="../_images/Abbildung07.png" src="../_images/Abbildung07.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Vergleich der Messungen mit den Simulationen</span><a class="headerlink" href="#fig-07" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Vergleich der Messungen mit den Simulationen</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 <p>Die Simulationsergebnisse zeigen prinzipiell das gleiche Tiefpassverhalten wie die Messergebnisse. Der Amplitudengang
 der Messungen weicht kaum von den Simulationsergebnissen ab. Die Abweichungen liegen nur im hohen Frequenzbereich. Daher
@@ -972,14 +1029,14 @@ auf ihre Grenzen überprüft. Dazu wird ein DC-Sweep durchgeführt. Zu diesem Zw
 </pre></div>
 </div>
 <p>Es soll mit Hilfe des nicht-invertierenden Verstärkers ein Gleichspannungsdurchlauf durchgeführt werden. Für die
-Ausgangsspannung ergibt sich ein Spannungsverlauf nach <a class="reference internal" href="#fig-07"><span class="std std-numref">Fig. 9</span></a>.</p>
+Ausgangsspannung ergibt sich ein Spannungsverlauf nach <code class="xref std std-numref docutils literal notranslate"><span class="pre">01_fig_07</span></code>.</p>
 <div class="figure align-default" id="fig-08">
 <img alt="../_images/Abbildung08.png" src="../_images/Abbildung08.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Grenzmessung der Ausgangsspannung</span><a class="headerlink" href="#fig-08" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Grenzmessung der Ausgangsspannung</span><a class="headerlink" href="#fig-08" title="Permalink to this image">¶</a></p>
 </div>
 <p>Das Ergebnis zeigt, dass die Ausgangsspannung bei ca. <span class="math notranslate nohighlight">\(9\,V\)</span> ihr Maximum und bei ca. <span class="math notranslate nohighlight">\(-9\,V\)</span> ihr Minimum
 aufweist. Hier wird der Zusammenhang zwischen der Ausgangsspannung und der Versorgungsspannung des Operationsverstärkers
-deutlich. Die Maximalwerte der Ausgangsspannung sind gleich der Versorgungsspannung <a class="footnote-reference brackets" href="#id10" id="id8">3</a>. Die Flankensteilheit ist
+deutlich. Die Maximalwerte der Ausgangsspannung sind gleich der Versorgungsspannung <a class="footnote-reference brackets" href="#id15" id="id13">3</a>. Die Flankensteilheit ist
 abhängig vom Verstärkungsfaktor.</p>
 </div>
 <div class="section" id="fazit-und-beispiele">
@@ -990,39 +1047,39 @@ eher unzuverlässig. Des Weiteren verdrehte der Red Pitaya je nach Päriodenaufl
 oft fehlerhaft war. Trotzdessen ist die Möglichkeit der Messautomatisierung von großem Vorteil. Daher bietet sich der
 Eisatz von SCPI-fähigen Geräten bei diesen Messungen an.</p>
 <p>Als erstes Beispiel wird ein negativ rückgekoppelter Verstärker betrachtet. Prinzipiell ist das eine Kaskadierung
-(Hintereinanderschaltung) der drei Grundschaltungen <a class="reference internal" href="#fig-08"><span class="std std-numref">Fig. 10</span></a>.</p>
+(Hintereinanderschaltung) der drei Grundschaltungen <a class="reference internal" href="#fig-08"><span class="std std-numref">Fig. 15</span></a>.</p>
 <div class="figure align-default" id="fig-09">
 <img alt="../_images/Abbildung09.png" src="../_images/Abbildung09.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Negativ-rückgekoppelter Verstärker</span><a class="headerlink" href="#fig-09" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Negativ-rückgekoppelter Verstärker</span><a class="headerlink" href="#fig-09" title="Permalink to this image">¶</a></p>
 </div>
-<p>Hier wird statt eines Sinussignals ein Rechtecksignal eingespeist. Die Ausgänge der Schaltung sind in <a class="reference internal" href="#fig-09"><span class="std std-numref">Fig. 11</span></a>
+<p>Hier wird statt eines Sinussignals ein Rechtecksignal eingespeist. Die Ausgänge der Schaltung sind in <a class="reference internal" href="#fig-09"><span class="std std-numref">Fig. 16</span></a>
 graphisch dargestellt.</p>
 <div class="figure align-default" id="fig-10">
 <img alt="../_images/Abbildung10.png" src="../_images/Abbildung10.png" />
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Messergebnisse der Ausgangsspannungen des negativ-rückgekoppelten Verstärkers</span><a class="headerlink" href="#fig-10" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Messergebnisse der Ausgangsspannungen des negativ-rückgekoppelten Verstärkers</span><a class="headerlink" href="#fig-10" title="Permalink to this image">¶</a></p>
 </div>
 <p>Aus der Messung ist zu entnehmen, dass die bei einem Rechteckeingangssignal, die Ausgangssignale bei den Grenzübergängen
 eine Abrundung aufweisen. Dieses Phänomen bezeichnet man als <a class="reference external" href="https://en.wikipedia.org/wiki/Slew_rate">Slew Rate</a> und
 ist auf die kapazitive Eigeschaften des OPAMS zurück zu führen.</p>
 <p>Als zweites Beispiel wird ein Instrumentenverstärker betrachtet. Dieser kann aus zwei oder drei Operationsverstärkern
-vgl. <a class="reference internal" href="#fig-10"><span class="std std-numref">Fig. 12</span></a>, aufgebaut werden und wird oft, aufgrund seiner Eigenschaften, in der Medizintechnik eingesetzt.</p>
+vgl. <a class="reference internal" href="#fig-10"><span class="std std-numref">Fig. 17</span></a>, aufgebaut werden und wird oft, aufgrund seiner Eigenschaften, in der Medizintechnik eingesetzt.</p>
 <div class="figure align-default" id="fig-11">
 <img alt="../_images/Abbildung11.png" src="../_images/Abbildung11.png" />
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Instrumentenverstärker mit drei Opamps (li.) und zwei Opamps (re.)</span><a class="headerlink" href="#fig-11" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Instrumentenverstärker mit drei Opamps (li.) und zwei Opamps (re.)</span><a class="headerlink" href="#fig-11" title="Permalink to this image">¶</a></p>
 </div>
 <p>Aus der Abbildung wird deutlich, dass die Verstärkung lediglich vom Widerstand <span class="math notranslate nohighlight">\(nR\)</span> abhängt. Dies erleichtert die
 Einstellung des Instumentenverstärkers. Als Beispiel wurde ein Instrumentenverstärker aus zwei Operationsverstärkern
-aufgebaut und der Ausgang gemessen. Die Messergebnisse sind in der <a class="reference internal" href="#fig-11"><span class="std std-numref">Fig. 13</span></a> graphisch dargestellt.</p>
+aufgebaut und der Ausgang gemessen. Die Messergebnisse sind in der <a class="reference internal" href="#fig-11"><span class="std std-numref">Fig. 18</span></a> graphisch dargestellt.</p>
 <div class="figure align-default" id="fig-12">
 <img alt="../_images/Abbildung12.png" src="../_images/Abbildung12.png" />
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Eingangs- und Ausgangssignale eines Instrumentenverstärkers aus 2 Opamps</span><a class="headerlink" href="#fig-12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Eingangs- und Ausgangssignale eines Instrumentenverstärkers aus 2 Opamps</span><a class="headerlink" href="#fig-12" title="Permalink to this image">¶</a></p>
 </div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="id9"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id4">2</a>,<a href="#id5">3</a>,<a href="#id6">4</a>,<a href="#id7">5</a>)</span></dt>
+<dt class="label" id="id14"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id4">2</a>,<a href="#id6">3</a>,<a href="#id8">4</a>,<a href="#id10">5</a>)</span></dt>
 <dd><p>ANS-Abschlussbericht SoSe21 von M. Lüters, L. Lagona und Ch. Stelling.</p>
 </dd>
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id13">3</a></span></dt>
 <dd><p>Die Angaben sind aus den jeweiligen Datenblättern zu entnehmen.</p>
 </dd>
 </dl>

@@ -58,23 +58,90 @@ Zustimmung zu den Terms and Conditions geben
 Wir stimmen diesen zu und müssen als nächstes das Product auswählen, dass wir installieren wollen. In unserem Fall ist es das ISE WebPACK.
 
 ```{figure} img/AuswahlISE.png
-:name: 02_fig_02
+:name: 01_fig_02
 
 Auswahl des ISE WebPACKs für die Installation
 ```
 Im Folgefenster lassen wir alle Häckchen so wie sie sind. Wichtig ist, dass ihr mehrere CPU kerne nutzt um die Installation schneller abzuschließen. Ansonsten erhöht sich die Installationszeit immens.
 
-Während die Installation läuft, könnt ihr die Zeit nutzen und euch eine Lizenz ISE holen.
-Dise bekommt ihr auf der [Internetseite](https://www.xilinx.com/member/forms/license-form.html)
+Während die Installation läuft, könnt ihr die Zeit nutzen und euch eine Lizenz für das ISE WebPack holen.
+Dise bekommt ihr auf der [Internetseite](https://www.xilinx.com/member/forms/license-form.html).
+Hier gebt ihr eure persönlichen Daten ein und Wählt die Lizenz für das ISE Webpack aus, ladet diese herunter und fügt diese dann dem dem Programm zu.
+Für das einmalige Starten des WebPacks geht ihr am besten wie folgt vor.
+
+
+Habt ihr das Programm einmal gestartet wird euch das Programm daruf hinweisen, dass es keine Lizenz gefunden hat. Es öffnet euch freundlicherweise direkt den Lizenzmanager.
+```{figure} img/MojoLab/Licence_Manager_1.png 
+:name: 01_fig_03
+
+Möglichkeit zur Auswahl des Lizenztypes
+```
+Solltet ihr bis zu diesem Zeitpunkt noch keine Lizenz haben ist hier noch einmal eine gute Möglichkeit den Lizenzierungsprozess anzuschieben.
+
+Habt ihr eure Lizenz herunter geladen, könnt ihr eure Lizenz nun über den "Manage Licences" Reiter zum Programm hinzufügen. Navigiert dazu innerhalb des Dialogfeldes zu dem Ort an dem ihr eure Lizenz abgespeichert habt.
+```{figure} img/MojoLab/Licence_Manager_2.png 
+:name: 01_fig_04
+
+Load Licence bringt uns unserem Ziel näher
+```
+
+Nachdem wir nun endlich das ISE WebPack 
+1. Heruntergeladen
+2. Installiert
+3. Gestartet und
+4. Lizensiert 
+
+haben, können wir jetzt damt anfangen unsere Programmierumgebung für das Projekt einzurichten.
+
 ### Installation von Alchitry Labs
+Den Großteil der Installation unserer Toolchain haben wir bis zu diesem Zeitpunkt bereits erledigt. Das Einrichten von Alchitry Labs stellt sich wesentlich leichter dar, als es bei der Xilinx Software der Fall war.
+Geht hierfür auf die (Website)[https://alchitry.com/alchitry-labs] von Alchitry Labs unter den Reiter Alchitry Labs ( Als kleine Dienstleistung schickt euch der Link direkt dorthin). Scrollt zu den Download Links für die aktuelle Version und ladet euch die entsprechende Variante herunter. Ich empfehle euch an dieser Stelle noch einmal wirklich Linux zu nutzen und euch dementprechend die Linux Variante herunter zu laden. Die Einrichtung auf Linux verhält sich deutlich einfacher als die auf Windows.  Knappe 18 MB wandern jetzt aus dem Internet auf euer Endgerät.
+Ihr erhaltet wie auch beim letzten Programm ein Dateinarchiv das ihr zunächst entpacken  müsst. Ihr könnt hierfür natürlich die selben Befehle nutzen wie im letzten Kapitel besprochen. Ihr müsst lediglich den Dateinamen ändern.
+
+Terminalausgabe
+:       mojo@fpga:/Downloads/$ tar -xvf alchitry-labs-1.2.7-linux.tar 
+
+Habt ihr das Archiv entpackt navigiert mit dem change directory Befehl über das Terminal in den neuen Unterordner "alchitry-labs-1.2.7". Hier angekommen müsst ihr nur noch das shell skrpt ausführen, dass sich in diesem Ordner befindet. Das könnt ihr folgendermaßen machen:
+
+Terminalausgabe
+:       bash alchitry-labs
+
+Solltet ihr bis hierher alles richtig gemacht haben, öffnet sich endlich unsere Programmierumgebung.
+Allerdings werden wir zunächst darauf hingewiesen, dass wir den Installationsort unseres Builders angeben sollen. Hierfür geht klickt im Alchitry Labs Fenster bitte auf "Settings" und dann auf "ISE Location" und wählt dann den Ordner mit der Versionsnummer eurer ISE aus ( hier: 14.7). Keine Sorge, einen ausführlichen Hinweis darüber was ihr auswählen sollt, gibt euch das Programm ebenfalls.
+
+```{figure} img/MojoLab/Alchitry_Licence.png 
+:name: 01_fig_05
+
+Auswahl des ISE WEbPack Installationsortes
+```
+Ab jetzt solltet ihr in der Lage sein ein Projekt zu öffnen und endlich den Mojo zu flashen. Dieser Vorgang wird in den nächsten Abschnitten geklärt.
+
+### Öffnen des Projektes
+Beim ersten Starten von Alchitry Labs werdet ihr direkt gefragt ob ihr ein bestehendes Projekt öffnen wollt, oder ob ihr ein neues erstellen wollt. 
+
+```{figure} img/MojoLab/First_Start.png 
+:name: 01_fig_06
+
+Erste Projektauswahl
+```
+Da wir noch kein bestehendes Projekt besitzen beantworten wir die Frage hier mit "No" um ein neues Projekt zu erstellen. 
+
+Das folgende Dialogfenster könnt ihr in Abbildung 7 sehen. Im Feld "Project Name:" tragen wir unseren Wunschnamen für unser Projekt ein. Im folgenden Reiter "Workspace" steht unser Arbeitsumgebung. Hier werden unsere Projekte abgespeichert und unsere Projektierungsumgebung erstellt hier die nötigen Dateien für das Builden des Projektes. Im dritten Reiter wählen wir unser Mojo Board aus. Das Programm erstellt hier für uns die Bezüge zu Hardware, damit das Projekt funktionsfähig gebaut werden kann. Die Sprache ("Language") die ausgewählt werden muss um ein funktionierendes Beispielprojekt laden zu können ist hier die Programmeigene Lucid Sprache. Ihr könnt in dieser Umgebung ebenfalls in Verilog coden, allerdings werdet ihr hier keine Beispielprojekte finden. Wir wählen für dieses Projekt Lucid aus und Nehmen das Beispiel Sound Locator aus dem letzten Dropdown Menüs dieses Fensters.
+
+```{figure} img/MojoLab/New_Project.png 
+:name: 01_fig_07
+
+Einstellungen zum öffnen des Sound locator Beispiels
+```
+Durch einen letzten Mausklick auf den Button "Create" wird unser Beispielprojekt erstellt. 
+Bevor wir zu Problemen innerhalb dieses Projektes kommen, machen wir eine kurze Erklärung dazu, was wir alles in diesem Projekt finden können.
 
 ## Aufbau eines Projektes
 
+
 ## Sound Locator Projekt
 
-### Öffnen des Projektes
-
-### Probleme mit den cores lösen
+### Probleme mit den IP-cores lösen
 
 ## Funktion des Projektes
 
