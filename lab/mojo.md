@@ -192,19 +192,73 @@ Alchitry Labs zeigt an, dass es die angezeigten Dateien für die IP-Cores nicht 
 > 
 > <span style="color:blue">**constraint**</span>  <span style="color:blue">**coreGen**</span>  SoundLocator.alp  <span style="color:blue">**source**</span>  <span style="color:blue">**work**</span>
 
-Es sind in dieser Ansicht vier Ordner zu sehen. Vergeich man diese vier Ordner mit dem geforderten Pfad von Alchitry Labs aus Abbildung 12 ist zu erkennen, dass der Ordner **cores** nicht in diesem Verzeichnis existiert. Dieses Vezeichnis wurde automatisch vom Programm erstellt was die Vermutung nahelegt, dass der Aufbau des Verzeichnises Hard gecoded ist. Nach einiger Suche innerhalb des Programm Verzeichnises konnte die Codezeile die dafür Verantwortich ist nicht gefunden werden. Statdessen wurde für die Inbetriebnahme der Hardware ein Workaround gefunden. Die nötigen Dateien befinden sich alle im **coreGen** Ordner. Ist das händische erstellen des Pfades in drei schritten:
+Es sind in dieser Ansicht vier Ordner zu sehen. Vergeich man diese vier Ordner mit dem geforderten Pfad von Alchitry Labs aus Abbildung 12 ist zu erkennen, dass wir den Ordner **cores** vergeblich in diesem Verzeichnis suchen. Dieses Vezeichnis wurde automatisch vom Programm erstellt was die Vermutung nahelegt, dass der Aufbau des Verzeichnises Hard gecoded ist. Nach einiger Suche innerhalb des Programm Verzeichnises konnte die Codezeile die dafür Verantwortich ist nicht gefunden werden. Statdessen wurde für die Inbetriebnahme der Hardware ein Workaround gefunden. Die nötigen Dateien befinden sich alle im **coreGen** Ordner. Ist das händische erstellen des Pfades in drei schritten:
 
 1. Umbennen des von **coreGen** zu **cores**
 2. Innerhalb dieses Ordners, erstellen der jeweiligen Ordner für Decimation Filter, xfft_v8.0 und mag_phase_calculator
 3. Verschieben der Dateien für den jeweiligen core in den entsprechenden erstellten Ordner.
 
-Weitere Beschreibungen
+Nachdem diese Schritte durchgeführt wurden kann das Projekt gebaut werden und ermöglicht es uns das Mojo Board zu flashen.
 
-## Funktion des Projektes
+## Funktionsprinzip des Projektes
+
+Beschreibung des Projektes laut Dokumentation
 
 ### Funktion laut Tutorial
 
 ### Funktion tatsächlich
+
+Aus der Beschreibung im Tutorial ist zu verstehen, dass die Sounderkennung ausschließlich in einem Zweidimensionalen Raster den Sound zuverlässig erkennen kann. Nach dem ersten Flashen wurde diese funktion zunächst qualitativ getestet. Das problem der zweidimensionalität konnte direkt beobachtet werden. Nachdem der Flashvorgang beendet wurde
+
+<div class="video_container">
+    <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
+      <source src="../_static/videos/Projekt_dB_Test-1.mp4" label="dB-Sweep"/>
+    </video>
+    <div class="overlay">
+        <p>dB-Sweep von 40 dB bis 110 dB Schallpegel</p>
+        </form>
+    </div>
+</div>
+
+
+<div class="video_container">
+    <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
+      <source src="../_static/videos/Alphabet.mp4" label="Alphabet"/>
+    </video>
+    <div class="overlay">
+        <p>Alphabet Test</p>
+        </form>
+    </div>
+</div>
+
+
+<div class="video_container">
+    <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
+      <source src="../_static/videos/Come_as_you_are.mp4" label="Gitarren Spiel"/>
+    </video>
+    <div class="overlay">
+        <p>Test mit Gitarrenspiel</p>
+        </form>
+    </div>
+</div>
+
+
+<div class="video_container">
+    <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
+      <source src="../_static/videos/Projekt_Frequenz_test.mp4" label="Frequenz Test"/>
+    </video>
+    <div class="overlay">
+        <p>Test Frequenzmessung</p>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
 
 ## Versuch?
 
