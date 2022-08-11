@@ -204,22 +204,9 @@ Nachdem diese Schritte durchgeführt wurden kann das Projekt gebaut werden und e
 
 Beschreibung des Projektes laut Dokumentation
 
-### Funktion laut Tutorial
+### Funktionstest
 
-### Funktion tatsächlich
-
-Aus der Beschreibung im Tutorial ist zu verstehen, dass die Sounderkennung ausschließlich in einem Zweidimensionalen Raster den Sound zuverlässig erkennen kann. Nach dem ersten Flashen wurde diese funktion zunächst qualitativ getestet. Das problem der zweidimensionalität konnte direkt beobachtet werden. Nachdem der Flashvorgang beendet wurde
-
-<div class="video_container">
-    <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
-      <source src="../_static/videos/Projekt_dB_Test-1.mp4" label="dB-Sweep"/>
-    </video>
-    <div class="overlay">
-        <p>dB-Sweep von 40 dB bis 110 dB Schallpegel</p>
-        </form>
-    </div>
-</div>
-
+Das oben beschrieben Funktionsprinzip wird im nächsten Abschnitt getestet. Für den ersten Test wird der Mojo auf einem Holztisch platziert und es wird das Alphabet durchgesprochen. Die Lärmquelle ist in diesem Video von Links und die Quelle ist auf der horizontal verschoben zum Mojo um die Funktion zu gewährleisten. Es ist zu erkennen, dass bei den S-Lauten ( die Buchstaben C, S, X, Z) führen dazu, dass mehr als nur eine LED leuchtet. Alle anderen Buchstaben haben insgesamt eine deutliche Antwort des Mojos verursacht. 
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
@@ -232,6 +219,8 @@ Aus der Beschreibung im Tutorial ist zu verstehen, dass die Sounderkennung aussc
 </div>
 
 
+Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit einer anderen Geräuschquelle durchgeführt worden. In diesem Funktionstest wurde der Song "Come as you are" von Nirvana angespielt um die Reaktion vom Mojo zu testen. Die Quelle des Geräusches ist in diesem Video unterhalb des Mojo boards. Es ist zu erkennen, dass die unterste LED am hellsten leuchtet und die Richtung damit erkannt wird. Allerdings ist ebenfalls zu sehen, dass auch LEDs auf der anderen Seite des Kreises aufleuchten. (WAND?) 
+
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
       <source src="../_static/videos/Come_as_you_are.mp4" label="Gitarren Spiel"/>
@@ -241,6 +230,32 @@ Aus der Beschreibung im Tutorial ist zu verstehen, dass die Sounderkennung aussc
         </form>
     </div>
 </div>
+
+Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung in Raumumgebungen ausutesten wurde folgender Versuchsaufbau erarbeitet. BESCHREIBUNG DER ABBILDUNG.
+
+Getestet werden mit diesem Aufbau zwei Grenzen. Zum einen wird die Grenze der Lautstärke ermittelt. Hierfür wird die Lautsärke einen Sinustones mit einer Frequenz von f=1000 Hz langsam von 35dB Schalldruckpegel bis 110dB Schaldruckpegel erhöht und die Funktion wird beobachtet. Die Funktion gilt als sicher vorhanden, solange ausschließlich die LED leuchtet, die in die Richtung der Geräuschquelle ausgerichtet ist.
+
+
+Hierfür wird ein Versuchsaufbau gewählt, der in Abbildung 13 zu erkennen ist. Hierfür wird ein Lautsprecher 
+
+
+```{figure} img/MojoLab/Fehlermeldung_Cores.png 
+:name: 01_fig_013
+
+Versuchsaufbau für den Funktionstest
+```
+
+<div class="video_container">
+    <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
+      <source src="../_static/videos/Projekt_dB_Test-1.mp4" label="dB-Sweep"/>
+    </video>
+    <div class="overlay">
+        <p>dB-Sweep von 40 dB bis 110 dB Schallpegel</p>
+        </form>
+    </div>
+</div>
+
+
 
 
 <div class="video_container">
