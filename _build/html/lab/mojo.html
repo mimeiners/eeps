@@ -306,13 +306,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#funktion-laut-tutorial">
-     Funktion laut Tutorial
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#funktion-tatsachlich">
-     Funktion tatsächlich
+    <a class="reference internal nav-link" href="#funktionstest">
+     Funktionstest
     </a>
    </li>
   </ul>
@@ -402,13 +397,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#funktion-laut-tutorial">
-     Funktion laut Tutorial
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#funktion-tatsachlich">
-     Funktion tatsächlich
+    <a class="reference internal nav-link" href="#funktionstest">
+     Funktionstest
     </a>
    </li>
   </ul>
@@ -623,21 +613,9 @@ Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module ge
 <div class="section" id="funktionsprinzip-des-projektes">
 <h2>Funktionsprinzip des Projektes<a class="headerlink" href="#funktionsprinzip-des-projektes" title="Permalink to this headline">¶</a></h2>
 <p>Beschreibung des Projektes laut Dokumentation</p>
-<div class="section" id="funktion-laut-tutorial">
-<h3>Funktion laut Tutorial<a class="headerlink" href="#funktion-laut-tutorial" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="funktion-tatsachlich">
-<h3>Funktion tatsächlich<a class="headerlink" href="#funktion-tatsachlich" title="Permalink to this headline">¶</a></h3>
-<p>Aus der Beschreibung im Tutorial ist zu verstehen, dass die Sounderkennung ausschließlich in einem Zweidimensionalen Raster den Sound zuverlässig erkennen kann. Nach dem ersten Flashen wurde diese funktion zunächst qualitativ getestet. Das problem der zweidimensionalität konnte direkt beobachtet werden. Nachdem der Flashvorgang beendet wurde</p>
-<div class="video_container">
-    <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
-      <source src="../_static/videos/Projekt_dB_Test-1.mp4" label="dB-Sweep"/>
-    </video>
-    <div class="overlay">
-        <p>dB-Sweep von 40 dB bis 110 dB Schallpegel</p>
-        </form>
-    </div>
-</div>
+<div class="section" id="funktionstest">
+<h3>Funktionstest<a class="headerlink" href="#funktionstest" title="Permalink to this headline">¶</a></h3>
+<p>Das oben beschrieben Funktionsprinzip wird im nächsten Abschnitt getestet. Für den ersten Test wird der Mojo auf einem Holztisch platziert und es wird das Alphabet durchgesprochen. Die Lärmquelle ist in diesem Video von Links und die Quelle ist auf der horizontal verschoben zum Mojo um die Funktion zu gewährleisten. Es ist zu erkennen, dass bei den S-Lauten ( die Buchstaben C, S, X, Z) führen dazu, dass mehr als nur eine LED leuchtet. Alle anderen Buchstaben haben insgesamt eine deutliche Antwort des Mojos verursacht.</p>
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
       <source src="../_static/videos/Alphabet.mp4" label="Alphabet"/>
@@ -647,12 +625,29 @@ Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module ge
         </form>
     </div>
 </div>
+<p>Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit einer anderen Geräuschquelle durchgeführt worden. In diesem Funktionstest wurde der Song “Come as you are” von Nirvana angespielt um die Reaktion vom Mojo zu testen. Die Quelle des Geräusches ist in diesem Video unterhalb des Mojo boards. Es ist zu erkennen, dass die unterste LED am hellsten leuchtet und die Richtung damit erkannt wird. Allerdings ist ebenfalls zu sehen, dass auch LEDs auf der anderen Seite des Kreises aufleuchten. (WAND?)</p>
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
       <source src="../_static/videos/Come_as_you_are.mp4" label="Gitarren Spiel"/>
     </video>
     <div class="overlay">
         <p>Test mit Gitarrenspiel</p>
+        </form>
+    </div>
+</div>
+<p>Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung in Raumumgebungen ausutesten wurde folgender Versuchsaufbau erarbeitet. BESCHREIBUNG DER ABBILDUNG.</p>
+<p>Getestet werden mit diesem Aufbau zwei Grenzen. Zum einen wird die Grenze der Lautstärke ermittelt. Hierfür wird die Lautsärke einen Sinustones mit einer Frequenz von f=1000 Hz langsam von 35dB Schalldruckpegel bis 110dB Schaldruckpegel erhöht und die Funktion wird beobachtet. Die Funktion gilt als sicher vorhanden, solange ausschließlich die LED leuchtet, die in die Richtung der Geräuschquelle ausgerichtet ist.</p>
+<p>Hierfür wird ein Versuchsaufbau gewählt, der in Abbildung 13 zu erkennen ist. Hierfür wird ein Lautsprecher</p>
+<div class="figure align-default" id="fig-013">
+<img alt="../_images/Fehlermeldung_Cores.png" src="../_images/Fehlermeldung_Cores.png" />
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Versuchsaufbau für den Funktionstest</span><a class="headerlink" href="#fig-013" title="Permalink to this image">¶</a></p>
+</div>
+<div class="video_container">
+    <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
+      <source src="../_static/videos/Projekt_dB_Test-1.mp4" label="dB-Sweep"/>
+    </video>
+    <div class="overlay">
+        <p>dB-Sweep von 40 dB bis 110 dB Schallpegel</p>
         </form>
     </div>
 </div>
