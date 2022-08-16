@@ -615,7 +615,7 @@ Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module ge
 <p>Beschreibung des Projektes laut Dokumentation</p>
 <div class="section" id="funktionstest">
 <h3>Funktionstest<a class="headerlink" href="#funktionstest" title="Permalink to this headline">¶</a></h3>
-<p>Das oben beschrieben Funktionsprinzip wird im nächsten Abschnitt getestet. Für den ersten Test wird der Mojo auf einem Holztisch platziert und es wird das Alphabet durchgesprochen. Die Lärmquelle ist in diesem Video von Links und die Quelle ist auf der horizontal verschoben zum Mojo um die Funktion zu gewährleisten. Es ist zu erkennen, dass bei den S-Lauten ( die Buchstaben C, S, X, Z) führen dazu, dass mehr als nur eine LED leuchtet. Alle anderen Buchstaben haben insgesamt eine deutliche Antwort des Mojos verursacht.</p>
+<p>Das oben beschrieben Funktionsprinzip wird im nächsten Abschnitt getestet. Für den ersten Test wird der Mojo auf einem Holztisch platziert und es wird das Alphabet durchgesprochen. Die Lärmquelle ist in diesem Video von Links und die Quelle ist auf der horizontal verschoben zum Mojo um die Funktion zu gewährleisten. Es ist zu erkennen, dass bei den S-Lauten ( die Buchstaben C, S, X, Z) führen dazu, dass mehr als nur eine LED leuchtet. Alle anderen Buchstaben haben insgesamt eine eindeutige Antwort des Mojos verursacht.</p>
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
       <source src="../_static/videos/Alphabet.mp4" label="Alphabet"/>
@@ -635,13 +635,59 @@ Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module ge
         </form>
     </div>
 </div>
-<p>Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung in Raumumgebungen ausutesten wurde folgender Versuchsaufbau erarbeitet. BESCHREIBUNG DER ABBILDUNG.</p>
-<p>Getestet werden mit diesem Aufbau zwei Grenzen. Zum einen wird die Grenze der Lautstärke ermittelt. Hierfür wird die Lautsärke einen Sinustones mit einer Frequenz von f=1000 Hz langsam von 35dB Schalldruckpegel bis 110dB Schaldruckpegel erhöht und die Funktion wird beobachtet. Die Funktion gilt als sicher vorhanden, solange ausschließlich die LED leuchtet, die in die Richtung der Geräuschquelle ausgerichtet ist.</p>
-<p>Hierfür wird ein Versuchsaufbau gewählt, der in Abbildung 13 zu erkennen ist. Hierfür wird ein Lautsprecher</p>
+<p>Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiment ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in Abbildung 13 zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards platziert. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrofons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu 110dB getestet wurden.</p>
 <div class="figure align-default" id="fig-013">
-<img alt="../_images/Fehlermeldung_Cores.png" src="../_images/Fehlermeldung_Cores.png" />
+<img alt="../_images/Setup_experiment.png" src="../_images/Setup_experiment.png" />
 <p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Versuchsaufbau für den Funktionstest</span><a class="headerlink" href="#fig-013" title="Permalink to this image">¶</a></p>
 </div>
+<p>Getestet werden mit diesem Aufbau zwei Grenzen. Zum einen wird die Grenze der Lautstärke ermittelt. Hierfür wird die Lautsärke einen Sinustones mit einer Frequenz von f=1000 Hz langsam von 40dB Schalldruckpegel bis 111dB Schaldruckpegel erhöht und die Funktion wird beobachtet. Jede Lautstärke wird für eine Zeit t= 3 Sekunden gehalten. Die Funktion gilt als sicher vorhanden, solange ausschließlich die LED leuchtet, die in die Richtung der Geräuschquelle ausgerichtet ist. Die gewählte Frequenz wurde anhand des Datenblattes der Mikrofone gewählt. Die angegebenen Testbedigungen für die Angaben im Datenblatt beziehen sich auf eine Frequenz von f=1000 Hz.
+Für Sound ausgabe wurde folgendes Pythonscript mit dem Paket PyAudio genutzt.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Created on Fri Jul 15 14:11:25 2022</span>
+
+<span class="sd">@author: erik</span>
+
+<span class="sd">from: https://www.codegrepper.com/code-examples/python/python+generate+sine+wave+pyaudio</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">pyaudio</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pyaudio</span><span class="o">.</span><span class="n">PyAudio</span><span class="p">()</span>
+
+<span class="n">volume</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># range [0.0, 1.0]</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">44100</span>       <span class="c1"># sampling rate, Hz, must be integer</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="mf">10.0</span>   <span class="c1"># in seconds, may be float</span>
+<span class="n">f</span> <span class="o">=</span><span class="mf">2000.0</span>        <span class="c1"># sine frequency, Hz, may be float</span>
+
+<span class="c1"># generate samples, note conversion to float32 array</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">duration</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="o">/</span><span class="n">fs</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># for paFloat32 sample values must be in range [-1.0, 1.0]</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="n">pyaudio</span><span class="o">.</span><span class="n">paFloat32</span><span class="p">,</span>
+                <span class="n">channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">rate</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span>
+                <span class="n">output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># play. May repeat with different volume values (if done interactively) </span>
+<span class="n">i</span> <span class="o">=</span><span class="mi">1</span>
+<span class="n">volume</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="k">for</span>  <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+	<span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">volume</span><span class="o">*</span><span class="n">samples</span><span class="p">)</span>
+   	<span class="n">volume</span> <span class="o">=</span> <span class="n">volume</span> <span class="o">+</span><span class="mf">0.1</span>
+
+<span class="n">stream</span><span class="o">.</span><span class="n">stop_stream</span><span class="p">()</span>
+<span class="n">stream</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+
+<span class="c1">#First Volume Percentage: 13% up to 61 dB</span>
+<span class="c1"># Second up to 41% to 80dB</span>
+<span class="c1"># third up to 70% up to 100 dB</span>
+<span class="c1">#fourth up to 100% and 111 dB</span>
+</pre></div>
+</div>
+<p>Aus dem Code ist zu erkennen, dass mit jedem Schleifendurchlauf die Lautsärke um 0.1 also 10% erhöht wird. Der Versuch musste allerdings in vier Durchläufen durchgeführt werden wobei die Schleife in jedem der Durchläufe einmal ausgeführt wurde. Bei jedem Durlauf wurde die Systemlautstärke des genutzten Laptops erhöht, da es nicht möglich war inerhalb einer Systemeinstellung den gesamten Lautstärkebereich von 40dB bis 111dB zu durchlaufen. Die genutzten Systemlautstärken in Prozent sind am Ende des Pythonskriptes im Kommentar zu erkennen.</p>
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
       <source src="../_static/videos/Projekt_dB_Test-1.mp4" label="dB-Sweep"/>
@@ -651,6 +697,8 @@ Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module ge
         </form>
     </div>
 </div>
+<p>In dem Video ist zu erkennen, dass die Funktion sicher ab einem Schalldruckpegel von 47dB zu erkennen ist. Mit steigender Lautstärke ist die Funktion immer deutlicher, bis zu einem Schalldruckpegel von 99,9 dB laut Anzeige des Schalldruckpegelmessers. Oberhalb dieses Pegels ist zu erkennen, dass auf dem Microphone Shield alle LEDs beginnen zu leuchten und damit keine eindeutige Erkennung des Sounds gegeben ist.</p>
+<p>Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet werden. Die ersten Funktionstest durch Sprache und Gitarrenspiel führen zu der Annahme, dass die Grenzen nicht alleine von der Lautstärke abhängen sondern ebenfalls von der Frequenz des eingehenden Signals. Aus diesem Grund wurde ein weiteres Exeriment durchgeführt. Der Aufbau bleibt wie dargestellt in Abbildung 13. In diesem Experiment wird die Lautstärke konstant gehalten bei 91dB und die Frequenz wird angepasst. Der Grund für die 91dB Schalldruckpegel lassen sich ebenfalls im Datenblatt der Mikrofone finden, da diese ebenfalls die Testbediungen darstellten. Hierfür wird das Pythonskript insofern abgeändert, als dass lediglich eine Frequenz einmalig ausgegeben wird und die Funktion wird angepasst.</p>
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
       <source src="../_static/videos/Projekt_Frequenz_test.mp4" label="Frequenz Test"/>
