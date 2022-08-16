@@ -206,7 +206,7 @@ Beschreibung des Projektes laut Dokumentation
 
 ### Funktionstest
 
-Das oben beschrieben Funktionsprinzip wird im nächsten Abschnitt getestet. Für den ersten Test wird der Mojo auf einem Holztisch platziert und es wird das Alphabet durchgesprochen. Die Lärmquelle ist in diesem Video von Links und die Quelle ist auf der horizontal verschoben zum Mojo um die Funktion zu gewährleisten. Es ist zu erkennen, dass bei den S-Lauten ( die Buchstaben C, S, X, Z) führen dazu, dass mehr als nur eine LED leuchtet. Alle anderen Buchstaben haben insgesamt eine deutliche Antwort des Mojos verursacht. 
+Das oben beschrieben Funktionsprinzip wird im nächsten Abschnitt getestet. Für den ersten Test wird der Mojo auf einem Holztisch platziert und es wird das Alphabet durchgesprochen. Die Lärmquelle ist in diesem Video von Links und die Quelle ist auf der horizontal verschoben zum Mojo um die Funktion zu gewährleisten. Es ist zu erkennen, dass bei den S-Lauten ( die Buchstaben C, S, X, Z) führen dazu, dass mehr als nur eine LED leuchtet. Alle anderen Buchstaben haben insgesamt eine eindeutige Antwort des Mojos verursacht. 
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
@@ -231,19 +231,22 @@ Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit eine
     </div>
 </div>
 
-Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung in Raumumgebungen ausutesten wurde folgender Versuchsaufbau erarbeitet. BESCHREIBUNG DER ABBILDUNG.
+Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiment ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in Abbildung 13 zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards platziert. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrofons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu 110dB getestet wurden.
 
-Getestet werden mit diesem Aufbau zwei Grenzen. Zum einen wird die Grenze der Lautstärke ermittelt. Hierfür wird die Lautsärke einen Sinustones mit einer Frequenz von f=1000 Hz langsam von 35dB Schalldruckpegel bis 110dB Schaldruckpegel erhöht und die Funktion wird beobachtet. Die Funktion gilt als sicher vorhanden, solange ausschließlich die LED leuchtet, die in die Richtung der Geräuschquelle ausgerichtet ist.
-
-
-Hierfür wird ein Versuchsaufbau gewählt, der in Abbildung 13 zu erkennen ist. Hierfür wird ein Lautsprecher 
-
-
-```{figure} img/MojoLab/Fehlermeldung_Cores.png 
+```{figure} img/MojoLab/Setup_experiment.png 
 :name: 01_fig_013
 
 Versuchsaufbau für den Funktionstest
 ```
+
+Getestet werden mit diesem Aufbau zwei Grenzen. Zum einen wird die Grenze der Lautstärke ermittelt. Hierfür wird die Lautsärke einen Sinustones mit einer Frequenz von f=1000 Hz langsam von 40dB Schalldruckpegel bis 111dB Schaldruckpegel erhöht und die Funktion wird beobachtet. Jede Lautstärke wird für eine Zeit t= 3 Sekunden gehalten. Die Funktion gilt als sicher vorhanden, solange ausschließlich die LED leuchtet, die in die Richtung der Geräuschquelle ausgerichtet ist. Die gewählte Frequenz wurde anhand des Datenblattes der Mikrofone gewählt. Die angegebenen Testbedigungen für die Angaben im Datenblatt beziehen sich auf eine Frequenz von f=1000 Hz.
+Für Sound ausgabe wurde folgendes Pythonscript mit dem Paket PyAudio genutzt.
+
+```{literalinclude} ../files/ProjectFiles/Soundoutput.py
+:language: python
+```
+Aus dem Code ist zu erkennen, dass mit jedem Schleifendurchlauf die Lautsärke um 0.1 also 10% erhöht wird. Der Versuch musste allerdings in vier Durchläufen durchgeführt werden wobei die Schleife in jedem der Durchläufe einmal ausgeführt wurde. Bei jedem Durlauf wurde die Systemlautstärke des genutzten Laptops erhöht, da es nicht möglich war inerhalb einer Systemeinstellung den gesamten Lautstärkebereich von 40dB bis 111dB zu durchlaufen. Die genutzten Systemlautstärken in Prozent sind am Ende des Pythonskriptes im Kommentar zu erkennen.
+
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
@@ -255,8 +258,9 @@ Versuchsaufbau für den Funktionstest
     </div>
 </div>
 
+In dem Video ist zu erkennen, dass die Funktion sicher ab einem Schalldruckpegel von 47dB zu erkennen ist. Mit steigender Lautstärke ist die Funktion immer deutlicher, bis zu einem Schalldruckpegel von 99,9 dB laut Anzeige des Schalldruckpegelmessers. Oberhalb dieses Pegels ist zu erkennen, dass auf dem Microphone Shield alle LEDs beginnen zu leuchten und damit keine eindeutige Erkennung des Sounds gegeben ist.
 
-
+Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet werden. Die ersten Funktionstest durch Sprache und Gitarrenspiel führen zu der Annahme, dass die Grenzen nicht alleine von der Lautstärke abhängen sondern ebenfalls von der Frequenz des eingehenden Signals. Aus diesem Grund wurde ein weiteres Exeriment durchgeführt. Der Aufbau bleibt wie dargestellt in Abbildung 13. In diesem Experiment wird die Lautstärke konstant gehalten bei 91dB und die Frequenz wird angepasst. Der Grund für die 91dB Schalldruckpegel lassen sich ebenfalls im Datenblatt der Mikrofone finden, da diese ebenfalls die Testbediungen darstellten. Hierfür wird das Pythonskript insofern abgeändert, als dass lediglich eine Frequenz einmalig ausgegeben wird und die Funktion wird angepasst.
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
