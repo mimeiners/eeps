@@ -9,7 +9,7 @@ Im Folgenden könnt ihr eine kurze Erläuterung zur Hardware finden. Die Einrich
 
 ## [Der Mojo](https://www.adafruit.com/product/1553) [Baby](https://www.youtube.com/watch?v=c4ytuS8pVp4)
 
-Das Mojo v3 Board ist ein preiswertes (~70€, bei [AliExpress](https://de.aliexpress.com/item/32798926767.html?spm=a2g0o.ppclist.product.2.dc57fhXPfhXPEo&pdp_npi=2%40dis%21EUR%21%E2%82%AC%2068%2C61%21%E2%82%AC%2068%2C61%21%21%21%21%21%40211b5a9616552327883654477e07b2%2164982667969%21btf&_t=pvid%3Ab5fae29b-1699-49ff-9cdf-7850da36c207&afTraceInfo=32798926767__pc__pcBridgePPC__xxxxxx__1655232788&gatewayAdapt=glo2deu)) FPGA Entwicklungsboard auf dem ein Spartan 6 FPGA eingebaut ist sowie ein ATmega32 Microprozessor der Arduino Kompatibel ist. Dieser wird im Wesentlichen für die Programmierung des FPGA genutzt. Nach der Programmierung kann der Controller als Analog-Digital Wandler eingesetzt werden. Außerdem verfügt das Board üb 84 Digitale I/O die über die Steckleisten herausgeführt sind und 8 LEDs die für allgemeine Programmierung genutzt werden können.
+Das Mojo v3 Board ist ein preiswertes (~70€, bei [AliExpress](https://de.aliexpress.com/item/32798926767.html?spm=a2g0o.ppclist.product.2.dc57fhXPfhXPEo&pdp_npi=2%40dis%21EUR%21%E2%82%AC%2068%2C61%21%E2%82%AC%2068%2C61%21%21%21%21%21%40211b5a9616552327883654477e07b2%2164982667969%21btf&_t=pvid%3Ab5fae29b-1699-49ff-9cdf-7850da36c207&afTraceInfo=32798926767__pc__pcBridgePPC__xxxxxx__1655232788&gatewayAdapt=glo2deu) stand: Juni 2022) FPGA Entwicklungsboard auf dem ein Spartan 6 FPGA eingebaut ist sowie ein ATmega32 Microprozessor der Arduino Kompatibel ist. Dieser wird im Wesentlichen für die Programmierung des FPGA genutzt. Nach der Programmierung kann der Controller als Analog-Digital Wandler eingesetzt werden. Außerdem verfügt das Board üb 84 Digitale I/O die über die Steckleisten herausgeführt sind und 8 LEDs die für allgemeine Programmierung genutzt werden können.
 
 Auf dem Microphone Shield befinden sich sechs konzentrische Mikrofone, die um ein siebtes Mikrofon in der Mitte herum auf dem Shield angebracht sind. Diese Mikrofone werden so genutzt das über die Verzögerung des einkommenden Tones die Richtung bestimmt werden kann. Die Erklärung dafür kann hier nochmal eingefügt werden:
 PDM? Delay? FFT? MEMS?
@@ -202,7 +202,17 @@ Nachdem diese Schritte durchgeführt wurden kann das Projekt gebaut werden und e
 
 ## Funktionsprinzip des Projektes
 
-Beschreibung des Projektes laut Dokumentation
+HIER MUSS BILD REIN!!!!
+
+Für die Funktion des Projektes müssen zunächst einige Annahmen getroffen werden. Die wichtigste Annahme ist, dass die Richtung des Tons nur in einem zweidimensionalen Raster horizontal zum Mojo Board auf das FPGA auftreffen darf. Das ist dem physikalischen Aufbau des Microphone Shields geschuldet, da alle Mikrophone auf einer Ebene verbaut sind. Außerdem wird angenommen, dass es sich bei den auftreffenden Schallwelen um eine eine gerade Wellenfront handelt. Das heißt, dass sichjeder Punkt einer Welle mit der gleichen Geschwindigkeit ausbreitet.Die letzte Annahme ist, dass jede Frequenz eines Soundsamples aus einer einzigen Richtung kommt.
+
+Die Sounderkennung mit dem Mojo errechnet sich die Richtung aus der der Sound auf ihn trifft aus der Phasenverschiebung zwischen den äußeren und dem zentralen Mikrofon. Die auf den Mikrophonen auftreffende Frequenz wird simultan vom FPGA abgetastet. Auf diese Fragmente wird eine Fast-Fourier-Transformation (FFT) durchgeführt, wodurch das Signal von der Zeit- in die Frequenzdomäne überführt. Als Ausgabe aus der FFT erhält man nun für jedes Fragment eine Komplexe Zahl. Bestehend aus dem Realteil, der die Amplitude des eingehenden Signals darstellt und dem Imaginärteil, der die Phase des eingehenden Signals darstellt. Diese können in einem Koordinatensystem aufgetragen werden. In Abbildung 13 ist beispielfhaft für drei Mikrophone das Prinzip dargestellt. Die schwarzen Kreise stellen die Position von drei Mikrofonen des Mojos dar. Ihre Koordinaten sind in den Klammern dargestellt. Der Mittelpunkt des Koordinatensystems ist ebenfalls als Koordinate des zentralen Mikrophons zu verstehen. In blau in der oberen linken Ecke ist die Richtung dargestellt aus der ein Ton auf die Mikrophone trifft. Das Auftreffen bewirkt eine Verzögerung (Delay) der jeweiligen äußeren Mikrophone im Vergleich zum mittleren Mikrofon. Mithilfe dieses Delays bzw. mit der Phasenverschiebung zueinander ( die Verzögerung ist lediglich der quotient aus Phasenverschiebung und Frequenz wodurch diese beiden Werte proportinal zueniander sind) und der Positionsvectoren der unterschiedlichen Mikrophone kann nun die Richtung des Tons bestimmt werden. Hierzu werden die Ortsvektoren mit dem errechneten Delay Skaliert, wodurch die violetten skalierten Vektoren entstehen. Durch Vektoraddition dieser Vektoren kann ein Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt. (gelb)
+
+```{figure} img/MojoLab/SoundirectionPrinciple.png
+:name: 01_fig_013
+
+Versuchsaufbau für den Funktionstest
+```
 
 ### Funktionstest
 
@@ -231,10 +241,10 @@ Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit eine
     </div>
 </div>
 
-Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiment ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in Abbildung 13 zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards platziert. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrofons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu 110dB getestet wurden.
+Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiment ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in Abbildung 14 zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards platziert. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrofons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu 110dB getestet wurden.
 
 ```{figure} img/MojoLab/Setup_experiment.png 
-:name: 01_fig_013
+:name: 01_fig_014
 
 Versuchsaufbau für den Funktionstest
 ```
@@ -260,7 +270,7 @@ Aus dem Code ist zu erkennen, dass mit jedem Schleifendurchlauf die Lautsärke u
 
 In dem Video ist zu erkennen, dass die Funktion sicher ab einem Schalldruckpegel von 47dB zu erkennen ist. Mit steigender Lautstärke ist die Funktion immer deutlicher, bis zu einem Schalldruckpegel von 99,9 dB laut Anzeige des Schalldruckpegelmessers. Oberhalb dieses Pegels ist zu erkennen, dass auf dem Microphone Shield alle LEDs beginnen zu leuchten und damit keine eindeutige Erkennung des Sounds gegeben ist.
 
-Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet werden. Die ersten Funktionstest durch Sprache und Gitarrenspiel führen zu der Annahme, dass die Grenzen nicht alleine von der Lautstärke abhängen sondern ebenfalls von der Frequenz des eingehenden Signals. Aus diesem Grund wurde ein weiteres Exeriment durchgeführt. Der Aufbau bleibt wie dargestellt in Abbildung 13. In diesem Experiment wird die Lautstärke konstant gehalten bei 91dB und die Frequenz wird angepasst. Der Grund für die 91dB Schalldruckpegel lassen sich ebenfalls im Datenblatt der Mikrofone finden, da diese ebenfalls die Testbediungen darstellten. Hierfür wird das Pythonskript insofern abgeändert, als dass lediglich eine Frequenz einmalig ausgegeben wird und die Funktion wird angepasst.
+Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet werden. Die ersten Funktionstest durch Sprache und Gitarrenspiel führen zu der Annahme, dass die Grenzen nicht alleine von der Lautstärke abhängen sondern ebenfalls von der Frequenz des eingehenden Signals. Aus diesem Grund wurde ein weiteres Exeriment durchgeführt. Der Aufbau bleibt wie dargestellt in Abbildung 14. In diesem Experiment wird die Lautstärke konstant gehalten bei 91dB und die Frequenz wird angepasst. Der Grund für die 91dB Schalldruckpegel lassen sich ebenfalls im Datenblatt der Mikrofone finden, da diese ebenfalls die Testbediungen darstellen. Hierfür wird das Pythonskript insofern abgeändert, als dass lediglich eine Frequenz einmalig ausgegeben wird. Die For-Schleife wird für diesen Versuch ausgeblendet. Bei jeder Frequenz wurde die Lautstärke jedes mal auf 91dB Schalldruckpegeleingestellt, bevor das Video aufgenommen wurde.
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
@@ -272,14 +282,11 @@ Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet wer
     </div>
 </div>
 
+Es ist zu beobachten, dass die Funktion im unteren Frequenzbereich (440 Hz bis 700 Hz) zwar zu erkennen ist, allerdings leuchten die Richtungs LEDs nur schwach. Ein eindeutiges Erkennen der LED ist ab einer Frequenz von 710 Hz gegeben. Die höchste Frequenz bei der eine eindeutige Funktion beobachtet werden konnte war f=4937 Hz. Darüber hinaus kann beobachtet werden, dass nicht mehr die oberste LED leuchtet oder aber, dass mehrere LEDs leuchten. 
 
 
 
-
-
-
-
-## Versuch?
+## Auswertung
 
 ## VHDL-Projekte Übertragen?
 
