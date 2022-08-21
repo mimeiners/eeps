@@ -13,7 +13,7 @@ p = pyaudio.PyAudio()
 
 volume = 1.0  # range [0.0, 1.0]
 fs = 44100       # sampling rate, Hz, must be integer
-duration = 10.0   # in seconds, may be float
+duration = 3.0   # in seconds, may be float
 f =2000.0        # sine frequency, Hz, may be float
 
 # generate samples, note conversion to float32 array

@@ -202,14 +202,28 @@ Nachdem diese Schritte durchgeführt wurden kann das Projekt gebaut werden und e
 
 ## Funktionsprinzip des Projektes
 
-HIER MUSS BILD REIN!!!!
+In diesem Kapitel wird die Funktion des gesamten Aufbaus evaluiert. Innerhalb dieses Kapitels wird zunächst das Funktionsprinzip des Projektes erläutert. In Abbildung 13 ist der Signalfluss der Sounderkennung dargestellt. Alle Dargestellten Blöcke werden innerhalb dieses und des des nächsten Abschnitts erläutert. Zunächst steht ein Ton in Form einer Sinuswelle an. Diese besteht nicht aus nur einer Frequenz wie in Abbildung 13 dargestellt, sondern setzt sich aus verschiedenen Frequenzen zusammen. Dieses Frequenzspektrum wird ebenfalls dargestelt und erläutert. Die analoge Sinuswelle wird durch ein Wandlungssystem in die digitale Domäne Übertragen. Hier sind es so genannte digitale MEMS PDM Mikrofone. Die ausgegebene PDM wird ebenfalls theoretisch erläutert und messtechnisch aufgenommen. Das Signal Processing wird vom FPGA übernommen. Hier findet die Auswertung der einkommenden Signale statt und damit die Erkennung. Am Ende steht die optische Ausgabe der erkannten Richtung.
+
+```{figure} img/MojoLab/SignalFlow.png
+:name: 01_fig_013
+
+Übersicht Signalfluss
+```
+Theorie Akustische Welle
+
+Theorie Spektrum
+
+Erklrung MEMS Mikro
+
+Erklärung PDM
+
 
 Für die Funktion des Projektes müssen zunächst einige Annahmen getroffen werden. Die wichtigste Annahme ist, dass die Richtung des Tons nur in einem zweidimensionalen Raster horizontal zum Mojo Board auf das FPGA auftreffen darf. Das ist dem physikalischen Aufbau des Microphone Shields geschuldet, da alle Mikrophone auf einer Ebene verbaut sind. Außerdem wird angenommen, dass es sich bei den auftreffenden Schallwelen um eine eine gerade Wellenfront handelt. Das heißt, dass sichjeder Punkt einer Welle mit der gleichen Geschwindigkeit ausbreitet.Die letzte Annahme ist, dass jede Frequenz eines Soundsamples aus einer einzigen Richtung kommt.
 
 Die Sounderkennung mit dem Mojo errechnet sich die Richtung aus der der Sound auf ihn trifft aus der Phasenverschiebung zwischen den äußeren und dem zentralen Mikrofon. Die auf den Mikrophonen auftreffende Frequenz wird simultan vom FPGA abgetastet. Auf diese Fragmente wird eine Fast-Fourier-Transformation (FFT) durchgeführt, wodurch das Signal von der Zeit- in die Frequenzdomäne überführt. Als Ausgabe aus der FFT erhält man nun für jedes Fragment eine Komplexe Zahl. Bestehend aus dem Realteil, der die Amplitude des eingehenden Signals darstellt und dem Imaginärteil, der die Phase des eingehenden Signals darstellt. Diese können in einem Koordinatensystem aufgetragen werden. In Abbildung 13 ist beispielfhaft für drei Mikrophone das Prinzip dargestellt. Die schwarzen Kreise stellen die Position von drei Mikrofonen des Mojos dar. Ihre Koordinaten sind in den Klammern dargestellt. Der Mittelpunkt des Koordinatensystems ist ebenfalls als Koordinate des zentralen Mikrophons zu verstehen. In blau in der oberen linken Ecke ist die Richtung dargestellt aus der ein Ton auf die Mikrophone trifft. Das Auftreffen bewirkt eine Verzögerung (Delay) der jeweiligen äußeren Mikrophone im Vergleich zum mittleren Mikrofon. Mithilfe dieses Delays bzw. mit der Phasenverschiebung zueinander ( die Verzögerung ist lediglich der quotient aus Phasenverschiebung und Frequenz wodurch diese beiden Werte proportinal zueniander sind) und der Positionsvectoren der unterschiedlichen Mikrophone kann nun die Richtung des Tons bestimmt werden. Hierzu werden die Ortsvektoren mit dem errechneten Delay Skaliert, wodurch die violetten skalierten Vektoren entstehen. Durch Vektoraddition dieser Vektoren kann ein Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt. (gelb)
 
 ```{figure} img/MojoLab/SoundirectionPrinciple.png
-:name: 01_fig_013
+:name: 01_fig_014
 
 Versuchsaufbau für den Funktionstest
 ```
@@ -227,9 +241,16 @@ Das oben beschrieben Funktionsprinzip wird im nächsten Abschnitt getestet. Für
         </form>
     </div>
 </div>
+Betrachtet man zu den Beobachtungen nun das Frequenzsspektrum zu den ersten sieben Buchstaben des Alphabets ist zu erkennen, dass die größte Energiedichte bei Frequenzen zwischen 60 Hz und 400 Hz zu finden ist. Der Buchstabe C ist in dieser Abbilung der dritte Balken von links. Hier ist zu erkennen, dass zu Beginn des Buchstaben eine höhere Energiedichte zu finden ist. Diese reicht von einer Frequenz von 4 kHz bis zu über 16 kHz. Interessanterweise ist eine konträre Beobachtung beim Buchstaben "F" zu erkennen. Der zweite Balken von rechts hat zu Beginn des Buchstabens ein Ähnliches Frequenzmuster wie die Anderen. nach einer kurzen Zeit verteilt sich die Energie gleichmäßig auf eine größere Badnbreite an Frequenzen. Hier konnte jedoch eine gute Funktion des Mojo beobachtet werden. Der Schalldruckpegel bei diesem Versuch konnte etwa zwischen 60 dB und 70 dB gemessen werden.´
+
+```{figure} img/MojoLab/AlphaG.png 
+:name: 01_fig_015
+
+Frequenzspektrum für die Buchstaben A bis G
+```
 
 
-Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit einer anderen Geräuschquelle durchgeführt worden. In diesem Funktionstest wurde der Song "Come as you are" von Nirvana angespielt um die Reaktion vom Mojo zu testen. Die Quelle des Geräusches ist in diesem Video unterhalb des Mojo boards. Es ist zu erkennen, dass die unterste LED am hellsten leuchtet und die Richtung damit erkannt wird. Allerdings ist ebenfalls zu sehen, dass auch LEDs auf der anderen Seite des Kreises aufleuchten. (WAND?) 
+Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit einer anderen Geräuschquelle durchgeführt worden. In diesem Funktionstest wurde der Song "Come as you are" von Nirvana angespielt um die Reaktion vom Mojo zu testen. Die Quelle des Geräusches ist in diesem Video unterhalb des Mojo boards. Es ist zu erkennen, dass die unterste LED am hellsten leuchtet und die Richtung damit erkannt wird. Allerdings ist ebenfalls zu sehen, dass auch LEDs auf der anderen Seite des Kreises aufleuchten.
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
@@ -241,15 +262,23 @@ Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit eine
     </div>
 </div>
 
-Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiment ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in Abbildung 14 zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards platziert. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrofons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu 110dB getestet wurden.
+Das Frequenzspektrum ist in der nachfolgenden Abbildung 16 zu erkennen. Die Energie der Frequenzen scheint hier weniger breit gefächert zu sein als bei dem vorangegangenen Funktionstest. Die Funktion konnte auch hierbei im Wesentlichen nachgewiesen werden, auch wenn es bei diesem Test zum leuchten der gegenüberliegenden LED gekommen ist. Der Schalldruckpegel der während des Versuchs gemssen wurde lag bei rund 70dB. 
+
+```{figure} img/MojoLab/comeasyouare.png 
+:name: 01_fig_016
+
+Frequenzspektrum für das Intro von "Come as you are" von Nirvana
+```
+
+Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiment ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in Abbildung 17 zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards platziert. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrofons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu 110dB getestet wurden.
 
 ```{figure} img/MojoLab/Setup_experiment.png 
-:name: 01_fig_014
+:name: 01_fig_017
 
 Versuchsaufbau für den Funktionstest
 ```
 
-Getestet werden mit diesem Aufbau zwei Grenzen. Zum einen wird die Grenze der Lautstärke ermittelt. Hierfür wird die Lautsärke einen Sinustones mit einer Frequenz von f=1000 Hz langsam von 40dB Schalldruckpegel bis 111dB Schaldruckpegel erhöht und die Funktion wird beobachtet. Jede Lautstärke wird für eine Zeit t= 3 Sekunden gehalten. Die Funktion gilt als sicher vorhanden, solange ausschließlich die LED leuchtet, die in die Richtung der Geräuschquelle ausgerichtet ist. Die gewählte Frequenz wurde anhand des Datenblattes der Mikrofone gewählt. Die angegebenen Testbedigungen für die Angaben im Datenblatt beziehen sich auf eine Frequenz von f=1000 Hz.
+Getestet werden mit diesem Aufbau zwei Grenzen. Zunächst wird die Grenze der Lautstärke ermittelt. Hierfür wird die Lautsärke einen Sinustones mit einer Frequenz von f=1000 Hz langsam von 40dB Schalldruckpegel bis 111dB Schaldruckpegel erhöht und die Funktion wird beobachtet. Jede Lautstärke wird für eine Zeit t= 3 Sekunden gehalten. Die Funktion gilt als sicher vorhanden, solange ausschließlich die LED leuchtet, die in die Richtung der Geräuschquelle ausgerichtet ist. Die gewählte Frequenz wurde anhand des Datenblattes der Mikrofone gewählt. Die angegebenen Testbedigungen für die Angaben im Datenblatt beziehen sich auf eine Frequenz von f=1000 Hz.
 Für Sound ausgabe wurde folgendes Pythonscript mit dem Paket PyAudio genutzt.
 
 ```{literalinclude} ../files/ProjectFiles/Soundoutput.py
@@ -270,7 +299,7 @@ Aus dem Code ist zu erkennen, dass mit jedem Schleifendurchlauf die Lautsärke u
 
 In dem Video ist zu erkennen, dass die Funktion sicher ab einem Schalldruckpegel von 47dB zu erkennen ist. Mit steigender Lautstärke ist die Funktion immer deutlicher, bis zu einem Schalldruckpegel von 99,9 dB laut Anzeige des Schalldruckpegelmessers. Oberhalb dieses Pegels ist zu erkennen, dass auf dem Microphone Shield alle LEDs beginnen zu leuchten und damit keine eindeutige Erkennung des Sounds gegeben ist.
 
-Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet werden. Die ersten Funktionstest durch Sprache und Gitarrenspiel führen zu der Annahme, dass die Grenzen nicht alleine von der Lautstärke abhängen sondern ebenfalls von der Frequenz des eingehenden Signals. Aus diesem Grund wurde ein weiteres Exeriment durchgeführt. Der Aufbau bleibt wie dargestellt in Abbildung 14. In diesem Experiment wird die Lautstärke konstant gehalten bei 91dB und die Frequenz wird angepasst. Der Grund für die 91dB Schalldruckpegel lassen sich ebenfalls im Datenblatt der Mikrofone finden, da diese ebenfalls die Testbediungen darstellen. Hierfür wird das Pythonskript insofern abgeändert, als dass lediglich eine Frequenz einmalig ausgegeben wird. Die For-Schleife wird für diesen Versuch ausgeblendet. Bei jeder Frequenz wurde die Lautstärke jedes mal auf 91dB Schalldruckpegeleingestellt, bevor das Video aufgenommen wurde.
+Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet werden. Die ersten Funktionstest durch Sprache und Gitarrenspiel führen zu der Annahme, dass die Grenzen nicht alleine von der Lautstärke abhängen sondern ebenfalls von der Frequenz des eingehenden Signals. Aus diesem Grund wurde ein weiteres Exeriment durchgeführt. Der Aufbau bleibt wie dargestellt in Abbildung 15. In diesem Experiment wird die Lautstärke konstant gehalten bei 91dB und die Frequenz wird angepasst. Der Grund für die 91dB Schalldruckpegel lassen sich ebenfalls im Datenblatt der Mikrofone finden, da diese ebenfalls die Testbediungen darstellen. Hierfür wird das Pythonskript insofern abgeändert, als dass lediglich eine Frequenz einmalig ausgegeben wird. Die For-Schleife wird für diesen Versuch ausgeblendet. Bei jeder Frequenz wurde die Lautstärke jedes mal auf 91dB Schalldruckpegeleingestellt, bevor das Video aufgenommen wurde.
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
@@ -282,11 +311,19 @@ Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet wer
     </div>
 </div>
 
-Es ist zu beobachten, dass die Funktion im unteren Frequenzbereich (440 Hz bis 700 Hz) zwar zu erkennen ist, allerdings leuchten die Richtungs LEDs nur schwach. Ein eindeutiges Erkennen der LED ist ab einer Frequenz von 710 Hz gegeben. Die höchste Frequenz bei der eine eindeutige Funktion beobachtet werden konnte war f=4937 Hz. Darüber hinaus kann beobachtet werden, dass nicht mehr die oberste LED leuchtet oder aber, dass mehrere LEDs leuchten. 
+Es ist zu beobachten, dass die Funktion im unteren Frequenzbereich (440 Hz bis 700 Hz) zwar zu erkennen ist, allerdings leuchten die Richtungs LEDs nur schwach. Ein eindeutiges Erkennen der LED ist ab einer Frequenz von 710 Hz gegeben. Die höchste Frequenz bei der eine eindeutige Funktion beobachtet werden konnte war f=4937 Hz. Darüber hinaus kann beobachtet werden, dass nicht mehr die oberste LED leuchtet oder aber, dass mehrere LEDs gleichzeitig leuchten.
 
+Das Frequenzspectrum der Audioline des Videos ist in Abbildung 18 zu sehen. Es ist zu erkennen, dass die Energiedichte bei den unteren Frequenzen erwartungsgemäß höher ist, als bei den oberen. Interessanterweise sind bei den nierigeren Frequenzen außerdem Oberwellen/Harmonische erkennbar. Die Funktion war gegeben, allerdings nich unseren aufgestellten Kriterien entsprechend.
 
+```{figure} img/MojoLab/Spec_project.png 
+:name: 01_fig_018
+
+Spectrumsverlauf des Frequenztests
+```
 
 ## Auswertung
+
+Woran hat es jelegen? Fragt man sich am Ende ja immer woran es jelegen hat...
 
 ## VHDL-Projekte Übertragen?
 
