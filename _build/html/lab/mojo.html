@@ -617,8 +617,12 @@ Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module ge
 <img alt="../_images/SignalFlow.png" src="../_images/SignalFlow.png" />
 <p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Übersicht Signalfluss</span><a class="headerlink" href="#fig-013" title="Permalink to this image">¶</a></p>
 </div>
-<p>Theorie Akustische Welle</p>
-<p>Theorie Spektrum</p>
+<p>Der erste Block des Signalflusses enthält die akustische Welle. Diese Schallwelle entsteht durch das komprimieren und dekomprimieren der Luft. In der Physik wird eine ideale winzige Punktschallquelle angenommen von der aus kugelförmig die Schallwellen in alle Richtungen abgestrahlt werden. Diese Wellenfronten in verbindung mit den Strahlen kennzeichnen die Richtung der Schallwellen. Wellenfronten sind hierbei Flächen, bei der die Luftteilchen wertgleiche Auslenkungen besitzen aufgrund der erzeugten Schwingung.DARSTELLUNG DES KREISES[Halliday]</p>
+<p>Wie bereits erwähnt verbreiten sich diese Schallwellen kugelförmig und dreidimensional im Raum und werden darum auch sphärische Wellen genannt. Je weiter man sich jedoch von der Punktquelle entfernt umso geringer wird diese Krümmung und die Schallwelle kann als Ebene verstanden werden. Diese Wellen werden dann ebene oder planare Wellen genannt. [Halliday]</p>
+<p>Um einen Ton zu erzeugen muss diese (De-) Komrimierung der Luft mit einer definierten Frequenz erzeugt werden. Um den Kammerton © zu erzeugen muss ein Ton mit einer Frequenz von f=440 Hz erzeugt werden. Idealerweise sähe dieser Ton aus wie in Abbildung X dargestellt. HIER PYTHON PLOT EINFÜGEN</p>
+<p>Aus dieser Darstellung wäre es ein einfiaches die Frequenz des Signals hinaus zu lesen und damit das Signal zu rekonstruieren. In der realen Welt ist die Wahrheit häufig nicht so eindeutig und das eintreffen Signal auf das Mikrofon ist immer mit einem Hintergrundrauschen belegt. HIER PYTHON MIT RAUSCHEN EINFÜGEN
+Um die Reaktion der Hardware auf die eintreffenden Töne besser einschätzen oder erklären zu können ist es deshalb interessant das Signal außerhalb des Zeitbereichs zu betrachten und das ganze in den Frequenzbereich zu überführen und damit ein Frequenzspektrum zu erzeugen.</p>
+<p>Das Frequenzspektrum…</p>
 <p>Erklrung MEMS Mikro</p>
 <p>Erklärung PDM</p>
 <p>Für die Funktion des Projektes müssen zunächst einige Annahmen getroffen werden. Die wichtigste Annahme ist, dass die Richtung des Tons nur in einem zweidimensionalen Raster horizontal zum Mojo Board auf das FPGA auftreffen darf. Das ist dem physikalischen Aufbau des Microphone Shields geschuldet, da alle Mikrophone auf einer Ebene verbaut sind. Außerdem wird angenommen, dass es sich bei den auftreffenden Schallwelen um eine eine gerade Wellenfront handelt. Das heißt, dass sichjeder Punkt einer Welle mit der gleichen Geschwindigkeit ausbreitet.Die letzte Annahme ist, dass jede Frequenz eines Soundsamples aus einer einzigen Richtung kommt.</p>
