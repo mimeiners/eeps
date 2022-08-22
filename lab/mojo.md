@@ -209,9 +209,17 @@ In diesem Kapitel wird die Funktion des gesamten Aufbaus evaluiert. Innerhalb di
 
 Übersicht Signalfluss
 ```
-Theorie Akustische Welle
 
-Theorie Spektrum
+Der erste Block des Signalflusses enthält die akustische Welle. Diese Schallwelle entsteht durch das komprimieren und dekomprimieren der Luft. In der Physik wird eine ideale winzige Punktschallquelle angenommen von der aus kugelförmig die Schallwellen in alle Richtungen abgestrahlt werden. Diese Wellenfronten in verbindung mit den Strahlen kennzeichnen die Richtung der Schallwellen. Wellenfronten sind hierbei Flächen, bei der die Luftteilchen wertgleiche Auslenkungen besitzen aufgrund der erzeugten Schwingung.DARSTELLUNG DES KREISES[Halliday]
+
+Wie bereits erwähnt verbreiten sich diese Schallwellen kugelförmig und dreidimensional im Raum und werden darum auch sphärische Wellen genannt. Je weiter man sich jedoch von der Punktquelle entfernt umso geringer wird diese Krümmung und die Schallwelle kann als Ebene verstanden werden. Diese Wellen werden dann ebene oder planare Wellen genannt. [Halliday]
+
+Um einen Ton zu erzeugen muss diese (De-) Komrimierung der Luft mit einer definierten Frequenz erzeugt werden. Um den Kammerton (C) zu erzeugen muss ein Ton mit einer Frequenz von f=440 Hz erzeugt werden. Idealerweise sähe dieser Ton aus wie in Abbildung X dargestellt. HIER PYTHON PLOT EINFÜGEN 
+
+Aus dieser Darstellung wäre es ein einfiaches die Frequenz des Signals hinaus zu lesen und damit das Signal zu rekonstruieren. In der realen Welt ist die Wahrheit häufig nicht so eindeutig und das eintreffen Signal auf das Mikrofon ist immer mit einem Hintergrundrauschen belegt. HIER PYTHON MIT RAUSCHEN EINFÜGEN
+Um die Reaktion der Hardware auf die eintreffenden Töne besser einschätzen oder erklären zu können ist es deshalb interessant das Signal außerhalb des Zeitbereichs zu betrachten und das ganze in den Frequenzbereich zu überführen und damit ein Frequenzspektrum zu erzeugen.
+
+Das Frequenzspektrum...
 
 Erklrung MEMS Mikro
 
