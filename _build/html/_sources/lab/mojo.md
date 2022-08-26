@@ -221,9 +221,15 @@ Um die Reaktion der Hardware auf die eintreffenden Töne besser einschätzen ode
 
 Das Frequenzspektrum...
 
-Erklrung MEMS Mikro
+Nachdem geklärt wurde welche Eingangssignale zu erwarten sind kann der Fokus auf die akustische Aufnahme gerichtet werden. Auf dem Microphoneshield sind sieben Mikrofone mit der Bezeichnung SPK0415HM4H zu finden. Diese Mikrophone sind digitale Mikro-Elektronisch-Mechanische Systeme (MEMS). Das bedeutet, dass durch Herstellungsmethoden der Halbleiterindustrie ein Bauteil erzeugt wurde, dass sowohl elektronische als auch mechanische Eigenschaften vereint. Wie in Abbildung 14 zu erkennen ist, besitzt ein solches Mikrofon einen Sound Port, dies ist eine Öffnung im Gehäuse (Can) des Bauteils. Hier kann der Ton auf die eigentliche Struktur auftreffen. Die Öffnung ist hier oben kann bei anderen Mikrofonen aber auch am Boden des Gehöuses sein. Darunter befindet sich eine Membran (Glob Top Molding) über einer Halbleiter Trägerstruktur. Die Membran und die Trägerstruktur sind zwei Gerade, gegenüberliegende Flächen zwischen denen ein Material zu finden ist das als Dielektrikum verstanden werden kann. Dies ist nichts weiter als ein Kondensator mit einer dazugehörigen Kapazität. Beim Auftreffen von Schall gerät die Membran in Bewegung, was die Kapazität des Kondensators ändert. Diese Änderung wird von der Anwender Spezifischen Schaltung (ASIC) erkannt und entsprechend verarbeitet. Ob ein Analoges oder Digitales Signal ausgegeben wird entscheidet sich hier. Entweder das Analoge Signal wird vom ASIC bereit gestellt oder ein weiterer Wandler (Transducer) befindet sich innerhalb des Systems, welches dieses analoge zu einem digitalen Signal wandelt. Bei den digitalen Signalen kann es sich um Pulse-Code-Modulierte (PCM) oder auch um Puls-Dichte-Modulierte Signale handeln. Puls-Code-Modulierte Signale werden hier nicht weiter erläutert, sollen aber der Vollständigkeit halber erwähnt werden.
+ 
+```{figure} img/MojoLab/MEMS.png
+:name: 01_fig_014
 
-Erklärung PDM
+Aufbau eines MEMS Mikrofons
+```
+
+In diesem Projekt wurden Mikrofone verwendet, die Puls-Dichte-Modulierte Signale verwenden. Und wat dat is sach isch euch jetze....
 
 
 Für die Funktion des Projektes müssen zunächst einige Annahmen getroffen werden. Die wichtigste Annahme ist, dass die Richtung des Tons nur in einem zweidimensionalen Raster horizontal zum Mojo Board auf das FPGA auftreffen darf. Das ist dem physikalischen Aufbau des Microphone Shields geschuldet, da alle Mikrophone auf einer Ebene verbaut sind. Außerdem wird angenommen, dass es sich bei den auftreffenden Schallwelen um eine eine gerade Wellenfront handelt. Das heißt, dass sichjeder Punkt einer Welle mit der gleichen Geschwindigkeit ausbreitet.Die letzte Annahme ist, dass jede Frequenz eines Soundsamples aus einer einzigen Richtung kommt.
@@ -231,7 +237,7 @@ Für die Funktion des Projektes müssen zunächst einige Annahmen getroffen werd
 Die Sounderkennung mit dem Mojo errechnet sich die Richtung aus der der Sound auf ihn trifft aus der Phasenverschiebung zwischen den äußeren und dem zentralen Mikrofon. Die auf den Mikrophonen auftreffende Frequenz wird simultan vom FPGA abgetastet. Auf diese Fragmente wird eine Fast-Fourier-Transformation (FFT) durchgeführt, wodurch das Signal von der Zeit- in die Frequenzdomäne überführt. Als Ausgabe aus der FFT erhält man nun für jedes Fragment eine Komplexe Zahl. Bestehend aus dem Realteil, der die Amplitude des eingehenden Signals darstellt und dem Imaginärteil, der die Phase des eingehenden Signals darstellt. Diese können in einem Koordinatensystem aufgetragen werden. In Abbildung 13 ist beispielfhaft für drei Mikrophone das Prinzip dargestellt. Die schwarzen Kreise stellen die Position von drei Mikrofonen des Mojos dar. Ihre Koordinaten sind in den Klammern dargestellt. Der Mittelpunkt des Koordinatensystems ist ebenfalls als Koordinate des zentralen Mikrophons zu verstehen. In blau in der oberen linken Ecke ist die Richtung dargestellt aus der ein Ton auf die Mikrophone trifft. Das Auftreffen bewirkt eine Verzögerung (Delay) der jeweiligen äußeren Mikrophone im Vergleich zum mittleren Mikrofon. Mithilfe dieses Delays bzw. mit der Phasenverschiebung zueinander ( die Verzögerung ist lediglich der quotient aus Phasenverschiebung und Frequenz wodurch diese beiden Werte proportinal zueniander sind) und der Positionsvectoren der unterschiedlichen Mikrophone kann nun die Richtung des Tons bestimmt werden. Hierzu werden die Ortsvektoren mit dem errechneten Delay Skaliert, wodurch die violetten skalierten Vektoren entstehen. Durch Vektoraddition dieser Vektoren kann ein Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt. (gelb)
 
 ```{figure} img/MojoLab/SoundirectionPrinciple.png
-:name: 01_fig_014
+:name: 01_fig_015
 
 Versuchsaufbau für den Funktionstest
 ```
@@ -252,7 +258,7 @@ Das oben beschrieben Funktionsprinzip wird im nächsten Abschnitt getestet. Für
 Betrachtet man zu den Beobachtungen nun das Frequenzsspektrum zu den ersten sieben Buchstaben des Alphabets ist zu erkennen, dass die größte Energiedichte bei Frequenzen zwischen 60 Hz und 400 Hz zu finden ist. Der Buchstabe C ist in dieser Abbilung der dritte Balken von links. Hier ist zu erkennen, dass zu Beginn des Buchstaben eine höhere Energiedichte zu finden ist. Diese reicht von einer Frequenz von 4 kHz bis zu über 16 kHz. Interessanterweise ist eine konträre Beobachtung beim Buchstaben "F" zu erkennen. Der zweite Balken von rechts hat zu Beginn des Buchstabens ein Ähnliches Frequenzmuster wie die Anderen. nach einer kurzen Zeit verteilt sich die Energie gleichmäßig auf eine größere Badnbreite an Frequenzen. Hier konnte jedoch eine gute Funktion des Mojo beobachtet werden. Der Schalldruckpegel bei diesem Versuch konnte etwa zwischen 60 dB und 70 dB gemessen werden.´
 
 ```{figure} img/MojoLab/AlphaG.png 
-:name: 01_fig_015
+:name: 01_fig_016
 
 Frequenzspektrum für die Buchstaben A bis G
 ```
@@ -273,7 +279,7 @@ Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit eine
 Das Frequenzspektrum ist in der nachfolgenden Abbildung 16 zu erkennen. Die Energie der Frequenzen scheint hier weniger breit gefächert zu sein als bei dem vorangegangenen Funktionstest. Die Funktion konnte auch hierbei im Wesentlichen nachgewiesen werden, auch wenn es bei diesem Test zum leuchten der gegenüberliegenden LED gekommen ist. Der Schalldruckpegel der während des Versuchs gemssen wurde lag bei rund 70dB. 
 
 ```{figure} img/MojoLab/comeasyouare.png 
-:name: 01_fig_016
+:name: 01_fig_017
 
 Frequenzspektrum für das Intro von "Come as you are" von Nirvana
 ```
@@ -281,7 +287,7 @@ Frequenzspektrum für das Intro von "Come as you are" von Nirvana
 Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiment ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in Abbildung 17 zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards platziert. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrofons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu 110dB getestet wurden.
 
 ```{figure} img/MojoLab/Setup_experiment.png 
-:name: 01_fig_017
+:name: 01_fig_018
 
 Versuchsaufbau für den Funktionstest
 ```
@@ -324,7 +330,7 @@ Es ist zu beobachten, dass die Funktion im unteren Frequenzbereich (440 Hz bis 7
 Das Frequenzspectrum der Audioline des Videos ist in Abbildung 18 zu sehen. Es ist zu erkennen, dass die Energiedichte bei den unteren Frequenzen erwartungsgemäß höher ist, als bei den oberen. Interessanterweise sind bei den nierigeren Frequenzen außerdem Oberwellen/Harmonische erkennbar. Die Funktion war gegeben, allerdings nich unseren aufgestellten Kriterien entsprechend.
 
 ```{figure} img/MojoLab/Spec_project.png 
-:name: 01_fig_018
+:name: 01_fig_019
 
 Spectrumsverlauf des Frequenztests
 ```
