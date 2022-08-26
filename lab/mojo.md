@@ -47,7 +47,7 @@ Wenn ihr die Istallation zum Beispiel folgendermaßen startet:
 Terminalausgabe
 :       mojo@fpga:/Downloads/Xilinx_ISE_DS_Lin_14.7_1015_1$ sudo ./xsetup
 
-Werdet ihr zunächst darum gebeten allerlei Konditionen und Vereinbarungen zuzustimmen. 
+Werdet ihr zunächst darum gebeten allerlei Konditionen und Vereinbarungen zuzustimmen. Diese sind in [Abbildung 1]( 01_fig_01) 
 
 ```{figure} img/Terms_and_conditions.png 
 :name: 01_fig_01
@@ -55,7 +55,7 @@ Werdet ihr zunächst darum gebeten allerlei Konditionen und Vereinbarungen zuzus
 Zustimmung zu den Terms and Conditions geben
 ```
 
-Wir stimmen diesen zu und müssen als nächstes das Product auswählen, dass wir installieren wollen. In unserem Fall ist es das ISE WebPACK.
+Wir stimmen diesen zu und müssen als nächstes das Product auswählen, dass wir installieren wollen. In unserem Fall ist es das ISE WebPACK wie in [Abbildung 2]( 01_fig_02) zu erkennen.
 
 ```{figure} img/MojoLab/AuswahlISE.png
 :name: 01_fig_02
@@ -70,7 +70,8 @@ Hier gebt ihr eure persönlichen Daten ein und Wählt die Lizenz für das ISE We
 Für das einmalige Starten des WebPacks geht ihr am besten wie folgt vor.
 
 
-Habt ihr das Programm einmal gestartet wird euch das Programm daruf hinweisen, dass es keine Lizenz gefunden hat. Es öffnet euch freundlicherweise direkt den Lizenzmanager.
+Habt ihr das Programm einmal gestartet wird euch das Programm daruf hinweisen, dass es keine Lizenz gefunden hat. Es öffnet euch freundlicherweise direkt den Lizenzmanager. Vergleiche mit [Abbildung 3]( 01_fig_03).
+
 ```{figure} img/MojoLab/Licence_Manager_1.png 
 :name: 01_fig_03
 
@@ -78,7 +79,7 @@ Möglichkeit zur Auswahl des Lizenztypes
 ```
 Solltet ihr bis zu diesem Zeitpunkt noch keine Lizenz haben ist hier noch einmal eine gute Möglichkeit den Lizenzierungsprozess anzuschieben.
 
-Habt ihr eure Lizenz herunter geladen, könnt ihr eure Lizenz nun über den "Manage Licences" Reiter zum Programm hinzufügen. Navigiert dazu innerhalb des Dialogfeldes zu dem Ort an dem ihr eure Lizenz abgespeichert habt.
+Habt ihr eure Lizenz herunter geladen, könnt ihr eure Lizenz nun über den "Manage Licences" Reiter zum Programm hinzufügen. Navigiert dazu innerhalb des Dialogfeldes [Abbildung 4]( 01_fig_04) zu dem Ort an dem ihr eure Lizenz abgespeichert habt.
 ```{figure} img/MojoLab/Licence_Manager_2.png 
 :name: 01_fig_04
 
@@ -107,7 +108,7 @@ Terminalausgabe
 :       bash alchitry-labs
 
 Solltet ihr bis hierher alles richtig gemacht haben, öffnet sich endlich unsere Programmierumgebung.
-Allerdings werden wir zunächst darauf hingewiesen, dass wir den Installationsort unseres Builders angeben sollen. Hierfür geht klickt im Alchitry Labs Fenster bitte auf "Settings" und dann auf "ISE Location" und wählt dann den Ordner mit der Versionsnummer eurer ISE aus ( hier: 14.7). Keine Sorge, einen ausführlichen Hinweis darüber was ihr auswählen sollt, gibt euch das Programm ebenfalls.
+Allerdings werden wir zunächst darauf hingewiesen, dass wir den Installationsort unseres Builders angeben sollen. Hierfür klickt im Alchitry Labs Fenster bitte auf "Settings" und dann auf "ISE Location" ( siehe: [Abbildung 5]( 01_fig_05)) und wählt dann den Ordner mit der Versionsnummer eurer ISE aus ( hier: 14.7). Keine Sorge, einen ausführlichen Hinweis darüber was ihr auswählen sollt, gibt euch das Programm ebenfalls.
 
 ```{figure} img/MojoLab/Alchitry_Licence.png 
 :name: 01_fig_05
@@ -117,7 +118,7 @@ Auswahl des ISE WebPack Installationsortes
 Ab jetzt solltet ihr in der Lage sein ein Projekt zu öffnen und endlich den Mojo zu flashen. Dieser Vorgang wird in den nächsten Abschnitten geklärt.
 
 ### Öffnen des Projektes
-Beim ersten Starten von Alchitry Labs werdet ihr direkt gefragt ob ihr ein bestehendes Projekt öffnen wollt, oder ob ihr ein neues erstellen wollt. 
+Beim ersten Starten von Alchitry Labs werdet ihr gefragt ob ihr ein bestehendes Projekt öffnen wollt, oder ob ihr ein neues erstellen wollt wie in [Abbildung 6]( 01_fig_06) dargestellt.
 
 ```{figure} img/MojoLab/First_Start.png 
 :name: 01_fig_06
@@ -126,7 +127,7 @@ Erste Projektauswahl
 ```
 Da wir noch kein bestehendes Projekt besitzen beantworten wir die Frage hier mit "No" um ein neues Projekt zu erstellen. 
 
-Das folgende Dialogfenster könnt ihr in Abbildung 7 sehen. Im Feld "Project Name:" tragen wir unseren Wunschnamen für unser Projekt ein. Im folgenden Reiter "Workspace" steht unser Arbeitsumgebung. Hier werden unsere Projekte abgespeichert und unsere Projektierungsumgebung erstellt hier die nötigen Dateien für das Builden des Projektes. Im dritten Reiter wählen wir unser Mojo Board aus. Das Programm erstellt hier für uns die Bezüge zu Hardware, damit das Projekt funktionsfähig gebaut werden kann. Die Sprache ("Language") die ausgewählt werden muss um ein funktionierendes Beispielprojekt laden zu können ist hier die Programmeigene Lucid Sprache. Ihr könnt in dieser Umgebung ebenfalls in Verilog coden, allerdings werdet ihr hier keine Beispielprojekte finden. Wir wählen für dieses Projekt Lucid aus und Nehmen das Beispiel Sound Locator aus dem letzten Dropdown Menüs dieses Fensters.
+Das folgende Dialogfenster könnt ihr in [Abbildung 7]( 01_fig_07) sehen. Im Feld "Project Name:" tragen wir unseren Wunschnamen für unser Projekt ein. Im folgenden Reiter "Workspace" steht unser Arbeitsumgebung. Hier werden unsere Projekte abgespeichert und unsere Projektierungsumgebung erstellt hier die nötigen Dateien für das Builden des Projektes. Im dritten Reiter wählen wir unser Mojo Board aus. Das Programm erstellt hier für uns die Bezüge zu Hardware, damit das Projekt funktionsfähig gebaut werden kann. Die Sprache ("Language") die ausgewählt werden muss um ein funktionierendes Beispielprojekt laden zu können ist hier die Programmeigene Lucid Sprache. Ihr könnt in dieser Umgebung ebenfalls in Verilog coden, allerdings werdet ihr hier keine Beispielprojekte finden. Wir wählen für dieses Projekt Lucid aus und Nehmen das Beispiel Sound Locator aus dem letzten Dropdown Menüs dieses Fensters.
 
 ```{figure} img/MojoLab/New_Project.png 
 :name: 01_fig_07
@@ -139,23 +140,26 @@ Bevor wir zu Problemen innerhalb dieses Projektes kommen, machen wir eine kurze 
 ## Aufbau eines Projektes
 
 - <u>**Source**</u>
- Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module genannt. Diese beschreiben alle Ein- und Ausgänge der unterschiedlichen Hardware. Für das Sound Locator Projekt wären das zum einen die Hann Funktion, der LED-Ring, das mojo-top modul, welches unser Mojo Board beschreibt, die pdm-mics zur Definition unserer Mikrophone und das sound_locator modul in der der Delay zur Sound Erkennung ermittelt wird.
+
+Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module genannt. Diese beschreiben alle Ein- und Ausgänge der unterschiedlichen Hardware. Die im Projekt genutzten Source Dateien sind in [Abbildung 8]( 01_fig_08) Für das Sound Locator Projekt wären das zum einen die Hann Funktion, der LED-Ring, das mojo-top modul, welches unser Mojo Board beschreibt, die pdm-mics zur Definition unserer Mikrophone und das sound_locator modul in der der Delay zur Sound Erkennung ermittelt wird.
 
 ```{figure} img/MojoLab/Source.png 
 :name: 01_fig_08
 
 Die Source-Dateien findest du zu oberst im Projekt
 ```
-- <u>**Components**</u>m
+- <u>**Components**</u>
 
-Components sind teils vorinstallierte teils selbst geschriebene Bausteine, die für spezielle Funktionen verwendet werden können. In unserem Projekt finden wir vielfach Lucid-Files, **.luc**. Diese wurden vom Hersteller erstellt, können sich aber auch in der Xilinx Umgebung finden. In deisem Projekt befinden sich:
-
+Components sind teils vorinstallierte teils selbst geschriebene Bausteine, die für spezielle Funktionen verwendet werden können. In unserem Projekt finden wir vielfach Lucid-Files, **.luc**. Diese wurden vom Entwickler erstellt, können sich aber auch in der Xilinx Umgebung finden. Die in diesem Projekt genutzten sind in [Abbildung 9]( 01_fig_09) dargestellt.
 ```{figure} img/MojoLab/Components.png 
 :name: 01_fig_09
 
 Als Zweites findest du die Components im Projekt
 ```
 - <u>**Cores**</u>
+
+Die Cores oder auch IP-Cores sind vorgefertigte weitestgehend geteste Bausteine die spezielle Aufgaben erledigen können. IP steht für Intellectual Property also Geistiges Eigentum. Diese Bausteine sind weitestgehend spezifiziert und bieten somit den Vorteil, dass diese in einem Design mehrfach wiederverwendet werden können. Fertige IP-Cores gibt es von Buskommunikation über digitale Signalverarbeitung wie FFT bis hin zu Multimedia wie Ethernet oder Bluetooth. In diesem Projekt gibt es drei IP cores. Zum einen den decimation Filter, welcher die einkommende PDM Signale downssampled um die Informationen mit verringerter Samplefrequenz zu extrahieren. Als zweites gibt es den mag_phase_calculator der aus den einkommenden Signalen die Amplitude und die Phase errechnet und als letztes den xfft_v8_0-core der die FFT auf die einkommenden Signale anwendet.
+
 ```{figure} img/MojoLab/Cores.png 
 :name: 01_fig_010
 
@@ -163,7 +167,7 @@ Der dritte Reiter beinhaltet die IP-Cores
 ```
 - <u>**Constraints**</u>
 
-Daregstellt sind die drei User-constraints-files von debugger, microphone shield und vom mojo board.In diesen Dateien werden die Timing-Eigenschaften sowie die Pineigenschaften und physikalischen Eigenschaften und grenzen beschrieben. Diese Dateien werden benötigt um dem synthetisierungs Programm (ISE WebPack) die letzten Informationen zu geben wie das Projekt erstellt werden soll.
+Daregstellt in [Abbildung 11]( 01_fig_011)sind die drei User-constraints-files von debugger, microphone shield und vom mojo board.In diesen Dateien werden die Timing-Eigenschaften sowie die Pineigenschaften und physikalischen Eigenschaften und grenzen beschrieben. Diese Dateien werden benötigt um dem synthetisierungs Programm (ISE WebPack) die letzten Informationen zu geben wie das Projekt erstellt werden soll.
 
 ```{figure} img/MojoLab/Constraints.png 
 :name: 01_fig_011
@@ -171,14 +175,13 @@ Daregstellt sind die drei User-constraints-files von debugger, microphone shield
 Als letztes gibt es noch die Constraints
 ```
 
-
 ## Sound Locator Projekt
 
 Im Vorfeld wurden bereits die Hardware sowie die unterschiedlichen Funktionsblöcke die das Sound Locator Projekt besitzt beschrieben. Die Dokumentation des Projektes von O'Reilly verspricht ein Plug in Play mit der Hardware. Die Untersuchungen innerhalb dieses Projekts haben jedoch gezeigt, dass noch weitere Probleme gelöst werden müssen, bevor das Projekt auf den FPGA geflasht werden kann. In diesem Abschnitt schauen wir uns diese Probleme an, wie wir diese einfach lösen können und schauen uns im Anschluss die Funktion der Sound-Erkennung an.
 
 ### Probleme mit den IP-cores lösen
 
-Erinnern wir uns an die IP-Cores die im letzten Abschnitt beschrieben wurden. Sie stellt eine fertige Funktionseinheit wie zum Beispiel den Decimation-Filter dar, die nach Definition seiner Funktion zum FPGA Design hinzugefügt werden kann. Ausgerechnet diese IP-Cores machen beim ersten Flash-Versuch Probleme und es kommt folgende Meldung.
+Erinnern wir uns an die IP-Cores die im letzten Abschnitt beschrieben wurden. Sie stellt eine fertige Funktionseinheit wie zum Beispiel den Decimation-Filter dar, die nach Definition seiner Funktion zum FPGA Design hinzugefügt werden kann. Ausgerechnet diese IP-Cores machen beim ersten Flash-Versuch Probleme und es kommt folgende Meldung in [Abbildung 12]( 01_fig_012).
 
 ```{figure} img/MojoLab/Fehlermeldung_Cores.png 
 :name: 01_fig_012
@@ -202,7 +205,7 @@ Nachdem diese Schritte durchgeführt wurden kann das Projekt gebaut werden und e
 
 ## Funktionsprinzip des Projektes
 
-In diesem Kapitel wird die Funktion des gesamten Aufbaus evaluiert. Innerhalb dieses Kapitels wird zunächst das Funktionsprinzip des Projektes erläutert. In Abbildung 13 ist der Signalfluss der Sounderkennung dargestellt. Alle Dargestellten Blöcke werden innerhalb dieses und des des nächsten Abschnitts erläutert. Zunächst steht ein Ton in Form einer Sinuswelle an. Diese besteht nicht aus nur einer Frequenz wie in Abbildung 13 dargestellt, sondern setzt sich aus verschiedenen Frequenzen zusammen. Dieses Frequenzspektrum wird ebenfalls dargestelt und erläutert. Die analoge Sinuswelle wird durch ein Wandlungssystem in die digitale Domäne Übertragen. Hier sind es so genannte digitale MEMS PDM Mikrofone. Die ausgegebene PDM wird ebenfalls theoretisch erläutert und messtechnisch aufgenommen. Das Signal Processing wird vom FPGA übernommen. Hier findet die Auswertung der einkommenden Signale statt und damit die Erkennung. Am Ende steht die optische Ausgabe der erkannten Richtung.
+In diesem Kapitel wird die Funktion des gesamten Aufbaus evaluiert. Innerhalb dieses Kapitels wird zunächst das Funktionsprinzip des Projektes erläutert. In [Abbildung 13]( 01_fig_013) ist der Signalfluss der Sounderkennung dargestellt. Alle Dargestellten Blöcke werden innerhalb dieses und des des nächsten Abschnitts erläutert. Zunächst steht ein Ton in Form einer Sinuswelle an. Diese besteht nicht aus nur einer Frequenz wie in [Abbildung 13]( 01_fig_013) dargestellt, sondern setzt sich aus verschiedenen Frequenzen zusammen. Dieses Frequenzspektrum wird ebenfalls dargestelt und erläutert. Die analoge Sinuswelle wird durch ein Wandlungssystem in die digitale Domäne Übertragen. Hier sind es so genannte digitale MEMS PDM Mikrofone. Die ausgegebene PDM wird ebenfalls theoretisch erläutert und messtechnisch aufgenommen. Das Signal Processing wird vom FPGA übernommen. Hier findet die Auswertung der einkommenden Signale statt und damit die Erkennung. Am Ende steht die optische Ausgabe der erkannten Richtung.
 
 ```{figure} img/MojoLab/SignalFlow.png
 :name: 01_fig_013
@@ -210,14 +213,20 @@ In diesem Kapitel wird die Funktion des gesamten Aufbaus evaluiert. Innerhalb di
 Übersicht Signalfluss
 ```
 
-Der erste Block des Signalflusses enthält die akustische Welle. Diese Schallwelle entsteht durch das komprimieren und dekomprimieren der Luft. In der Physik wird eine ideale winzige Punktschallquelle angenommen von der aus kugelförmig die Schallwellen in alle Richtungen abgestrahlt werden. Diese Wellenfronten in verbindung mit den Strahlen kennzeichnen die Richtung der Schallwellen. Wellenfronten sind hierbei Flächen, bei der die Luftteilchen wertgleiche Auslenkungen besitzen aufgrund der erzeugten Schwingung.DARSTELLUNG DES KREISES[Halliday]
-
-Wie bereits erwähnt verbreiten sich diese Schallwellen kugelförmig und dreidimensional im Raum und werden darum auch sphärische Wellen genannt. Je weiter man sich jedoch von der Punktquelle entfernt umso geringer wird diese Krümmung und die Schallwelle kann als Ebene verstanden werden. Diese Wellen werden dann ebene oder planare Wellen genannt. [Halliday]
-
-Um einen Ton zu erzeugen muss diese (De-) Komrimierung der Luft mit einer definierten Frequenz erzeugt werden. Um den Kammerton (C) zu erzeugen muss ein Ton mit einer Frequenz von f=440 Hz erzeugt werden. Idealerweise sähe dieser Ton aus wie in Abbildung 14 dargestellt.
+Der erste Block des Signalflusses enthält die akustische Welle. Diese Schallwelle entsteht durch das komprimieren und dekomprimieren der Luft. In der Physik wird eine ideale winzige Punktschallquelle angenommen von der aus kugelförmig die Schallwellen in alle Richtungen abgestrahlt werden. Diese Punktquelle und die Ausbreitung der Schallwellen von dort aus sind in [Abbildung 14]( 01_fig_014) dargestellt. Diese Wellenfronten in verbindung mit den Strahlen kennzeichnen die Richtung der Schallwellen. Wellenfronten sind hierbei Flächen, bei der die Luftteilchen wertgleiche Auslenkungen besitzen aufgrund der erzeugten Schwingung.DARSTELLUNG DES KREISES[Halliday]
 
 ```{figure} img/MojoLab/Sine_Only.png
 :name: 01_fig_014
+
+Zweidimensionale Darstellung zur Ausbreitung einer Schallwelle
+```
+
+Wie bereits erwähnt verbreiten sich diese Schallwellen kugelförmig und dreidimensional im Raum und werden darum auch sphärische Wellen genannt. Je weiter man sich jedoch von der Punktquelle entfernt umso geringer wird diese Krümmung und die Schallwelle kann als Ebene verstanden werden. Diese Wellen werden dann ebene oder planare Wellen genannt. [Halliday]
+
+Um einen Ton zu erzeugen muss diese (De-) Komrimierung der Luft mit einer definierten Frequenz erzeugt werden. Um den Kammerton (C) zu erzeugen muss ein Ton mit einer Frequenz von f=440 Hz erzeugt werden. Idealerweise sähe dieser Ton aus wie in [Abbildung 15]( 01_fig_015) dargestellt.
+
+```{figure} img/MojoLab/Sine_Only.png
+:name: 01_fig_015
 
 Sinuswelle mit einer f= 440Hz
 ```
@@ -225,27 +234,27 @@ Sinuswelle mit einer f= 440Hz
 Aus dieser Darstellung wäre es ein einfiaches die Frequenz des Signals hinaus zu lesen und damit das Signal zu rekonstruieren. In der realen Welt ist die Wahrheit häufig nicht so eindeutig und das eintreffende Signal auf das Mikrofon ist in der Regel mit einem Rauschen belegt. 
 
 ```{figure} img/MojoLab/Noisy_Source_Signal.png
-:name: 01_fig_015
+:name: 01_fig_016
 
 Sinuswelle mit einer f= 440Hz überlagert mit Rauschen
 ```
+In [Abbildung 16]( 01_fig_016) ist dieses Signal dargestellt. Im dargestellten Zeitbereich ist es nicht einzuschätzen welches Signal das Hauptsignal ist und welche Frequenz es hat. 
+Um die Reaktion der Hardware auf die eintreffenden Töne besser einschätzen oder erklären zu können ist es deshalb interessant das Signal außerhalb des Zeitbereichs zu betrachten und das ganze mit Hilfe einer Fast-Fourier-Transformation (FFT) in den Frequenzbereich zu überführen und ein Frequenzspektrum zu erzeugen.
 
-Um die Reaktion der Hardware auf die eintreffenden Töne besser einschätzen oder erklären zu können ist es deshalb interessant das Signal außerhalb des Zeitbereichs zu betrachten und das ganze in den Frequenzbereich zu überführen und ein Frequenzspektrum zu erzeugen.
-
-Das Frequenzspektrum 
+Das Frequenzspektrum des Signals aus [Abbildung 16]( 01_fig_016) ist in [Abbildung 17]( 01_fig_017) zu finden.
 
 ```{figure} img/MojoLab/FFT_Source.png
-:name: 01_fig_016
+:name: 01_fig_017
 
 Frequenzspektrum des verrauschten Signals
 ```
 
 An der Y-Achse ist die Amplitude der Frequenzanteile aufgetragen und auf der X-Achse sind die unterschiedlichen Frequenzen dargestellt. Durch die Fast-Fourier-Transformation (FFT) ist es uns möglich diese Darstellung zu erzeugen. Sie zeigt uns aus welchen Frequenzanteilen das Ausgangssignal zusammengesetzt ist. Das Rauschen mit seinem vielen Frequenzen, die gleichermaßen im Signal enthalten sind verschwinden förmlich im Gegensatz zum eigentlichen Signal. Mit Hilfe dieser Methode ist es uns möglich auch aus im Zeitbereich verrauschten oder uneindeutigen Signalen das gesuchte Signal herauszufinden. 
 
-Nachdem geklärt wurde welche Eingangssignale zu erwarten sind kann der Fokus auf die akustische Aufnahme gerichtet werden. Auf dem Microphoneshield sind sieben Mikrophone mit der Bezeichnung SPK0415HM4H zu finden. Diese Mikrophone sind digitale Mikro-Elektronisch-Mechanische Systeme (MEMS). Das bedeutet, dass durch Herstellungsmethoden der Halbleiterindustrie ein Bauteil erzeugt wurde, dass sowohl elektronische als auch mechanische Eigenschaften vereint. Wie in Abbildung 14 zu erkennen ist, besitzt ein solches Mikrofon einen Sound Port, dies ist eine Öffnung im Gehäuse (Can) des Bauteils. Hier kann der Ton auf die eigentliche Struktur auftreffen. Die Öffnung ist hier oben kann bei anderen Mikrofonen aber auch am Boden des Gehöuses sein. Darunter befindet sich eine Membran (Glob Top Molding) über einer Halbleiter Trägerstruktur. Die Membran und die Trägerstruktur sind zwei Gerade, gegenüberliegende Flächen zwischen denen ein Material zu finden ist das als Dielektrikum verstanden werden kann. Dies ist nichts weiter als ein Kondensator mit einer dazugehörigen Kapazität. Beim Auftreffen von Schall gerät die Membran in Bewegung, was die Kapazität des Kondensators ändert. Diese Änderung wird von der Anwender Spezifischen Schaltung (ASIC) erkannt und entsprechend verarbeitet. Ob ein Analoges oder Digitales Signal ausgegeben wird entscheidet sich hier. Entweder das Analoge Signal wird vom ASIC bereit gestellt oder ein weiterer Wandler (Transducer) befindet sich innerhalb des Systems, welches dieses analoge zu einem digitalen Signal wandelt. Bei den digitalen Signalen kann es sich um Pulse-Code-Modulierte (PCM) oder auch um Puls-Dichte-Modulierte Signale handeln. Puls-Code-Modulierte Signale werden hier nicht weiter erläutert, sollen aber der Vollständigkeit halber erwähnt werden.
- 
+Nachdem geklärt wurde welche Eingangssignale zu erwarten sind kann der Fokus auf die akustische Aufnahme gerichtet werden. Auf dem Microphoneshield sind sieben Mikrophone mit der Bezeichnung SPK0415HM4H zu finden. Diese Mikrophone sind digitale Mikro-Elektronisch-Mechanische Systeme (MEMS). Das bedeutet, dass durch Herstellungsmethoden der Halbleiterindustrie ein Bauteil erzeugt wurde, dass sowohl elektronische als auch mechanische Eigenschaften vereint. Wie in [Abbildung 18]( 01_fig_018) zu erkennen ist, besitzt ein solches Mikrofon einen Sound Port, dies ist eine Öffnung im Gehäuse (Can) des Bauteils. Hier kann der Ton auf die eigentliche Struktur auftreffen. Die Öffnung ist hier oben kann bei anderen Mikrofonen aber auch am Boden des Gehöuses sein. Darunter befindet sich eine Membran (Glob Top Molding) über einer Halbleiter Trägerstruktur. Die Membran und die Trägerstruktur sind zwei Gerade, gegenüberliegende Flächen zwischen denen ein Material zu finden ist das als Dielektrikum verstanden werden kann. Dies ist nichts weiter als ein Kondensator mit einer dazugehörigen Kapazität. Beim Auftreffen von Schall gerät die Membran in Bewegung, was die Kapazität des Kondensators ändert. Diese Änderung wird von der Anwender Spezifischen Schaltung (ASIC) erkannt und entsprechend verarbeitet. Ob ein Analoges oder Digitales Signal ausgegeben wird entscheidet sich hier. Entweder das Analoge Signal wird vom ASIC bereit gestellt oder ein weiterer Wandler (Transducer) befindet sich innerhalb des Systems, welches dieses analoge zu einem digitalen Signal wandelt. Bei den digitalen Signalen kann es sich um Pulse-Code-Modulierte (PCM) oder auch um Puls-Dichte-Modulierte Signale handeln. Puls-Code-Modulierte Signale werden hier nicht weiter erläutert, sollen aber der Vollständigkeit halber erwähnt werden.
+
 ```{figure} img/MojoLab/MEMS.png
-:name: 01_fig_017
+:name: 01_fig_018
 
 Aufbau eines MEMS Mikrofons
 ```
@@ -253,18 +262,18 @@ Aufbau eines MEMS Mikrofons
 In diesem Projekt wurden Mikrofone verwendet, die Puls-Dichte-Modulierte (PDM) Signale verwenden. Bei der PDM wird die Information der Amplitude des Signals über die Puls-Dichte dargestellt. Das heißt, dass eine Häufung on logischen High (1) Pegeln eine hohe Amplitude und eine Häufung von logischen Lows (0) eine niedrige Amplitude bedeutet. Bei der Wandlung durch ein MEMS Mikrophon kann die das PDM eines Sinussignals folgendermaßen aussehen.
 
 ```{figure} img/MojoLab/Pulse_Density.png
-:name: 01_fig_018
+:name: 01_fig_019
 
 Übersicht zwischen Analogem Signal und Puls-Dichte-Moduliertem Signal[https://devzone.nordicsemi.com/nordic/nordic-blog/b/blog/posts/pdm-example-on-the-nrf52832]
 ```
-In Abbildung 18 ist wie beschrieben zu erkennen, dass mit höhren Amplituden vermehrt ein High Signal zu finden ist. Das PDM kodierte Signal ist der letze Punkt, bevor die Verarbeitung des FPGA beginnt. Als nächstes kann die Funktion des Projektes betrachtet werden.
+In [Abbildung 19]( 01_fig_019) ist wie beschrieben zu erkennen, dass mit höhren Amplituden vermehrt ein High Signal zu finden ist. Das PDM kodierte Signal ist der letze Punkt, bevor die Verarbeitung des FPGA beginnt. Als nächstes kann die Funktion des Projektes betrachtet werden.
 
-Für die Funktion des Projektes werden zunächst Annahmen vom Autor getroffen. Die wichtigste Annahme ist, dass die Richtung des Tons nur in einem zweidimensionalen Raster horizontal zum Mojo Board auf das FPGA auftreffen darf. Das ist dem physikalischen Aufbau des Microphone Shields geschuldet, da alle Mikrophone auf einer Ebene verbaut sind. Außerdem wird angenommen, dass es sich bei den auftreffenden Schallwelen um eine eine gerade Wellenfront handelt. Das heißt, dass sichjeder Punkt einer Welle mit der gleichen Geschwindigkeit ausbreitet.Die letzte Annahme ist, dass jede Frequenz eines Soundsamples aus einer einzigen Richtung kommt.
+Für die Funktion des Projektes werden zunächst Annahmen vom Autor getroffen. Die wichtigste Annahme ist, dass die Richtung des Tons nur in einem zweidimensionalen Raster horizontal zum Mojo Board auf das FPGA auftreffen darf. Das ist dem physikalischen Aufbau des Microphone Shields geschuldet, da alle Mikrophone auf einer Ebene verbaut sind. Außerdem wird angenommen, dass es sich bei den auftreffenden Schallwelen um eine eine gerade Wellenfront handelt. Das heißt, dass sich jeder Punkt einer Welle mit der gleichen Geschwindigkeit ausbreitet.Die letzte Annahme ist, dass jede Frequenz eines Soundsamples aus einer einzigen Richtung kommt.
 
-Die Sounderkennung mit dem Mojo errechnet sich die Richtung aus der der Sound auf ihn trifft aus der Phasenverschiebung zwischen den äußeren und dem zentralen Mikrofon. Die auf den Mikrophonen auftreffende Frequenz wird simultan vom FPGA abgetastet. Auf diese Fragmente wird eine Fast-Fourier-Transformation (FFT) durchgeführt, wodurch das Signal von der Zeit- in die Frequenzdomäne überführt. Als Ausgabe aus der FFT erhält man nun für jedes Fragment eine Komplexe Zahl. Bestehend aus dem Realteil, der die Amplitude des eingehenden Signals darstellt und dem Imaginärteil, der die Phase des eingehenden Signals darstellt. Diese können in einem Koordinatensystem aufgetragen werden. In Abbildung 13 ist beispielfhaft für drei Mikrophone das Prinzip dargestellt. Die schwarzen Kreise stellen die Position von drei Mikrofonen des Mojos dar. Ihre Koordinaten sind in den Klammern dargestellt. Der Mittelpunkt des Koordinatensystems ist ebenfalls als Koordinate des zentralen Mikrophons zu verstehen. In blau in der oberen linken Ecke ist die Richtung dargestellt aus der ein Ton auf die Mikrophone trifft. Das Auftreffen bewirkt eine Verzögerung (Delay) der jeweiligen äußeren Mikrophone im Vergleich zum mittleren Mikrofon. Mithilfe dieses Delays bzw. mit der Phasenverschiebung zueinander ( die Verzögerung ist lediglich der quotient aus Phasenverschiebung und Frequenz wodurch diese beiden Werte proportinal zueniander sind) und der Positionsvectoren der unterschiedlichen Mikrophone kann nun die Richtung des Tons bestimmt werden. Hierzu werden die Ortsvektoren mit dem errechneten Delay Skaliert, wodurch die violetten skalierten Vektoren entstehen. Durch Vektoraddition dieser Vektoren kann ein Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt. (gelb)
+Die Sounderkennung mit dem Mojo errechnet sich die Richtung aus der der Sound auf ihn trifft aus der Phasenverschiebung zwischen den äußeren und dem zentralen Mikrofon. Die auf den Mikrophonen auftreffende Frequenz wird simultan vom FPGA abgetastet. Auf diese Fragmente wird eine FFFT durchgeführt, wodurch das Signal von der Zeit- in die Frequenzdomäne überführt. Als Ausgabe aus der FFT erhält man nun für jedes Fragment eine Komplexe Zahl. Bestehend aus dem Realteil, der die Amplitude des eingehenden Signals darstellt und dem Imaginärteil, der die Phase des eingehenden Signals darstellt. Diese können in einem Koordinatensystem aufgetragen werden. In [Abbildung 20]( 01_fig_020) ist beispielfhaft für drei Mikrophone das Prinzip dargestellt. Die schwarzen Kreise stellen die Position von drei Mikrofonen des Mojos dar. Ihre Koordinaten sind in den Klammern dargestellt. Der Mittelpunkt des Koordinatensystems ist ebenfalls als Koordinate des zentralen Mikrophons zu verstehen. In blau in der oberen linken Ecke ist die Richtung dargestellt aus der ein Ton auf die Mikrophone trifft. Das Auftreffen bewirkt eine Verzögerung (Delay) der jeweiligen äußeren Mikrophone im Vergleich zum mittleren Mikrofon. Mithilfe dieses Delays bzw. mit der Phasenverschiebung zueinander ( die Verzögerung ist lediglich der quotient aus Phasenverschiebung und Frequenz wodurch diese beiden Werte proportinal zueniander sind) und der Positionsvectoren der unterschiedlichen Mikrophone kann nun die Richtung des Tons bestimmt werden. Hierzu werden die Ortsvektoren mit dem errechneten Delay Skaliert, wodurch die violetten skalierten Vektoren entstehen. Durch Vektoraddition dieser Vektoren kann ein Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt. (gelb)
 
 ```{figure} img/MojoLab/SoundirectionPrinciple.png
-:name: 01_fig_015
+:name: 01_fig_020
 
 Versuchsaufbau für den Funktionstest
 ```
@@ -282,16 +291,16 @@ Das oben beschrieben Funktionsprinzip wird im nächsten Abschnitt getestet. Für
         </form>
     </div>
 </div>
-Betrachtet man zu den Beobachtungen nun das Frequenzsspektrum zu den ersten sieben Buchstaben des Alphabets ist zu erkennen, dass die größte Energiedichte bei Frequenzen zwischen 60 Hz und 400 Hz zu finden ist. Der Buchstabe C ist in dieser Abbilung der dritte Balken von links. Hier ist zu erkennen, dass zu Beginn des Buchstaben eine höhere Energiedichte zu finden ist. Diese reicht von einer Frequenz von 4 kHz bis zu über 16 kHz. Interessanterweise ist eine konträre Beobachtung beim Buchstaben "F" zu erkennen. Der zweite Balken von rechts hat zu Beginn des Buchstabens ein Ähnliches Frequenzmuster wie die Anderen. nach einer kurzen Zeit verteilt sich die Energie gleichmäßig auf eine größere Badnbreite an Frequenzen. Hier konnte jedoch eine gute Funktion des Mojo beobachtet werden. Der Schalldruckpegel bei diesem Versuch konnte etwa zwischen 60 dB und 70 dB gemessen werden.´
+Betrachtet man zu den Beobachtungen nun das Frequenzsspektrum zu den ersten sieben Buchstaben des Alphabets ist zu erkennen, dass die größte Energiedichte bei Frequenzen zwischen 60 Hz und 400 Hz zu finden ist. Der Buchstabe C ist in dieser [Abbildung 21]( 01_fig_021) der dritte Balken von links. Hier ist zu erkennen, dass zu Beginn des Buchstaben ein höherer Schalldruckpegel zu erkennen ist. Diese reicht von einer Frequenz von 4 kHz bis zu über 16 kHz. Interessanterweise ist eine konträre Beobachtung beim Buchstaben "F" zu erkennen. Der zweite Balken von rechts hat zu Beginn des Buchstabens ein ähnliches Frequenzmuster wie die anderen. Nach einer kurzen Zeit verteilt sich die Energie gleichmäßig auf eine größere Badnbreite an Frequenzen. Hier konnte jedoch eine gute Funktion des Mojo beobachtet werden. Der Schalldruckpegel bei diesem Versuch konnte etwa zwischen 60 dB und 70 dB gemessen werden.´
 
 ```{figure} img/MojoLab/AlphaG.png 
-:name: 01_fig_016
+:name: 01_fig_021
 
 Frequenzspektrum für die Buchstaben A bis G
 ```
 
 
-Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit einer anderen Geräuschquelle durchgeführt worden. In diesem Funktionstest wurde der Song "Come as you are" von Nirvana angespielt um die Reaktion vom Mojo zu testen. Die Quelle des Geräusches ist in diesem Video unterhalb des Mojo boards. Es ist zu erkennen, dass die unterste LED am hellsten leuchtet und die Richtung damit erkannt wird. Allerdings ist ebenfalls zu sehen, dass auch LEDs auf der anderen Seite des Kreises aufleuchten.
+Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit einer anderen Tonquelle durchgeführt worden. In diesem Funktionstest wurde der Song "Come as you are" von Nirvana angespielt um die Reaktion vom Mojo zu testen. Die Quelle des Geräusches ist in diesem Video unterhalb des Mojo boards. Es ist zu erkennen, dass die unterste LED am hellsten leuchtet und die Richtung damit erkannt wird. Allerdings ist ebenfalls zu sehen, dass auch LEDs auf der anderen Seite des Kreises aufleuchten.
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
@@ -303,29 +312,29 @@ Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit eine
     </div>
 </div>
 
-Das Frequenzspektrum ist in der nachfolgenden Abbildung 16 zu erkennen. Die Energie der Frequenzen scheint hier weniger breit gefächert zu sein als bei dem vorangegangenen Funktionstest. Die Funktion konnte auch hierbei im Wesentlichen nachgewiesen werden, auch wenn es bei diesem Test zum leuchten der gegenüberliegenden LED gekommen ist. Der Schalldruckpegel der während des Versuchs gemssen wurde lag bei rund 70dB. 
+Das Frequenzspektrum ist in der nachfolgenden [Abbildung 22]( 01_fig_022) zu erkennen. Die Energie der Frequenzen scheint hier weniger breit gefächert zu sein als bei dem vorangegangenen Funktionstest. Die Funktion konnte auch hierbei im Wesentlichen nachgewiesen werden, auch wenn es bei diesem Test zum leuchten der gegenüberliegenden LED gekommen ist. Der Schalldruckpegel der während des Versuchs gemsesen wurde lag bei rund 70dB. 
 
 ```{figure} img/MojoLab/comeasyouare.png 
-:name: 01_fig_017
+:name: 01_fig_022
 
 Frequenzspektrum für das Intro von "Come as you are" von Nirvana
 ```
 
-Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiment ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in Abbildung 17 zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards platziert. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrofons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu 110dB getestet wurden.
+Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiment ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in [Abbildung 23]( 01_fig_023) zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards platziert. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrofons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu 111dB getestet wurden.
 
 ```{figure} img/MojoLab/Setup_experiment.png 
-:name: 01_fig_018
+:name: 01_fig_023
 
 Versuchsaufbau für den Funktionstest
 ```
 
 Getestet werden mit diesem Aufbau zwei Grenzen. Zunächst wird die Grenze der Lautstärke ermittelt. Hierfür wird die Lautsärke einen Sinustones mit einer Frequenz von f=1000 Hz langsam von 40dB Schalldruckpegel bis 111dB Schaldruckpegel erhöht und die Funktion wird beobachtet. Jede Lautstärke wird für eine Zeit t= 3 Sekunden gehalten. Die Funktion gilt als sicher vorhanden, solange ausschließlich die LED leuchtet, die in die Richtung der Geräuschquelle ausgerichtet ist. Die gewählte Frequenz wurde anhand des Datenblattes der Mikrofone gewählt. Die angegebenen Testbedigungen für die Angaben im Datenblatt beziehen sich auf eine Frequenz von f=1000 Hz.
-Für Sound ausgabe wurde folgendes Pythonscript mit dem Paket PyAudio genutzt.
+Für die Soundausgabe wurde folgendes Pythonscript mit dem Paket PyAudio genutzt.
 
 ```{literalinclude} ../files/ProjectFiles/Soundoutput.py
 :language: python
 ```
-Aus dem Code ist zu erkennen, dass mit jedem Schleifendurchlauf die Lautsärke um 0.1 also 10% erhöht wird. Der Versuch musste allerdings in vier Durchläufen durchgeführt werden wobei die Schleife in jedem der Durchläufe einmal ausgeführt wurde. Bei jedem Durlauf wurde die Systemlautstärke des genutzten Laptops erhöht, da es nicht möglich war inerhalb einer Systemeinstellung den gesamten Lautstärkebereich von 40dB bis 111dB zu durchlaufen. Die genutzten Systemlautstärken in Prozent sind am Ende des Pythonskriptes im Kommentar zu erkennen.
+Aus dem Code ist zu erkennen, dass mit jedem Schleifendurchlauf die Lautsärke um 0.1 also 10% erhöht wird. Der Versuch musste allerdings in vier Durchläufen durchgeführt werden wobei das Skript in jedem der Durchläufe einmal ausgeführt wurde. Bei jedem Durlauf wurde die Systemlautstärke des genutzten Laptops erhöht, da es nicht möglich war inerhalb einer Systemeinstellung den gesamten Lautstärkebereich von 40dB bis 111dB zu durchlaufen. Die genutzten Systemlautstärken in Prozent sind am Ende des Pythonskriptes im Kommentar zu erkennen.
 
 
 <div class="video_container">
@@ -333,14 +342,14 @@ Aus dem Code ist zu erkennen, dass mit jedem Schleifendurchlauf die Lautsärke u
       <source src="../_static/videos/Projekt_dB_Test-1.mp4" label="dB-Sweep"/>
     </video>
     <div class="overlay">
-        <p>dB-Sweep von 40 dB bis 110 dB Schallpegel</p>
+        <p>dB-Sweep von 40 dB bis 111 dB Schallpegel</p>
         </form>
     </div>
 </div>
 
 In dem Video ist zu erkennen, dass die Funktion sicher ab einem Schalldruckpegel von 47dB zu erkennen ist. Mit steigender Lautstärke ist die Funktion immer deutlicher, bis zu einem Schalldruckpegel von 99,9 dB laut Anzeige des Schalldruckpegelmessers. Oberhalb dieses Pegels ist zu erkennen, dass auf dem Microphone Shield alle LEDs beginnen zu leuchten und damit keine eindeutige Erkennung des Sounds gegeben ist.
 
-Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet werden. Die ersten Funktionstest durch Sprache und Gitarrenspiel führen zu der Annahme, dass die Grenzen nicht alleine von der Lautstärke abhängen sondern ebenfalls von der Frequenz des eingehenden Signals. Aus diesem Grund wurde ein weiteres Exeriment durchgeführt. Der Aufbau bleibt wie dargestellt in Abbildung 15. In diesem Experiment wird die Lautstärke konstant gehalten bei 91dB und die Frequenz wird angepasst. Der Grund für die 91dB Schalldruckpegel lassen sich ebenfalls im Datenblatt der Mikrofone finden, da diese ebenfalls die Testbediungen darstellen. Hierfür wird das Pythonskript insofern abgeändert, als dass lediglich eine Frequenz einmalig ausgegeben wird. Die For-Schleife wird für diesen Versuch ausgeblendet. Bei jeder Frequenz wurde die Lautstärke jedes mal auf 91dB Schalldruckpegeleingestellt, bevor das Video aufgenommen wurde.
+Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet werden. Die ersten Funktionstest durch Sprache und Gitarrenspiel führen zu der Annahme, dass die Grenzen nicht alleine von der Lautstärke abhängen sondern ebenfalls von der Frequenz des eingehenden Signals. Aus diesem Grund wurde ein weiteres Exeriment durchgeführt. Der Aufbau bleibt wie dargestellt in [Abbildung 20]( 01_fig_020). In diesem Experiment wird die Lautstärke konstant gehalten bei 91dB und die Frequenz wird angepasst. Der Grund für die 91dB Schalldruckpegel lassen sich ebenfalls im Datenblatt der Mikrofone finden, da diese ebenfalls die Testbediungen darstellen. Hierfür wird das Pythonskript insofern abgeändert, als dass lediglich eine Frequenz einmalig ausgegeben wird. Die For-Schleife wird für diesen Versuch ausgeblendet. Bei jeder Frequenz wurde die Lautstärke jedes mal auf 91dB Schalldruckpegeleingestellt, bevor das Video aufgenommen wurde.
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
@@ -354,25 +363,26 @@ Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet wer
 
 Es ist zu beobachten, dass die Funktion im unteren Frequenzbereich (440 Hz bis 700 Hz) zwar zu erkennen ist, allerdings leuchten die Richtungs LEDs nur schwach. Ein eindeutiges Erkennen der LED ist ab einer Frequenz von 710 Hz gegeben. Die höchste Frequenz bei der eine eindeutige Funktion beobachtet werden konnte war f=4937 Hz. Darüber hinaus kann beobachtet werden, dass nicht mehr die oberste LED leuchtet oder aber, dass mehrere LEDs gleichzeitig leuchten.
 
-Das Frequenzspectrum der Audioline des Videos ist in Abbildung 18 zu sehen. Es ist zu erkennen, dass die Energiedichte bei den unteren Frequenzen erwartungsgemäß höher ist, als bei den oberen. Interessanterweise sind bei den nierigeren Frequenzen außerdem Oberwellen/Harmonische erkennbar. Die Funktion war gegeben, allerdings nich unseren aufgestellten Kriterien entsprechend.
+Das Frequenzspectrum der Audioline des Videos ist in [Abbildung 24]( 01_fig_024) zu sehen. Es ist zu erkennen, dass die Energiedichte bei den unteren Frequenzen erwartungsgemäß höher ist, als bei den oberen. Interessanterweise sind bei den nierigeren Frequenzen außerdem Oberwellen/Harmonische erkennbar. Die Funktion war gegeben, allerdings nich unseren aufgestellten Kriterien entsprechend.
 
 ```{figure} img/MojoLab/Spec_project.png 
-:name: 01_fig_019
+:name: 01_fig_024
 
 Spectrumsverlauf des Frequenztests
 ```
 
-## Auswertung
+## Zusammenfassung
 
-Woran hat es jelegen? Fragt man sich am Ende ja immer woran es jelegen hat...
+Ziel des Projektes war es das Sound Locator Projekt mit dem Mojo FPGA-Board sowie dem dazugehörigen Microfone shield in Betrieb zu nehmen und die Funktion des Aufbaus zu evaluieren. Hierfür wurde die Toolchain bestehend aus dem ISE WEB Pack von Xilinx sowie Alchitry Labs auf einem Linux Debian System installiert. Das bauen des Projektes führte zunächst zu Problemen, da Laut Felermeldung diverse Dateien nicht gelesen werden konnten. Diese Dateien wurde im Laufe der Analyse gefunden und in die nötigen Archive übertragen. Dadurch war es möglich das Projekt zu bauen und auf den FPGA zu flashen. Die Funktion des Mojo konnte mit über einen Sprachtest in Form des des Buchstabierens des Alphabets verifiziert werden. Außerdem konnte eine grundsätzliche Funktion beim erkennen von Gitarrenspiel erkannt werden. Im Anschluss an den grundsätzlichen Funktionstest wurden zwei Experimente durchgeführt um die Grenzen der Sounderkennung im Hinblick auf die Lautsärke und im Hinblick auf die Frequenz. Im Hinblick auf die Lautstärke konnte eine sichere Funktion im Bereich von 47dB-91dB Schalldruckpegel festgestellt werden. Beim Frequenztest konnte bei einer konstanten Lautstärke von 90dB eine sichere Funktion im Bereich von 710Hz bis 4937 Hz beobachtet werden. Insgesamt konnte beim Umgang mit dem Mojo und dem Microphone Shield erkannt werden, dass die Funktion eindeutiger war je eindeutiger das eingehende Signal war.
+
+Folgende Aufgaben können für zukünftige Projekte interessant sein:
+
+1. Übertragen der Projekt files von Lucid in VHDL oder Verilog. Lucid ist eine von Alchitry Labs entwickelte Beschreibungssprache die es Mikrocontroller Programmierern leichter machen soll von der Mikrocontroller Programmierung auf die FPGA Programmierung umzusteigen, bzw. dieses überhaupt zu probieren.
+2. Ein weiterer Versuch könnte sein zu testen ob andere Frequenzgrenzen erreicht werden können, wenn andere Lautstärkepegel genutzt werden können.
+3. Das Gleiche gilt umgekehrt bei der Frage ob andere Lautstärkepegel erreicht werden können, wenn eine andere Frequenz für den Versuch genutzt wird. 
 
 ## VHDL-Projekte Übertragen?
 
-
-
-```{literalinclude} ../files/meas/Experiment_01/01_Amplitudengangmessung.py
-:language: python
-```
 
 
 
