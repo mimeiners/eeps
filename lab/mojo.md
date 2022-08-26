@@ -214,25 +214,52 @@ Der erste Block des Signalflusses enthält die akustische Welle. Diese Schallwel
 
 Wie bereits erwähnt verbreiten sich diese Schallwellen kugelförmig und dreidimensional im Raum und werden darum auch sphärische Wellen genannt. Je weiter man sich jedoch von der Punktquelle entfernt umso geringer wird diese Krümmung und die Schallwelle kann als Ebene verstanden werden. Diese Wellen werden dann ebene oder planare Wellen genannt. [Halliday]
 
-Um einen Ton zu erzeugen muss diese (De-) Komrimierung der Luft mit einer definierten Frequenz erzeugt werden. Um den Kammerton (C) zu erzeugen muss ein Ton mit einer Frequenz von f=440 Hz erzeugt werden. Idealerweise sähe dieser Ton aus wie in Abbildung X dargestellt. HIER PYTHON PLOT EINFÜGEN 
+Um einen Ton zu erzeugen muss diese (De-) Komrimierung der Luft mit einer definierten Frequenz erzeugt werden. Um den Kammerton (C) zu erzeugen muss ein Ton mit einer Frequenz von f=440 Hz erzeugt werden. Idealerweise sähe dieser Ton aus wie in Abbildung 14 dargestellt.
 
-Aus dieser Darstellung wäre es ein einfiaches die Frequenz des Signals hinaus zu lesen und damit das Signal zu rekonstruieren. In der realen Welt ist die Wahrheit häufig nicht so eindeutig und das eintreffen Signal auf das Mikrofon ist immer mit einem Hintergrundrauschen belegt. HIER PYTHON MIT RAUSCHEN EINFÜGEN
-Um die Reaktion der Hardware auf die eintreffenden Töne besser einschätzen oder erklären zu können ist es deshalb interessant das Signal außerhalb des Zeitbereichs zu betrachten und das ganze in den Frequenzbereich zu überführen und damit ein Frequenzspektrum zu erzeugen.
+```{figure} img/MojoLab/Sine_Only.png
+:name: 01_fig_014
 
-Das Frequenzspektrum...
+Sinuswelle mit einer f= 440Hz
+```
 
-Nachdem geklärt wurde welche Eingangssignale zu erwarten sind kann der Fokus auf die akustische Aufnahme gerichtet werden. Auf dem Microphoneshield sind sieben Mikrofone mit der Bezeichnung SPK0415HM4H zu finden. Diese Mikrophone sind digitale Mikro-Elektronisch-Mechanische Systeme (MEMS). Das bedeutet, dass durch Herstellungsmethoden der Halbleiterindustrie ein Bauteil erzeugt wurde, dass sowohl elektronische als auch mechanische Eigenschaften vereint. Wie in Abbildung 14 zu erkennen ist, besitzt ein solches Mikrofon einen Sound Port, dies ist eine Öffnung im Gehäuse (Can) des Bauteils. Hier kann der Ton auf die eigentliche Struktur auftreffen. Die Öffnung ist hier oben kann bei anderen Mikrofonen aber auch am Boden des Gehöuses sein. Darunter befindet sich eine Membran (Glob Top Molding) über einer Halbleiter Trägerstruktur. Die Membran und die Trägerstruktur sind zwei Gerade, gegenüberliegende Flächen zwischen denen ein Material zu finden ist das als Dielektrikum verstanden werden kann. Dies ist nichts weiter als ein Kondensator mit einer dazugehörigen Kapazität. Beim Auftreffen von Schall gerät die Membran in Bewegung, was die Kapazität des Kondensators ändert. Diese Änderung wird von der Anwender Spezifischen Schaltung (ASIC) erkannt und entsprechend verarbeitet. Ob ein Analoges oder Digitales Signal ausgegeben wird entscheidet sich hier. Entweder das Analoge Signal wird vom ASIC bereit gestellt oder ein weiterer Wandler (Transducer) befindet sich innerhalb des Systems, welches dieses analoge zu einem digitalen Signal wandelt. Bei den digitalen Signalen kann es sich um Pulse-Code-Modulierte (PCM) oder auch um Puls-Dichte-Modulierte Signale handeln. Puls-Code-Modulierte Signale werden hier nicht weiter erläutert, sollen aber der Vollständigkeit halber erwähnt werden.
+Aus dieser Darstellung wäre es ein einfiaches die Frequenz des Signals hinaus zu lesen und damit das Signal zu rekonstruieren. In der realen Welt ist die Wahrheit häufig nicht so eindeutig und das eintreffende Signal auf das Mikrofon ist in der Regel mit einem Rauschen belegt. 
+
+```{figure} img/MojoLab/Noisy_Source_Signal.png
+:name: 01_fig_015
+
+Sinuswelle mit einer f= 440Hz überlagert mit Rauschen
+```
+
+Um die Reaktion der Hardware auf die eintreffenden Töne besser einschätzen oder erklären zu können ist es deshalb interessant das Signal außerhalb des Zeitbereichs zu betrachten und das ganze in den Frequenzbereich zu überführen und ein Frequenzspektrum zu erzeugen.
+
+Das Frequenzspektrum 
+
+```{figure} img/MojoLab/FFT_Source.png
+:name: 01_fig_016
+
+Frequenzspektrum des verrauschten Signals
+```
+
+An der Y-Achse ist die Amplitude der Frequenzanteile aufgetragen und auf der X-Achse sind die unterschiedlichen Frequenzen dargestellt. Durch die Fast-Fourier-Transformation (FFT) ist es uns möglich diese Darstellung zu erzeugen. Sie zeigt uns aus welchen Frequenzanteilen das Ausgangssignal zusammengesetzt ist. Das Rauschen mit seinem vielen Frequenzen, die gleichermaßen im Signal enthalten sind verschwinden förmlich im Gegensatz zum eigentlichen Signal. Mit Hilfe dieser Methode ist es uns möglich auch aus im Zeitbereich verrauschten oder uneindeutigen Signalen das gesuchte Signal herauszufinden. 
+
+Nachdem geklärt wurde welche Eingangssignale zu erwarten sind kann der Fokus auf die akustische Aufnahme gerichtet werden. Auf dem Microphoneshield sind sieben Mikrophone mit der Bezeichnung SPK0415HM4H zu finden. Diese Mikrophone sind digitale Mikro-Elektronisch-Mechanische Systeme (MEMS). Das bedeutet, dass durch Herstellungsmethoden der Halbleiterindustrie ein Bauteil erzeugt wurde, dass sowohl elektronische als auch mechanische Eigenschaften vereint. Wie in Abbildung 14 zu erkennen ist, besitzt ein solches Mikrofon einen Sound Port, dies ist eine Öffnung im Gehäuse (Can) des Bauteils. Hier kann der Ton auf die eigentliche Struktur auftreffen. Die Öffnung ist hier oben kann bei anderen Mikrofonen aber auch am Boden des Gehöuses sein. Darunter befindet sich eine Membran (Glob Top Molding) über einer Halbleiter Trägerstruktur. Die Membran und die Trägerstruktur sind zwei Gerade, gegenüberliegende Flächen zwischen denen ein Material zu finden ist das als Dielektrikum verstanden werden kann. Dies ist nichts weiter als ein Kondensator mit einer dazugehörigen Kapazität. Beim Auftreffen von Schall gerät die Membran in Bewegung, was die Kapazität des Kondensators ändert. Diese Änderung wird von der Anwender Spezifischen Schaltung (ASIC) erkannt und entsprechend verarbeitet. Ob ein Analoges oder Digitales Signal ausgegeben wird entscheidet sich hier. Entweder das Analoge Signal wird vom ASIC bereit gestellt oder ein weiterer Wandler (Transducer) befindet sich innerhalb des Systems, welches dieses analoge zu einem digitalen Signal wandelt. Bei den digitalen Signalen kann es sich um Pulse-Code-Modulierte (PCM) oder auch um Puls-Dichte-Modulierte Signale handeln. Puls-Code-Modulierte Signale werden hier nicht weiter erläutert, sollen aber der Vollständigkeit halber erwähnt werden.
  
 ```{figure} img/MojoLab/MEMS.png
-:name: 01_fig_014
+:name: 01_fig_017
 
 Aufbau eines MEMS Mikrofons
 ```
 
-In diesem Projekt wurden Mikrofone verwendet, die Puls-Dichte-Modulierte Signale verwenden. Und wat dat is sach isch euch jetze....
+In diesem Projekt wurden Mikrofone verwendet, die Puls-Dichte-Modulierte (PDM) Signale verwenden. Bei der PDM wird die Information der Amplitude des Signals über die Puls-Dichte dargestellt. Das heißt, dass eine Häufung on logischen High (1) Pegeln eine hohe Amplitude und eine Häufung von logischen Lows (0) eine niedrige Amplitude bedeutet. Bei der Wandlung durch ein MEMS Mikrophon kann die das PDM eines Sinussignals folgendermaßen aussehen.
 
+```{figure} img/MojoLab/Pulse_Density.png
+:name: 01_fig_018
 
-Für die Funktion des Projektes müssen zunächst einige Annahmen getroffen werden. Die wichtigste Annahme ist, dass die Richtung des Tons nur in einem zweidimensionalen Raster horizontal zum Mojo Board auf das FPGA auftreffen darf. Das ist dem physikalischen Aufbau des Microphone Shields geschuldet, da alle Mikrophone auf einer Ebene verbaut sind. Außerdem wird angenommen, dass es sich bei den auftreffenden Schallwelen um eine eine gerade Wellenfront handelt. Das heißt, dass sichjeder Punkt einer Welle mit der gleichen Geschwindigkeit ausbreitet.Die letzte Annahme ist, dass jede Frequenz eines Soundsamples aus einer einzigen Richtung kommt.
+Übersicht zwischen Analogem Signal und Puls-Dichte-Moduliertem Signal[https://devzone.nordicsemi.com/nordic/nordic-blog/b/blog/posts/pdm-example-on-the-nrf52832]
+```
+In Abbildung 18 ist wie beschrieben zu erkennen, dass mit höhren Amplituden vermehrt ein High Signal zu finden ist. Das PDM kodierte Signal ist der letze Punkt, bevor die Verarbeitung des FPGA beginnt. Als nächstes kann die Funktion des Projektes betrachtet werden.
+
+Für die Funktion des Projektes werden zunächst Annahmen vom Autor getroffen. Die wichtigste Annahme ist, dass die Richtung des Tons nur in einem zweidimensionalen Raster horizontal zum Mojo Board auf das FPGA auftreffen darf. Das ist dem physikalischen Aufbau des Microphone Shields geschuldet, da alle Mikrophone auf einer Ebene verbaut sind. Außerdem wird angenommen, dass es sich bei den auftreffenden Schallwelen um eine eine gerade Wellenfront handelt. Das heißt, dass sichjeder Punkt einer Welle mit der gleichen Geschwindigkeit ausbreitet.Die letzte Annahme ist, dass jede Frequenz eines Soundsamples aus einer einzigen Richtung kommt.
 
 Die Sounderkennung mit dem Mojo errechnet sich die Richtung aus der der Sound auf ihn trifft aus der Phasenverschiebung zwischen den äußeren und dem zentralen Mikrofon. Die auf den Mikrophonen auftreffende Frequenz wird simultan vom FPGA abgetastet. Auf diese Fragmente wird eine Fast-Fourier-Transformation (FFT) durchgeführt, wodurch das Signal von der Zeit- in die Frequenzdomäne überführt. Als Ausgabe aus der FFT erhält man nun für jedes Fragment eine Komplexe Zahl. Bestehend aus dem Realteil, der die Amplitude des eingehenden Signals darstellt und dem Imaginärteil, der die Phase des eingehenden Signals darstellt. Diese können in einem Koordinatensystem aufgetragen werden. In Abbildung 13 ist beispielfhaft für drei Mikrophone das Prinzip dargestellt. Die schwarzen Kreise stellen die Position von drei Mikrofonen des Mojos dar. Ihre Koordinaten sind in den Klammern dargestellt. Der Mittelpunkt des Koordinatensystems ist ebenfalls als Koordinate des zentralen Mikrophons zu verstehen. In blau in der oberen linken Ecke ist die Richtung dargestellt aus der ein Ton auf die Mikrophone trifft. Das Auftreffen bewirkt eine Verzögerung (Delay) der jeweiligen äußeren Mikrophone im Vergleich zum mittleren Mikrofon. Mithilfe dieses Delays bzw. mit der Phasenverschiebung zueinander ( die Verzögerung ist lediglich der quotient aus Phasenverschiebung und Frequenz wodurch diese beiden Werte proportinal zueniander sind) und der Positionsvectoren der unterschiedlichen Mikrophone kann nun die Richtung des Tons bestimmt werden. Hierzu werden die Ortsvektoren mit dem errechneten Delay Skaliert, wodurch die violetten skalierten Vektoren entstehen. Durch Vektoraddition dieser Vektoren kann ein Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt. (gelb)
 

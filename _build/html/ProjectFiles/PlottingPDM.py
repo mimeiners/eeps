@@ -19,14 +19,14 @@ def read_datafile(file_name):
     data = np.loadtxt(file_name, delimiter=',', skiprows=10)
     return data
 
-data = np.genfromtxt('1kHzMeas.csv', delimiter=',', skip_header=1,
+data = np.genfromtxt('1khznew1.csv', delimiter=',', skip_header=1,
                      skip_footer=1)#, names=['time','value'])
 
 data1 = np.genfromtxt('1kHzMeas_91dB.csv', delimiter=',', skip_header=1,
                      skip_footer=1)#, names=['time','value'])
 
 x = data[1:] #all time
-y = data[0:16382]  #all value
+y = data[0:262142]  #all value
 
 x1 = data[0:1024] #all time
 y1 = data[1:1025]  #all value
@@ -56,34 +56,34 @@ def butter_lowpass(cutoff, fs, order=5):
     b, a = butter(order, normal_cutoff, btype='low', analog=False)
     return b, a
 
-def butter_lowpass_filter(data, cutoff, fs, order=5):
+def butter_lowpass_filter(data, cutoff, fs, order=6):
     b, a = butter_lowpass(cutoff, fs, order=order)
     y = lfilter(b, a, data)
     return y
 
-pdmPulses = data1[1:,]
+pdmPulses = data[1:,]
 pdmPulses = pdmPulses[:,1]
 # Setting standard filter requirements.
 order = 6
-fs = 4400000.0       
-cutoff = 160000
+fs = 44000.0       
+cutoff = 1000
 
 sampleFrequency = 32764 # Hz
 bandwidth = sampleFrequency / 2 # 0-512 Hz (also Nyquist freq)
 sampleDuration = 0.001 / sampleFrequency # time duration per cycle
 
 derivedSamples = butter_lowpass_filter(pdmPulses, cutoff, fs, order)
-t = np.linspace(0,0.001, num=16382)
+#t = np.linspace(0,0.001, num=16382)
 # plots
-plt.figure()
-plt.plot(t,derivedSamples)
+plt.figure('DerivedSamples')
+plt.plot(derivedSamples)
 plt.xlabel("t")
 plt.ylabel("Amplitude")
 plt.suptitle('Derived Signal')
 plt.show()
 
 fftFreqs = np.arange(bandwidth)
-fftValues = (np.fft.fft(derivedSamples) / sampleFrequency)[:int(bandwidth)+1]
+fftValues = (np.fft.fft(derivedSamples) / sampleFrequency)[:int(bandwidth)]
 plt.figure()
 plt.plot(fftFreqs, np.absolute(fftValues))
 plt.xlim(0, bandwidth)
@@ -93,14 +93,14 @@ plt.ylabel("Magnitude")
 plt.suptitle("Derived Signal Frequency Components")
 plt.show()
 #%%
-q=10
-n=8
+q=64
+n=2
 ftype= 'iir'
 
-wave_duration = 0.001
-sample_rate = 100
-freq = 2500
-bandwidth = freq/2
+wave_duration = 1
+sample_rate = 44000
+freq = 2816000
+bandwidth = freq/64
 samples_decimated = int(len(pdmPulses)/q)+1
 
 pdmnew = decimate(pdmPulses,q,n,ftype)
