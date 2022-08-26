@@ -93,14 +93,14 @@ plt.ylabel("Magnitude")
 plt.suptitle("Derived Signal Frequency Components")
 plt.show()
 #%%
-q=6
-n=8
+q=64
+n=2
 ftype= 'iir'
 
-wave_duration = 0.02
-sample_rate = 100
-freq = 2500
-bandwidth = freq/2
+wave_duration = 1
+sample_rate = 44000
+freq = 2816000
+bandwidth = freq/64
 samples_decimated = int(len(pdmPulses)/q)+1
 
 pdmnew = decimate(pdmPulses,q,n,ftype)
