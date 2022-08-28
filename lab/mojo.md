@@ -5,14 +5,13 @@ Diese Projektarbeit beschäftigt sich mit der Evaluation des [Sound Erkennungs](
 In diesem Tutorial nutzt Alchitry ihr eigens entwickelten Mojo v3 Board und ein Soundshield mit sieben Mikrofonen um die Richtung zu ermitteln aus der ein Ton auf das Board trifft.
 Das Mojo v3 Board ist ein Board, dass für das Erlernen der Erstellung von digitalen Schaltungen mit Hilfe von Field-Programmable-Gate-Arrays (FPGA) genutzt werden kann. Wie man bereits am Namen erkennen kann bietet ein FPGA die Möglichkeit es jederzeit neu zu flashen (Field-Programmable). Dabei beschreiben wir die Hardware mihilfe einer Hardwarebeschreibungssprache wie VHDL, Verilog oder wie in diesem Beispiel mit Lucid und die Hardware nimmt entsprechend unserer Beschreibungssprache exakt die Funktion ein die wir erzielen möchten. Die Beschreibungssprache bewirkt, dass Logikgatter innerhalb des FPGA entsprechend der Funktion miteinander verknüpft werden. So kann der Mojo v3 genutzt werden um eine LED zum blinken zu bringen oder komplexere Aufgaben wie Sounderkennung.
 
-Im Folgenden könnt ihr eine kurze Erläuterung zur Hardware finden. Die Einrichtung der Toolchain wird Schritt für Schritt erklärt. Außerdem wird der Aufbau eines Projektes erläutert und im speziellen wird auf das Sound Locator Projekt eingegangen. In diesem Zusammenhang wird auf die so genannten IP-Cores eingegangen. Da Hardware und Software offenkundig nie so funkionieren wie es der Entwickler vorgesehen hat, wird außerdem auf Probleme eingangen und wie diese Behoben werden können. Es folgt ein Vergleich über die intendierte Funktion und der tatsächlichen Funktion des Projektes wobei im Nachgang noch ein ausführlicher Versuch vorgestellt wird, der die Funktion genauer unter die Lupe nimmt.
+Im Folgenden könnt ihr eine kurze Erläuterung zur Hardware finden. Die Einrichtung der Toolchain wird Schritt für Schritt erklärt. Außerdem wird der Aufbau eines Projektes erläutert und im speziellen wird auf das Sound Locator Projekt eingegangen. In diesem Zusammenhang wird auf die so genannten IP-Cores eingegangen. Da Hardware und Software offenkundig nie so funkionieren wie es der Entwickler vorgesehen hat, wird außerdem auf Probleme eingangen und wie diese Behoben werden können. Hiernach wird eine Übersicht über den Signalfluss gegeben, Ausgehend von der Tonquelle, über die Aufnahme bis hin zur visuellen Darstellung. Für das bessere Verständnis wie die Signalwandlung und Signalanalyse von statten geht wird noch einmal auf die Darstellung von Signalen im Zeit und Frequenzbereich eingegangen. Außerdem wird der Prinzipielle Aufbau der verwendeten Mikrophone beschrieben. Als letztes wird noch die Puls-Dichte-Modulation (PDM) erklärt, bevor es im letzten Teil dieser Arbeit um den Funktionstest und ein Ausloten der Grenzen der Sounderkennung gehen wird.
 
 ## [Der Mojo](https://www.adafruit.com/product/1553) [Baby](https://www.youtube.com/watch?v=c4ytuS8pVp4)
 
 Das Mojo v3 Board ist ein preiswertes (~70€, bei [AliExpress](https://de.aliexpress.com/item/32798926767.html?spm=a2g0o.ppclist.product.2.dc57fhXPfhXPEo&pdp_npi=2%40dis%21EUR%21%E2%82%AC%2068%2C61%21%E2%82%AC%2068%2C61%21%21%21%21%21%40211b5a9616552327883654477e07b2%2164982667969%21btf&_t=pvid%3Ab5fae29b-1699-49ff-9cdf-7850da36c207&afTraceInfo=32798926767__pc__pcBridgePPC__xxxxxx__1655232788&gatewayAdapt=glo2deu) stand: Juni 2022) FPGA Entwicklungsboard auf dem ein Spartan 6 FPGA eingebaut ist sowie ein ATmega32 Microprozessor der Arduino Kompatibel ist. Dieser wird im Wesentlichen für die Programmierung des FPGA genutzt. Nach der Programmierung kann der Controller als Analog-Digital Wandler eingesetzt werden. Außerdem verfügt das Board üb 84 Digitale I/O die über die Steckleisten herausgeführt sind und 8 LEDs die für allgemeine Programmierung genutzt werden können.
 
-Auf dem Microphone Shield befinden sich sechs konzentrische Mikrofone, die um ein siebtes Mikrofon in der Mitte herum auf dem Shield angebracht sind. Diese Mikrofone werden so genutzt das über die Verzögerung des einkommenden Tones die Richtung bestimmt werden kann. Die Erklärung dafür kann hier nochmal eingefügt werden:
-PDM? Delay? FFT? MEMS?
+Auf dem Microphon Shield befinden sich sechs konzentrische Mikrophone, die um ein siebtes Mikrofon in der Mitte herum auf dem Shield angebracht sind. Die Anschlüsse dieser Mikrophone erfolgt über an der Unterseite angebrachten Stiftleiste des Shields. So kann dieses einfaich auf das Mojo Board gesteckt werden.
 
 ## Genutzte Toolchain
 Nachdem wir eine kleine Einführung in die genutzte Hardware erhalten haben wollen wir uns jetzt die Einrichtung und Installation der Toolchain anschauen. 
@@ -20,11 +19,11 @@ Die Toolchain für die Inbetriebnahme des MOJO V3 Boards besteht aus einem Proje
 
 Für das Mojo v3 board bedarf es dem [ISE WebPack](https://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html) von [Xilinx](https://www.xilinx.com/).
 Alchitry Labs wird hierbei genutzt um das Projekt zu organisieren und die unterschiedlichen Teile des Projektes zu beschreiben. Der Builder ISE WebPack übersetzt letzten Endes die Beschreibung aus den unterschiedlichen Bestandteilen des Projektierungstools in die eigentliche Hardware innerhalb des FPGA.
-Das genutzte Betriebssystem in diesem Projekt ist Linux [Debian 11](https://www.debian.org/News/2021/20210814).
+Das genutzte Betriebssystem in diesem Projekt ist Linux [Debian 11](https://www.debian.org/News/2021/20210814). Im folgenden Kapitel wird die Einrichtung der Toolchain ausführlich beschrieben.
 
 
 ### Installation des ISE WebPack
-Vor der Installation von Alchitry Labs ist es ratsam zunächst das ISE WebPack zu installieren. Auch ratsam ist es zunächst die Partitionierung des Rechners und den freien Festplattenspeicher im Blick zu haben. Das Archive was wir aus dem Internet laden werden ist bereits 6,5GB groß. Für die Installation benötigt das ISE WebPack weitere 18GB Speicherplatz. Nachdem wir sicher gestellt haben, dass wir einen geeigneten Speicherplatz für die Installation haben können wir das Installationsverzeichnis von der [Website](https://www.xilinx.com/downloadNav/vivado-design-tools/archive-ise.html) herunterladen. Hier wählen wir die Version 14.7 und unter diesem Punkt laden wir die ISE Design Suite - 14.7 Full Product Installation herunter und holen uns einen Kaffee oder Tee für die Überbrückung der Zeit. Es muss an dieser Stelle erwähnt werden, dass wir einen Nutzeraccount benötigen um diese Software herunter zu laden und zu installieren.
+Vor der Installation von Alchitry Labs ist es ratsam zunächst das ISE WebPack zu installieren. Auch ratsam ist es zunächst die Partitionierung des Rechners und den freien Festplattenspeicher im Blick zu haben. Das Archiv was wir aus dem Internet laden werden ist bereits 6,5GB groß. Für die Installation benötigt das ISE WebPack weitere 18GB Speicherplatz. Nachdem wir sicher gestellt haben, dass wir einen geeigneten Speicherplatz für die Installation haben können wir das Installationsverzeichnis von der [Website](https://www.xilinx.com/downloadNav/vivado-design-tools/archive-ise.html) herunterladen. Hier wählen wir die Version 14.7 und unter diesem Punkt laden wir die ISE Design Suite - 14.7 Full Product Installation herunter und holen uns einen Kaffee für die Überbrückung. Es muss an dieser Stelle erwähnt werden, dass ein Nutzeraccount benötigt wird um diese Software herunter zu laden und zu installieren.
 Nach dem Download geht es weiter zur eigentlichen Installation. Als erstes müssen wir das Installationsverzeichnis entpacken. Hierfür solltet ihr mit Hilfe des Terminals und des change directory Befehls **cd** in den Ordner wechseln in dem ihr die Datei heruntergeladen habt (Hier: Downloads):
 
 Terminalausgabe
@@ -36,10 +35,10 @@ Terminalausgabe
 :       mojo@fpga:/Downloads/$ tar -xvf Xilinx_ISE_DS_Lin_14.7_1015_1.tar
 
 Die Optionen **xvf** beschreiben, dass das Archiv entpackt werden soll (x), dass die verarbeiteten Dateien ausführlich aufeglistet werden (v) und dass das Archiv aus dem aktuellen Verzeichnis genommen werden soll (f). Aufgrund der Datenmenge wird es entsprechend lange dauern. Sollte der Kaffee von vorhin noch nicht kalt geworden sein. Nehmt euch ein Stück Kuchen dazu.
-Nach diesen Vorarbeiten können wir nun das Setup des Programmes Starten. 
+Nach diesen Vorarbeiten können wir nun das Setup des Programmes starten. 
 
 :::{note}
-Beachtet, dass ihr die Installation von ISE WebPACK nach Möglichkeit ohne Adminrechte durchführen solltet. Hierfür müsst ihr den Installationspfad auf einen lokalen Benutzerpfad ändern!
+Beachtet, dass ihr die Installation von ISE WebPACK nach Möglichkeit mit Adminrechten durchführen solltet.
 :::
 
 Wenn ihr die Istallation zum Beispiel folgendermaßen startet:
@@ -47,7 +46,7 @@ Wenn ihr die Istallation zum Beispiel folgendermaßen startet:
 Terminalausgabe
 :       mojo@fpga:/Downloads/Xilinx_ISE_DS_Lin_14.7_1015_1$ sudo ./xsetup
 
-Werdet ihr zunächst darum gebeten allerlei Konditionen und Vereinbarungen zuzustimmen. Diese sind in [Abbildung 1]( 01_fig_01) 
+Werdet ihr zunächst darum gebeten allerlei Konditionen und Vereinbarungen zuzustimmen. Diese sind in [Abbildung 1]( 01_fig_01) dargestellt.
 
 ```{figure} img/Terms_and_conditions.png 
 :name: 01_fig_01
@@ -55,7 +54,7 @@ Werdet ihr zunächst darum gebeten allerlei Konditionen und Vereinbarungen zuzus
 Zustimmung zu den Terms and Conditions geben
 ```
 
-Wir stimmen diesen zu und müssen als nächstes das Product auswählen, dass wir installieren wollen. In unserem Fall ist es das ISE WebPACK wie in [Abbildung 2]( 01_fig_02) zu erkennen.
+Wir stimmen diesen zu und müssen als nächstes das Produkt auswählen, dass wir installieren wollen. In unserem Fall ist es das ISE WebPACK wie in [Abbildung 2]( 01_fig_02) zu erkennen.
 
 ```{figure} img/MojoLab/AuswahlISE.png
 :name: 01_fig_02
@@ -66,18 +65,13 @@ Im Folgefenster lassen wir alle Häckchen so wie sie sind. Wichtig ist, dass ihr
 
 Während die Installation läuft, könnt ihr die Zeit nutzen und euch eine Lizenz für das ISE WebPack holen.
 Dise bekommt ihr auf der [Internetseite](https://www.xilinx.com/member/forms/license-form.html).
-Hier gebt ihr eure persönlichen Daten ein und Wählt die Lizenz für das ISE Webpack aus, ladet diese herunter und fügt diese dann dem dem Programm zu.
-Für das einmalige Starten des WebPacks geht ihr am besten wie folgt vor.
-
-
-Habt ihr das Programm einmal gestartet wird euch das Programm daruf hinweisen, dass es keine Lizenz gefunden hat. Es öffnet euch freundlicherweise direkt den Lizenzmanager. Vergleiche mit [Abbildung 3]( 01_fig_03).
+Hier gebt ihr eure persönlichen Daten ein und Wählt die Lizenz für das ISE Webpack aus, ladet die Lizenzdatei herunter und fügt diese dann dem Programm zu. Dies könnt ihr beim erstmaligen Start des Programms machen. Bei dieser Gelegenheit wird euch das Ise WebPack den Lizenzmanager öffnen wie in [Abbildung 3]( 01_fig_03) dargestellt. 
 
 ```{figure} img/MojoLab/Licence_Manager_1.png 
 :name: 01_fig_03
 
 Möglichkeit zur Auswahl des Lizenztypes
 ```
-Solltet ihr bis zu diesem Zeitpunkt noch keine Lizenz haben ist hier noch einmal eine gute Möglichkeit den Lizenzierungsprozess anzuschieben.
 
 Habt ihr eure Lizenz herunter geladen, könnt ihr eure Lizenz nun über den "Manage Licences" Reiter zum Programm hinzufügen. Navigiert dazu innerhalb des Dialogfeldes [Abbildung 4]( 01_fig_04) zu dem Ort an dem ihr eure Lizenz abgespeichert habt.
 ```{figure} img/MojoLab/Licence_Manager_2.png 
@@ -127,7 +121,7 @@ Erste Projektauswahl
 ```
 Da wir noch kein bestehendes Projekt besitzen beantworten wir die Frage hier mit "No" um ein neues Projekt zu erstellen. 
 
-Das folgende Dialogfenster könnt ihr in [Abbildung 7]( 01_fig_07) sehen. Im Feld "Project Name:" tragen wir unseren Wunschnamen für unser Projekt ein. Im folgenden Reiter "Workspace" steht unser Arbeitsumgebung. Hier werden unsere Projekte abgespeichert und unsere Projektierungsumgebung erstellt hier die nötigen Dateien für das Builden des Projektes. Im dritten Reiter wählen wir unser Mojo Board aus. Das Programm erstellt hier für uns die Bezüge zu Hardware, damit das Projekt funktionsfähig gebaut werden kann. Die Sprache ("Language") die ausgewählt werden muss um ein funktionierendes Beispielprojekt laden zu können ist hier die Programmeigene Lucid Sprache. Ihr könnt in dieser Umgebung ebenfalls in Verilog coden, allerdings werdet ihr hier keine Beispielprojekte finden. Wir wählen für dieses Projekt Lucid aus und Nehmen das Beispiel Sound Locator aus dem letzten Dropdown Menüs dieses Fensters.
+Das folgende Dialogfenster könnt ihr in [Abbildung 7]( 01_fig_07) sehen. Im Feld "Project Name:" tragen wir unseren Wunschnamen für unser Projekt ein. Im folgenden Reiter "Workspace" steht unser Arbeitsumgebung. Hier werden unsere Projekte abgespeichert und unsere Projektierungsumgebung erstellt hier die nötigen Dateien für das Builden des Projektes. Im dritten Reiter wählen wir unser Mojo Board aus. Das Programm erstellt hier für uns die Bezüge zu Hardware, damit das Projekt funktionsfähig gebaut werden kann. Die Sprache ("Language") die ausgewählt werden muss um ein funktionierendes Beispielprojekt laden zu können ist hier das programmeigene Lucid. Ihr könnt in dieser Umgebung ebenfalls in Verilog coden, allerdings werdet ihr hier keine Beispielprojekte finden. Wir wählen für dieses Projekt Lucid aus und Nehmen das Beispiel Sound Locator aus dem letzten Dropdown Menüs dieses Fensters.
 
 ```{figure} img/MojoLab/New_Project.png 
 :name: 01_fig_07
@@ -141,7 +135,7 @@ Bevor wir zu Problemen innerhalb dieses Projektes kommen, machen wir eine kurze 
 
 - <u>**Source**</u>
 
-Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module genannt. Diese beschreiben alle Ein- und Ausgänge der unterschiedlichen Hardware. Die im Projekt genutzten Source Dateien sind in [Abbildung 8]( 01_fig_08) Für das Sound Locator Projekt wären das zum einen die Hann Funktion, der LED-Ring, das mojo-top modul, welches unser Mojo Board beschreibt, die pdm-mics zur Definition unserer Mikrophone und das sound_locator modul in der der Delay zur Sound Erkennung ermittelt wird.
+Der erste Teil innerhalb dieses Projektes sind die Source-Dateien auch Module genannt. Diese beschreiben alle Ein- und Ausgänge der unterschiedlichen Hardware. Die im Projekt genutzten Source Dateien sind in [Abbildung 8]( 01_fig_08) dargestellt. Für das Sound Locator Projekt wären das zum einen die Hann Funktion, der LED-Ring, das mojo-top modul, welches unser Mojo Board beschreibt, die pdm-mics zur Definition unserer Mikrophone und das sound_locator modul in der der Delay zur Sound Erkennung ermittelt wird.
 
 ```{figure} img/MojoLab/Source.png 
 :name: 01_fig_08
@@ -158,7 +152,7 @@ Als Zweites findest du die Components im Projekt
 ```
 - <u>**Cores**</u>
 
-Die Cores oder auch IP-Cores sind vorgefertigte weitestgehend geteste Bausteine die spezielle Aufgaben erledigen können. IP steht für Intellectual Property also Geistiges Eigentum. Diese Bausteine sind weitestgehend spezifiziert und bieten somit den Vorteil, dass diese in einem Design mehrfach wiederverwendet werden können. Fertige IP-Cores gibt es von Buskommunikation über digitale Signalverarbeitung wie FFT bis hin zu Multimedia wie Ethernet oder Bluetooth. In diesem Projekt gibt es drei IP cores. Zum einen den decimation Filter, welcher die einkommende PDM Signale downssampled um die Informationen mit verringerter Samplefrequenz zu extrahieren. Als zweites gibt es den mag_phase_calculator der aus den einkommenden Signalen die Amplitude und die Phase errechnet und als letztes den xfft_v8_0-core der die FFT auf die einkommenden Signale anwendet.
+Die Cores oder auch IP-Cores sind vorgefertigte weitestgehend geteste Bausteine die spezielle Aufgaben erledigen können und werden von Xilinx mitgeliefert. IP steht für Intellectual Property also Geistiges Eigentum. Diese Bausteine sind weitestgehend spezifiziert und bieten somit den Vorteil, dass diese in einem Design mehrfach wiederverwendet werden können. Fertige IP-Cores gibt es von Buskommunikation über digitale Signalverarbeitung wie FFT bis hin zu Multimedia wie Ethernet oder Bluetooth. In diesem Projekt gibt es drei IP cores. Zum einen den decimation Filter, welcher die einkommende PDM Signale downssampled um die Informationen mit verringerter Samplefrequenz zu extrahieren. Als zweites gibt es den mag_phase_calculator der aus den einkommenden Signalen die Amplitude und die Phase errechnet und als letztes den xfft_v8_0-core der die FFT auf die einkommenden Signale anwendet.
 
 ```{figure} img/MojoLab/Cores.png 
 :name: 01_fig_010
@@ -167,7 +161,7 @@ Der dritte Reiter beinhaltet die IP-Cores
 ```
 - <u>**Constraints**</u>
 
-Daregstellt in [Abbildung 11]( 01_fig_011)sind die drei User-constraints-files von debugger, microphone shield und vom mojo board.In diesen Dateien werden die Timing-Eigenschaften sowie die Pineigenschaften und physikalischen Eigenschaften und grenzen beschrieben. Diese Dateien werden benötigt um dem synthetisierungs Programm (ISE WebPack) die letzten Informationen zu geben wie das Projekt erstellt werden soll.
+Daregstellt in [Abbildung 11]( 01_fig_011)sind die drei User-constraints-files von debugger, microphone shield und vom mojo board.In diesen Dateien werden die Timing-Eigenschaften sowie die Pineigenschaften und physikalischen Eigenschaften und Grenzen beschrieben. Diese Dateien werden benötigt um dem synthetisierungs Programm (ISE WebPack) die letzten Informationen zu geben wie das Projekt erstellt werden soll.
 
 ```{figure} img/MojoLab/Constraints.png 
 :name: 01_fig_011
@@ -188,24 +182,24 @@ Erinnern wir uns an die IP-Cores die im letzten Abschnitt beschrieben wurden. Si
 
 Angezeigte Fehlermeldung beim ersten Flashversuch
 ```
-Alchitry Labs zeigt an, dass es die angezeigten Dateien für die IP-Cores nicht lesen kann. Schaut man in die Ordner Struktur und vergleich diese mit dem agezeigten Pfad so scheint sich hier ein Fehler eingeschlichen zu haben, der es zunächst unmöglich macht das Projekt zu bauen.
+Alchitry Labs zeigt an, dass es die Dateien für die IP-Cores nicht lesen kann. Schaut man in die Ordner Struktur und vergleich diese mit dem agezeigten Pfad so scheint sich hier ein Fehler bei der Programmierung der Software eingeschlichen zu haben, der es zunächst unmöglich macht das Projekt zu bauen.
 
 
 > <span style="color:green">**erik@erik:**</span><span style="color:blue">**~/alchitry/SoundLocator**</span>$ ls
 > 
 > <span style="color:blue">**constraint**</span>  <span style="color:blue">**coreGen**</span>  SoundLocator.alp  <span style="color:blue">**source**</span>  <span style="color:blue">**work**</span>
 
-Es sind in dieser Ansicht vier Ordner zu sehen. Vergeich man diese vier Ordner mit dem geforderten Pfad von Alchitry Labs aus Abbildung 12 ist zu erkennen, dass wir den Ordner **cores** vergeblich in diesem Verzeichnis suchen. Dieses Vezeichnis wurde automatisch vom Programm erstellt was die Vermutung nahelegt, dass der Aufbau des Verzeichnises Hard gecoded ist. Nach einiger Suche innerhalb des Programm Verzeichnises konnte die Codezeile die dafür Verantwortich ist nicht gefunden werden. Statdessen wurde für die Inbetriebnahme der Hardware ein Workaround gefunden. Die nötigen Dateien befinden sich alle im **coreGen** Ordner. Ist das händische erstellen des Pfades in drei schritten:
+Es sind in dieser Ansicht vier Ordner zu sehen. Vergeich man diese vier Ordner mit dem geforderten Pfad von Alchitry Labs aus [Abbildung 12]( 01_fig_012) ist zu erkennen, dass wir den Ordner **cores** vergeblich in diesem Verzeichnis suchen. Dieses Vezeichnis wurde automatisch vom Programm erstellt was die Vermutung nahelegt, dass der Aufbau des Verzeichnises Hard gecoded ist. Nach einiger Suche innerhalb des Programmverzeichnises konnte die Codezeile die dafür verantwortich ist nicht gefunden werden. Statdessen wurde für die Inbetriebnahme der Hardware ein Workaround gefunden. Die nötigen Dateien befinden sich alle im **coreGen** Ordner. Ist das händische erstellen des Pfades in drei schritten:
 
 1. Umbennen des von **coreGen** zu **cores**
-2. Innerhalb dieses Ordners, erstellen der jeweiligen Ordner für Decimation Filter, xfft_v8.0 und mag_phase_calculator
+2. Innerhalb dieses Ordners, erstellen der jeweiligen Ordner für **Decimation Filter, xfft_v8.0 und mag_phase_calculator**
 3. Verschieben der Dateien für den jeweiligen core in den entsprechenden erstellten Ordner.
 
-Nachdem diese Schritte durchgeführt wurden kann das Projekt gebaut werden und ermöglicht es uns das Mojo Board zu flashen.
+Nachdem diese Schritte durchgeführt wurden kann das Projekt gebaut werden und ermöglicht es uns das Mojo Board zu flashen und die Funktion des Programmes zu testen.
 
 ## Funktionsprinzip des Projektes
 
-In diesem Kapitel wird die Funktion des gesamten Aufbaus evaluiert. Innerhalb dieses Kapitels wird zunächst das Funktionsprinzip des Projektes erläutert. In [Abbildung 13]( 01_fig_013) ist der Signalfluss der Sounderkennung dargestellt. Alle Dargestellten Blöcke werden innerhalb dieses und des des nächsten Abschnitts erläutert. Zunächst steht ein Ton in Form einer Sinuswelle an. Diese besteht nicht aus nur einer Frequenz wie in [Abbildung 13]( 01_fig_013) dargestellt, sondern setzt sich aus verschiedenen Frequenzen zusammen. Dieses Frequenzspektrum wird ebenfalls dargestelt und erläutert. Die analoge Sinuswelle wird durch ein Wandlungssystem in die digitale Domäne Übertragen. Hier sind es so genannte digitale MEMS PDM Mikrofone. Die ausgegebene PDM wird ebenfalls theoretisch erläutert und messtechnisch aufgenommen. Das Signal Processing wird vom FPGA übernommen. Hier findet die Auswertung der einkommenden Signale statt und damit die Erkennung. Am Ende steht die optische Ausgabe der erkannten Richtung.
+In diesem Kapitel wird die Funktion des gesamten Aufbaus evaluiert. Innerhalb dieses Kapitels wird zunächst das Funktionsprinzip des Projektes erläutert. In [Abbildung 13]( 01_fig_013) ist der Signalfluss der Sounderkennung dargestellt. Alle Dargestellten Blöcke werden innerhalb dieses und des des nächsten Abschnitts erläutert. Zunächst steht ein Ton in Form einer Sinuswelle an. Diese besteht nicht aus nur einer Frequenz wie in [Abbildung 13]( 01_fig_013) dargestellt, sondern setzt sich aus verschiedenen Frequenzen zusammen. Dieses Frequenzspektrum wird ebenfalls dargestelt und erläutert. Die analoge Sinuswelle wird durch ein Wandlungssystem in die digitale Domäne Übertragen. Hier sind es so genannte digitale MEMS PDM Mikrofone. Die ausgegebene PDM wird ebenfalls theoretisch erläutert und messtechnisch aufgenommen. Das Signal Processing wird vom FPGA übernommen. Hier findet die Auswertung der einkommenden Signale statt und damit die Erkennung. Am Ende steht die optische Ausgabe der erkannten Richtung vom FPGA.
 
 ```{figure} img/MojoLab/SignalFlow.png
 :name: 01_fig_013
@@ -249,9 +243,9 @@ Das Frequenzspektrum des Signals aus [Abbildung 16]( 01_fig_016) ist in [Abbildu
 Frequenzspektrum des verrauschten Signals
 ```
 
-An der Y-Achse ist die Amplitude der Frequenzanteile aufgetragen und auf der X-Achse sind die unterschiedlichen Frequenzen dargestellt. Durch die Fast-Fourier-Transformation (FFT) ist es uns möglich diese Darstellung zu erzeugen. Sie zeigt uns aus welchen Frequenzanteilen das Ausgangssignal zusammengesetzt ist. Das Rauschen mit seinem vielen Frequenzen, die gleichermaßen im Signal enthalten sind verschwinden förmlich im Gegensatz zum eigentlichen Signal. Mit Hilfe dieser Methode ist es uns möglich auch aus im Zeitbereich verrauschten oder uneindeutigen Signalen das gesuchte Signal herauszufinden. 
+An der Y-Achse ist die Amplitude der Frequenzanteile aufgetragen und auf der X-Achse sind die unterschiedlichen Frequenzen dargestellt. Durch die FFT ist es uns möglich diese Darstellung zu erzeugen. Sie zeigt uns aus welchen Frequenzanteilen das Ausgangssignal zusammengesetzt ist. Das Rauschen mit seinem vielen Frequenzen, die gleichermaßen im Signal enthalten sind verschwinden förmlich im Gegensatz zum eigentlichen Signal. Mit Hilfe dieser Methode ist es uns möglich auch aus im Zeitbereich verrauschten oder uneindeutigen Signalen das gesuchte Signal herauszufinden bzw zu erfahren, welche Frequenzen im Signal erkannt werden. 
 
-Nachdem geklärt wurde welche Eingangssignale zu erwarten sind kann der Fokus auf die akustische Aufnahme gerichtet werden. Auf dem Microphoneshield sind sieben Mikrophone mit der Bezeichnung SPK0415HM4H zu finden. Diese Mikrophone sind digitale Mikro-Elektronisch-Mechanische Systeme (MEMS). Das bedeutet, dass durch Herstellungsmethoden der Halbleiterindustrie ein Bauteil erzeugt wurde, dass sowohl elektronische als auch mechanische Eigenschaften vereint. Wie in [Abbildung 18]( 01_fig_018) zu erkennen ist, besitzt ein solches Mikrofon einen Sound Port, dies ist eine Öffnung im Gehäuse (Can) des Bauteils. Hier kann der Ton auf die eigentliche Struktur auftreffen. Die Öffnung ist hier oben kann bei anderen Mikrofonen aber auch am Boden des Gehöuses sein. Darunter befindet sich eine Membran (Glob Top Molding) über einer Halbleiter Trägerstruktur. Die Membran und die Trägerstruktur sind zwei Gerade, gegenüberliegende Flächen zwischen denen ein Material zu finden ist das als Dielektrikum verstanden werden kann. Dies ist nichts weiter als ein Kondensator mit einer dazugehörigen Kapazität. Beim Auftreffen von Schall gerät die Membran in Bewegung, was die Kapazität des Kondensators ändert. Diese Änderung wird von der Anwender Spezifischen Schaltung (ASIC) erkannt und entsprechend verarbeitet. Ob ein Analoges oder Digitales Signal ausgegeben wird entscheidet sich hier. Entweder das Analoge Signal wird vom ASIC bereit gestellt oder ein weiterer Wandler (Transducer) befindet sich innerhalb des Systems, welches dieses analoge zu einem digitalen Signal wandelt. Bei den digitalen Signalen kann es sich um Pulse-Code-Modulierte (PCM) oder auch um Puls-Dichte-Modulierte Signale handeln. Puls-Code-Modulierte Signale werden hier nicht weiter erläutert, sollen aber der Vollständigkeit halber erwähnt werden.
+Nachdem geklärt wurde welche Eingangssignale zu erwarten sind kann der Fokus auf die akustische Aufnahme gerichtet werden. Auf dem Microphoneshield sind sieben Mikrophone mit der Bezeichnung SPK0415HM4H zu finden. Diese Mikrophone sind digitale Mikro-Elektronisch-Mechanische Systeme (MEMS). Das bedeutet, dass durch Herstellungsmethoden der Halbleiterindustrie ein Bauteil erzeugt wurde, dass sowohl elektronische als auch mechanische Eigenschaften vereint. Wie in [Abbildung 18]( 01_fig_018) zu erkennen ist, besitzt ein solches Mikrofon einen Sound Port, dies ist eine Öffnung im Gehäuse (Can) des Bauteils. Hier kann der Ton auf die eigentliche Struktur auftreffen. Die Öffnung ist hier oben kann bei anderen Mikrofonen aber auch am Boden des Gehäuses sein. Darunter befindet sich eine Membran (Glob Top Molding) über einer Halbleiter Trägerstruktur. Die Membran und die Trägerstruktur sind zwei Gerade, gegenüberliegende Flächen zwischen denen ein Material zu finden ist das als Dielektrikum verstanden werden kann. Dies ist nichts weiter als ein Kondensator mit einer dazugehörigen Kapazität. Beim Auftreffen von Schall gerät die Membran in Bewegung, was die Kapazität des Kondensators ändert. Diese Änderung wird von der Anwender Spezifischen Schaltung (ASIC) erkannt und entsprechend verarbeitet. Ob ein Analoges oder Digitales Signal ausgegeben wird entscheidet sich hier. Entweder das Analoge Signal wird vom ASIC bereit gestellt oder ein weiterer Wandler (Transducer) befindet sich innerhalb des Systems, welches dieses analoge zu einem digitalen Signal wandelt. Bei den digitalen Signalen kann es sich um Pulse-Code-Modulierte (PCM) oder auch um Puls-Dichte-Modulierte Signale handeln. Puls-Code-Modulierte Signale werden hier nicht weiter behandelt, sollen aber der Vollständigkeit halber Erwähnung finden.
 
 ```{figure} img/MojoLab/MEMS.png
 :name: 01_fig_018
@@ -270,7 +264,7 @@ In [Abbildung 19]( 01_fig_019) ist wie beschrieben zu erkennen, dass mit höhren
 
 Für die Funktion des Projektes werden zunächst Annahmen vom Autor getroffen. Die wichtigste Annahme ist, dass die Richtung des Tons nur in einem zweidimensionalen Raster horizontal zum Mojo Board auf das FPGA auftreffen darf. Das ist dem physikalischen Aufbau des Microphone Shields geschuldet, da alle Mikrophone auf einer Ebene verbaut sind. Außerdem wird angenommen, dass es sich bei den auftreffenden Schallwelen um eine eine gerade Wellenfront handelt. Das heißt, dass sich jeder Punkt einer Welle mit der gleichen Geschwindigkeit ausbreitet.Die letzte Annahme ist, dass jede Frequenz eines Soundsamples aus einer einzigen Richtung kommt.
 
-Die Sounderkennung mit dem Mojo errechnet sich die Richtung aus der der Sound auf ihn trifft aus der Phasenverschiebung zwischen den äußeren und dem zentralen Mikrofon. Die auf den Mikrophonen auftreffende Frequenz wird simultan vom FPGA abgetastet. Auf diese Fragmente wird eine FFFT durchgeführt, wodurch das Signal von der Zeit- in die Frequenzdomäne überführt. Als Ausgabe aus der FFT erhält man nun für jedes Fragment eine Komplexe Zahl. Bestehend aus dem Realteil, der die Amplitude des eingehenden Signals darstellt und dem Imaginärteil, der die Phase des eingehenden Signals darstellt. Diese können in einem Koordinatensystem aufgetragen werden. In [Abbildung 20]( 01_fig_020) ist beispielfhaft für drei Mikrophone das Prinzip dargestellt. Die schwarzen Kreise stellen die Position von drei Mikrofonen des Mojos dar. Ihre Koordinaten sind in den Klammern dargestellt. Der Mittelpunkt des Koordinatensystems ist ebenfalls als Koordinate des zentralen Mikrophons zu verstehen. In blau in der oberen linken Ecke ist die Richtung dargestellt aus der ein Ton auf die Mikrophone trifft. Das Auftreffen bewirkt eine Verzögerung (Delay) der jeweiligen äußeren Mikrophone im Vergleich zum mittleren Mikrofon. Mithilfe dieses Delays bzw. mit der Phasenverschiebung zueinander ( die Verzögerung ist lediglich der quotient aus Phasenverschiebung und Frequenz wodurch diese beiden Werte proportinal zueniander sind) und der Positionsvectoren der unterschiedlichen Mikrophone kann nun die Richtung des Tons bestimmt werden. Hierzu werden die Ortsvektoren mit dem errechneten Delay Skaliert, wodurch die violetten skalierten Vektoren entstehen. Durch Vektoraddition dieser Vektoren kann ein Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt. (gelb)
+Die Sounderkennung mit dem Mojo errechnet sich die Richtung aus der der Sound auf ihn trifft aus der Phasenverschiebung zwischen den äußeren und dem zentralen Mikrophon. Die auf den Mikrophonen auftreffende Frequenz wird in ein PDM umgewandelt und dieses PDM Signal wird simultan vom FPGA abgetastet. Auf diese Fragmente wird eine FFT durchgeführt, wodurch das Signal von der Zeit- in die Frequenzdomäne überführt wird. Als Ausgabe aus der FFT erhält man nun für jedes Fragment eine komplexe Zahl. Bestehend aus dem Realteil, der die Amplitude des eingehenden Signals darstellt und dem Imaginärteil, der die Phase des eingehenden Signals darstellt. Diese können in einem Koordinatensystem aufgetragen werden. In [Abbildung 20]( 01_fig_020) ist beispielfhaft für drei Mikrophone das Prinzip dargestellt. Die schwarzen Kreise stellen die Position von drei Mikrofonen des Mojos dar. Ihre Koordinaten sind in den Klammern dargestellt. Der Mittelpunkt des Koordinatensystems ist ebenfalls als Koordinate des zentralen Mikrophons zu verstehen. In blau in der oberen linken Ecke ist die Richtung dargestellt aus der ein Ton auf die Mikrophone trifft. Das Auftreffen bewirkt eine Verzögerung (Delay) der jeweiligen äußeren Mikrophone im Vergleich zum mittleren Mikrofon. Mithilfe dieses Delays bzw. mit der Phasenverschiebung zueinander ( die Verzögerung ist lediglich der quotient aus Phasenverschiebung und Frequenz wodurch diese beiden Werte proportinal zueniander sind) und der Positionsvectoren der unterschiedlichen Mikrophone kann nun die Richtung des Tons bestimmt werden. Hierzu werden die Ortsvektoren mit dem errechneten Delay Skaliert, wodurch die violetten skalierten Vektoren entstehen. Durch Vektoraddition dieser Vektoren kann ein Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt. (gelb)
 
 ```{figure} img/MojoLab/SoundirectionPrinciple.png
 :name: 01_fig_020
@@ -291,7 +285,7 @@ Das oben beschrieben Funktionsprinzip wird im nächsten Abschnitt getestet. Für
         </form>
     </div>
 </div>
-Betrachtet man zu den Beobachtungen nun das Frequenzsspektrum zu den ersten sieben Buchstaben des Alphabets ist zu erkennen, dass die größte Energiedichte bei Frequenzen zwischen 60 Hz und 400 Hz zu finden ist. Der Buchstabe C ist in dieser [Abbildung 21]( 01_fig_021) der dritte Balken von links. Hier ist zu erkennen, dass zu Beginn des Buchstaben ein höherer Schalldruckpegel zu erkennen ist. Diese reicht von einer Frequenz von 4 kHz bis zu über 16 kHz. Interessanterweise ist eine konträre Beobachtung beim Buchstaben "F" zu erkennen. Der zweite Balken von rechts hat zu Beginn des Buchstabens ein ähnliches Frequenzmuster wie die anderen. Nach einer kurzen Zeit verteilt sich die Energie gleichmäßig auf eine größere Badnbreite an Frequenzen. Hier konnte jedoch eine gute Funktion des Mojo beobachtet werden. Der Schalldruckpegel bei diesem Versuch konnte etwa zwischen 60 dB und 70 dB gemessen werden.´
+Betrachtet man zu den Beobachtungen nun das Frequenzsspektrum zu den ersten sieben Buchstaben des Alphabets ist zu erkennen, dass der größete Schallpegel bei Frequenzen zwischen 60 Hz und 400 Hz zu finden ist. Der Buchstabe C ist in dieser [Abbildung 21]( 01_fig_021) der dritte Balken von links. Das Diagramm ist ein Frequenz-Zeit-Diagramm. Hierbei sind auf der Y-Achse die unterschiedlichen Frequenzanteile aufgeführt. Auf der X-Achse findet sich die Zeit der Audiospur. Die Codierung des Schallwellenpegels ist in der Helligkeit der der Balken zu erkennen. Diese Darstellung war die beste für diese Anwendung, da durch die Art des Versuchs verschiedene Töne zu unterschiedlichen Zeiten auftreffen. Dieses Diagramm bietet eine übersichtliche Darstellung für diese Zwecke. Für den Buchstaben C ist zu erkennen, dass zu Beginn des Buchstaben ein höherer Schalldruckpegel zu erkennen ist. Diese reicht von einer Frequenz von 4 kHz bis zu über 16 kHz. Interessanterweise ist eine konträre Beobachtung beim Buchstaben "F" zu erkennen. Der zweite Balken von rechts hat zu Beginn des Buchstabens ein ähnliches Frequenzmuster wie die anderen. Nach einer kurzen Zeit verteilt sich der Schalldruckpegel gleichmäßig auf eine größere Bandbreite an Frequenzen. Hier konnte jedoch eine gute Funktion des Mojo beobachtet werden. Der Schalldruckpegel bei diesem Versuch konnte etwa zwischen 60 dB und 70 dB mit dem Schalldruckpegelmesser gemessen werden.´
 
 ```{figure} img/MojoLab/AlphaG.png 
 :name: 01_fig_021
@@ -320,7 +314,11 @@ Das Frequenzspektrum ist in der nachfolgenden [Abbildung 22]( 01_fig_022) zu erk
 Frequenzspektrum für das Intro von "Come as you are" von Nirvana
 ```
 
-Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiment ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in [Abbildung 23]( 01_fig_023) zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards platziert. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrofons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu 111dB getestet wurden.
+Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiments ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in [Abbildung 23]( 01_fig_023) zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards aufgestellt worden. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrophons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu 111dB getestet wurden.
+
+:::{note}
+Bei so einem Versuch muss immer ein Gehörschutz getragen werden! Solche Lautstärken können das Hörvermögen verringern und gesundheitsschädlich sein!
+:::
 
 ```{figure} img/MojoLab/Setup_experiment.png 
 :name: 01_fig_023
