@@ -5,6 +5,7 @@ Diese Projektarbeit beschäftigt sich mit der Evaluation des [Sound Erkennungs](
 In diesem Tutorial nutzt Alchitry ihr eigens entwickelten Mojo v3 Board und ein Soundshield mit sieben Mikrofonen um die Richtung zu ermitteln aus der ein Ton auf das Board trifft.
 Das Mojo v3 Board ist ein Board, dass für das Erlernen der Erstellung von digitalen Schaltungen mit Hilfe von Field-Programmable-Gate-Arrays (FPGA) genutzt werden kann. Wie man bereits am Namen erkennen kann bietet ein FPGA die Möglichkeit es jederzeit neu zu flashen (Field-Programmable). Dabei beschreiben wir die Hardware mihilfe einer Hardwarebeschreibungssprache wie VHDL, Verilog oder wie in diesem Beispiel mit Lucid und die Hardware nimmt entsprechend unserer Beschreibungssprache exakt die Funktion ein die wir erzielen möchten. Die Beschreibungssprache bewirkt, dass Logikgatter innerhalb des FPGA entsprechend der Funktion miteinander verknüpft werden. So kann der Mojo v3 genutzt werden um eine LED zum blinken zu bringen oder komplexere Aufgaben wie Sounderkennung.
 
+
 Im Folgenden könnt ihr eine kurze Erläuterung zur Hardware finden. Die Einrichtung der Toolchain wird Schritt für Schritt erklärt. Außerdem wird der Aufbau eines Projektes erläutert und im speziellen wird auf das Sound Locator Projekt eingegangen. In diesem Zusammenhang wird auf die so genannten IP-Cores eingegangen. Da Hardware und Software offenkundig nie so funkionieren wie es der Entwickler vorgesehen hat, wird außerdem auf Probleme eingangen und wie diese Behoben werden können. Hiernach wird eine Übersicht über den Signalfluss gegeben, Ausgehend von der Tonquelle, über die Aufnahme bis hin zur visuellen Darstellung. Für das bessere Verständnis wie die Signalwandlung und Signalanalyse von statten geht wird noch einmal auf die Darstellung von Signalen im Zeit und Frequenzbereich eingegangen. Außerdem wird der Prinzipielle Aufbau der verwendeten Mikrophone beschrieben. Als letztes wird noch die Puls-Dichte-Modulation (PDM) erklärt, bevor es im letzten Teil dieser Arbeit um den Funktionstest und ein Ausloten der Grenzen der Sounderkennung gehen wird.
 
 ## [Der Mojo](https://www.adafruit.com/product/1553) [Baby](https://www.youtube.com/watch?v=c4ytuS8pVp4)
@@ -35,7 +36,7 @@ Terminalausgabe
 :       mojo@fpga:/Downloads/$ tar -xvf Xilinx_ISE_DS_Lin_14.7_1015_1.tar
 
 Die Optionen **xvf** beschreiben, dass das Archiv entpackt werden soll (x), dass die verarbeiteten Dateien ausführlich aufeglistet werden (v) und dass das Archiv aus dem aktuellen Verzeichnis genommen werden soll (f). Aufgrund der Datenmenge wird es entsprechend lange dauern. Sollte der Kaffee von vorhin noch nicht kalt geworden sein. Nehmt euch ein Stück Kuchen dazu.
-Nach diesen Vorarbeiten können wir nun das Setup des Programmes starten. 
+Nach diesen Vorarbeiten können wir nun das Setup des Programmes starten. {cite:p}`Ubuntuusers`
 
 :::{note}
 Beachtet, dass ihr die Installation von ISE WebPACK nach Möglichkeit mit Adminrechten durchführen solltet.
@@ -207,15 +208,15 @@ In diesem Kapitel wird die Funktion des gesamten Aufbaus evaluiert. Innerhalb di
 Übersicht Signalfluss
 ```
 
-Der erste Block des Signalflusses enthält die akustische Welle. Diese Schallwelle entsteht durch das komprimieren und dekomprimieren der Luft. In der Physik wird eine ideale winzige Punktschallquelle angenommen von der aus kugelförmig die Schallwellen in alle Richtungen abgestrahlt werden. Diese Punktquelle und die Ausbreitung der Schallwellen von dort aus sind in [Abbildung 14]( 01_fig_014) dargestellt. Diese Wellenfronten in verbindung mit den Strahlen kennzeichnen die Richtung der Schallwellen. Wellenfronten sind hierbei Flächen, bei der die Luftteilchen wertgleiche Auslenkungen besitzen aufgrund der erzeugten Schwingung.DARSTELLUNG DES KREISES[Halliday]
+Der erste Block des Signalflusses enthält die akustische Welle. Diese Schallwelle entsteht durch das komprimieren und dekomprimieren der Luft. In der Physik wird eine ideale winzige Punktschallquelle angenommen von der aus kugelförmig die Schallwellen in alle Richtungen abgestrahlt werden. Diese Punktquelle und die Ausbreitung der Schallwellen von dort aus sind in [Abbildung 14]( 01_fig_014) dargestellt. Diese Wellenfronten in verbindung mit den Strahlen kennzeichnen die Richtung der Schallwellen. Wellenfronten sind hierbei Flächen, bei der die Luftteilchen wertgleiche Auslenkungen besitzen aufgrund der erzeugten Schwingung.{cite:p}`Halliday`
 
-```{figure} img/MojoLab/Sine_Only.png
+```{figure} img/MojoLab/Schallwellen.png
 :name: 01_fig_014
 
-Zweidimensionale Darstellung zur Ausbreitung einer Schallwelle
+Zweidimensionale Darstellung zur Ausbreitung einer Schallwelle {cite:p}`Halliday`
 ```
 
-Wie bereits erwähnt verbreiten sich diese Schallwellen kugelförmig und dreidimensional im Raum und werden darum auch sphärische Wellen genannt. Je weiter man sich jedoch von der Punktquelle entfernt umso geringer wird diese Krümmung und die Schallwelle kann als Ebene verstanden werden. Diese Wellen werden dann ebene oder planare Wellen genannt. [Halliday]
+Wie bereits erwähnt verbreiten sich diese Schallwellen kugelförmig und dreidimensional im Raum und werden darum auch sphärische Wellen genannt. Je weiter man sich jedoch von der Punktquelle entfernt umso geringer wird diese Krümmung und die Schallwelle kann als Ebene verstanden werden. Diese Wellen werden dann ebene oder planare Wellen genannt. {cite:p}`Halliday`
 
 Um einen Ton zu erzeugen muss diese (De-) Komrimierung der Luft mit einer definierten Frequenz erzeugt werden. Um den Kammerton (C) zu erzeugen muss ein Ton mit einer Frequenz von f=440 Hz erzeugt werden. Idealerweise sähe dieser Ton aus wie in [Abbildung 15]( 01_fig_015) dargestellt.
 
@@ -243,14 +244,14 @@ Das Frequenzspektrum des Signals aus [Abbildung 16]( 01_fig_016) ist in [Abbildu
 Frequenzspektrum des verrauschten Signals
 ```
 
-An der Y-Achse ist die Amplitude der Frequenzanteile aufgetragen und auf der X-Achse sind die unterschiedlichen Frequenzen dargestellt. Durch die FFT ist es uns möglich diese Darstellung zu erzeugen. Sie zeigt uns aus welchen Frequenzanteilen das Ausgangssignal zusammengesetzt ist. Das Rauschen mit seinem vielen Frequenzen, die gleichermaßen im Signal enthalten sind verschwinden förmlich im Gegensatz zum eigentlichen Signal. Mit Hilfe dieser Methode ist es uns möglich auch aus im Zeitbereich verrauschten oder uneindeutigen Signalen das gesuchte Signal herauszufinden bzw zu erfahren, welche Frequenzen im Signal erkannt werden. 
+An der Y-Achse ist die Amplitude der Frequenzanteile aufgetragen und auf der X-Achse sind die unterschiedlichen Frequenzen dargestellt. Sie zeigt uns aus welchen Frequenzanteilen das Ausgangssignal zusammengesetzt ist. Das Rauschen mit seinem vielen Frequenzen, die gleichermaßen im Signal enthalten sind verschwinden förmlich im Gegensatz zum eigentlichen Signal. Mit Hilfe dieser Methode ist es uns möglich auch aus im Zeitbereich verrauschten oder uneindeutigen Signalen das gesuchte Signal herauszufinden bzw zu erfahren, welche Frequenzen im Signal erkannt werden. 
 
-Nachdem geklärt wurde welche Eingangssignale zu erwarten sind kann der Fokus auf die akustische Aufnahme gerichtet werden. Auf dem Microphoneshield sind sieben Mikrophone mit der Bezeichnung SPK0415HM4H zu finden. Diese Mikrophone sind digitale Mikro-Elektronisch-Mechanische Systeme (MEMS). Das bedeutet, dass durch Herstellungsmethoden der Halbleiterindustrie ein Bauteil erzeugt wurde, dass sowohl elektronische als auch mechanische Eigenschaften vereint. Wie in [Abbildung 18]( 01_fig_018) zu erkennen ist, besitzt ein solches Mikrofon einen Sound Port, dies ist eine Öffnung im Gehäuse (Can) des Bauteils. Hier kann der Ton auf die eigentliche Struktur auftreffen. Die Öffnung ist hier oben kann bei anderen Mikrofonen aber auch am Boden des Gehäuses sein. Darunter befindet sich eine Membran (Glob Top Molding) über einer Halbleiter Trägerstruktur. Die Membran und die Trägerstruktur sind zwei Gerade, gegenüberliegende Flächen zwischen denen ein Material zu finden ist das als Dielektrikum verstanden werden kann. Dies ist nichts weiter als ein Kondensator mit einer dazugehörigen Kapazität. Beim Auftreffen von Schall gerät die Membran in Bewegung, was die Kapazität des Kondensators ändert. Diese Änderung wird von der Anwender Spezifischen Schaltung (ASIC) erkannt und entsprechend verarbeitet. Ob ein Analoges oder Digitales Signal ausgegeben wird entscheidet sich hier. Entweder das Analoge Signal wird vom ASIC bereit gestellt oder ein weiterer Wandler (Transducer) befindet sich innerhalb des Systems, welches dieses analoge zu einem digitalen Signal wandelt. Bei den digitalen Signalen kann es sich um Pulse-Code-Modulierte (PCM) oder auch um Puls-Dichte-Modulierte Signale handeln. Puls-Code-Modulierte Signale werden hier nicht weiter behandelt, sollen aber der Vollständigkeit halber Erwähnung finden.
+Nachdem geklärt wurde welche Eingangssignale zu erwarten sind kann der Fokus auf die akustische Aufnahme gerichtet werden. Auf dem Microphoneshield sind sieben Mikrophone mit der Bezeichnung SPK0415HM4H zu finden. Diese Mikrophone sind digitale Mikro-Elektronisch-Mechanische Systeme (MEMS). Das bedeutet, dass durch Herstellungsmethoden der Halbleiterindustrie ein Bauteil erzeugt wurde, dass sowohl elektronische als auch mechanische Eigenschaften vereint. Wie in [Abbildung 18]( 01_fig_018) zu erkennen ist, besitzt ein solches Mikrofon einen Sound Port, dies ist eine Öffnung im Gehäuse (Can) des Bauteils. Hier kann der Ton auf die eigentliche Struktur auftreffen. Die Öffnung ist hier oben kann bei anderen Mikrofonen aber auch am Boden des Gehäuses sein. Darunter befindet sich eine Membran (Glob Top Molding) über einer Halbleiter Trägerstruktur. Die Membran und die Trägerstruktur sind zwei Gerade, gegenüberliegende Flächen zwischen denen ein Material zu finden ist das als Dielektrikum verstanden werden kann. Dies ist nichts weiter als ein Kondensator mit einer dazugehörigen Kapazität. Beim Auftreffen von Schall gerät die Membran in Bewegung, was die Kapazität des Kondensators ändert. Diese Änderung wird von der Anwender Spezifischen Schaltung (ASIC) erkannt und entsprechend verarbeitet. Ob ein Analoges oder Digitales Signal ausgegeben wird entscheidet sich hier. Entweder das Analoge Signal wird vom ASIC bereit gestellt oder ein weiterer Wandler (Transducer) befindet sich innerhalb des Systems, welches dieses analoge zu einem digitalen Signal wandelt. Bei den digitalen Signalen kann es sich um Pulse-Code-Modulierte (PCM) oder auch um Puls-Dichte-Modulierte Signale handeln. Puls-Code-Modulierte Signale werden hier nicht weiter behandelt, sollen aber der Vollständigkeit halber Erwähnung finden. {cite:p}`DigiMEMS`
 
 ```{figure} img/MojoLab/MEMS.png
 :name: 01_fig_018
 
-Aufbau eines MEMS Mikrofons
+Aufbau eines MEMS Mikrofons {cite:p}`DigiMEMS`
 ```
 
 In diesem Projekt wurden Mikrofone verwendet, die Puls-Dichte-Modulierte (PDM) Signale verwenden. Bei der PDM wird die Information der Amplitude des Signals über die Puls-Dichte dargestellt. Das heißt, dass eine Häufung on logischen High (1) Pegeln eine hohe Amplitude und eine Häufung von logischen Lows (0) eine niedrige Amplitude bedeutet. Bei der Wandlung durch ein MEMS Mikrophon kann die das PDM eines Sinussignals folgendermaßen aussehen.
@@ -258,18 +259,18 @@ In diesem Projekt wurden Mikrofone verwendet, die Puls-Dichte-Modulierte (PDM) S
 ```{figure} img/MojoLab/Pulse_Density.png
 :name: 01_fig_019
 
-Übersicht zwischen Analogem Signal und Puls-Dichte-Moduliertem Signal[https://devzone.nordicsemi.com/nordic/nordic-blog/b/blog/posts/pdm-example-on-the-nrf52832]
+Übersicht zwischen Analogem Signal und Puls-Dichte-Moduliertem Signal {cite:p}`Devzone`
 ```
 In [Abbildung 19]( 01_fig_019) ist wie beschrieben zu erkennen, dass mit höhren Amplituden vermehrt ein High Signal zu finden ist. Das PDM kodierte Signal ist der letze Punkt, bevor die Verarbeitung des FPGA beginnt. Als nächstes kann die Funktion des Projektes betrachtet werden.
 
 Für die Funktion des Projektes werden zunächst Annahmen vom Autor getroffen. Die wichtigste Annahme ist, dass die Richtung des Tons nur in einem zweidimensionalen Raster horizontal zum Mojo Board auf das FPGA auftreffen darf. Das ist dem physikalischen Aufbau des Microphone Shields geschuldet, da alle Mikrophone auf einer Ebene verbaut sind. Außerdem wird angenommen, dass es sich bei den auftreffenden Schallwelen um eine eine gerade Wellenfront handelt. Das heißt, dass sich jeder Punkt einer Welle mit der gleichen Geschwindigkeit ausbreitet.Die letzte Annahme ist, dass jede Frequenz eines Soundsamples aus einer einzigen Richtung kommt.
 
-Die Sounderkennung mit dem Mojo errechnet sich die Richtung aus der der Sound auf ihn trifft aus der Phasenverschiebung zwischen den äußeren und dem zentralen Mikrophon. Die auf den Mikrophonen auftreffende Frequenz wird in ein PDM umgewandelt und dieses PDM Signal wird simultan vom FPGA abgetastet. Auf diese Fragmente wird eine FFT durchgeführt, wodurch das Signal von der Zeit- in die Frequenzdomäne überführt wird. Als Ausgabe aus der FFT erhält man nun für jedes Fragment eine komplexe Zahl. Bestehend aus dem Realteil, der die Amplitude des eingehenden Signals darstellt und dem Imaginärteil, der die Phase des eingehenden Signals darstellt. Diese können in einem Koordinatensystem aufgetragen werden. In [Abbildung 20]( 01_fig_020) ist beispielfhaft für drei Mikrophone das Prinzip dargestellt. Die schwarzen Kreise stellen die Position von drei Mikrofonen des Mojos dar. Ihre Koordinaten sind in den Klammern dargestellt. Der Mittelpunkt des Koordinatensystems ist ebenfalls als Koordinate des zentralen Mikrophons zu verstehen. In blau in der oberen linken Ecke ist die Richtung dargestellt aus der ein Ton auf die Mikrophone trifft. Das Auftreffen bewirkt eine Verzögerung (Delay) der jeweiligen äußeren Mikrophone im Vergleich zum mittleren Mikrofon. Mithilfe dieses Delays bzw. mit der Phasenverschiebung zueinander ( die Verzögerung ist lediglich der quotient aus Phasenverschiebung und Frequenz wodurch diese beiden Werte proportinal zueniander sind) und der Positionsvectoren der unterschiedlichen Mikrophone kann nun die Richtung des Tons bestimmt werden. Hierzu werden die Ortsvektoren mit dem errechneten Delay Skaliert, wodurch die violetten skalierten Vektoren entstehen. Durch Vektoraddition dieser Vektoren kann ein Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt. (gelb)
+Die Sounderkennung mit dem Mojo errechnet sich die Richtung aus der der Sound auf ihn trifft aus der Phasenverschiebung zwischen den äußeren und dem zentralen Mikrophon. Die auf den Mikrophonen auftreffende Frequenz wird in ein PDM umgewandelt und dieses PDM Signal wird simultan vom FPGA abgetastet. Auf diese Fragmente wird eine FFT durchgeführt, wodurch das Signal von der Zeit- in die Frequenzdomäne überführt wird. Als Ausgabe aus der FFT erhält man nun für jedes Fragment eine komplexe Zahl. Bestehend aus dem Realteil, der die Amplitude des eingehenden Signals darstellt und dem Imaginärteil, der die Phase des eingehenden Signals darstellt. Diese können in einem Koordinatensystem aufgetragen werden. In [Abbildung 20]( 01_fig_020) ist beispielfhaft für drei Mikrophone das Prinzip dargestellt. Die schwarzen Kreise stellen die Position von drei Mikrofonen des Mojos dar. Ihre Koordinaten sind in den Klammern dargestellt. Der Mittelpunkt des Koordinatensystems ist ebenfalls als Koordinate des zentralen Mikrophons zu verstehen. In blau in der oberen linken Ecke ist die Richtung dargestellt aus der ein Ton auf die Mikrophone trifft. Das Auftreffen bewirkt eine Verzögerung (Delay) der jeweiligen äußeren Mikrophone im Vergleich zum mittleren Mikrofon. Mithilfe dieses Delays bzw. mit der Phasenverschiebung zueinander ( die Verzögerung ist lediglich der quotient aus Phasenverschiebung und Frequenz wodurch diese beiden Werte proportinal zueniander sind) und der Positionsvectoren der unterschiedlichen Mikrophone kann nun die Richtung des Tons bestimmt werden. Hierzu werden die Ortsvektoren mit dem errechneten Delay Skaliert, wodurch die violetten skalierten Vektoren entstehen. Durch Vektoraddition dieser Vektoren kann ein Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt. (gelb){cite:p}`Rajewski`
 
 ```{figure} img/MojoLab/SoundirectionPrinciple.png
 :name: 01_fig_020
 
-Versuchsaufbau für den Funktionstest
+Versuchsaufbau für den Funktionstest {cite:p}`Rajewski`
 ```
 
 ### Funktionstest
@@ -382,8 +383,6 @@ Folgende Aufgaben können für zukünftige Projekte interessant sein:
 ## VHDL-Projekte Übertragen?
 
 
-
-
-[^1]: https://www.elektronik-kompendium.de/sites/bau/0209092.htm - besucht am 21.03.2022
-[^2]: ANS-Abschlussbericht SoSe21 von M. Lüters, L. Lagona und Ch. Stelling.
-[^3]: Die Angaben sind aus den jeweiligen Datenblättern zu entnehmen.
+```{bibliography}
+:style: unsrt
+```
