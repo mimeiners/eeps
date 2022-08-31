@@ -229,7 +229,7 @@ Die Intensität der SChallwelle ist abhängig von der Amplitude der Schallwelle.
 
 
 $$
-I = /frac{P_{s}}{4 /cdot /pi /cdot r^{2}}
+I = \frac{P_{s}}{4 \cdot \pi \cdot r^{2}}
 $$
 
 
@@ -238,10 +238,10 @@ Wobei I die Intensität der Schallwelle ist P die Leistung durch die Schallwelle
 Da das menschliche Ohr ein breites Spektrum an Intensitäten wahrnehmen kann wurde hierfür die Dezibel Skala eingeführt. Die Angabe in der Dezibelskala wird als Schallpegel oder Schalldruckpegel bezeichnet und kann folgendermaßen berechnet werden:
 
 $$
- /beta = 10 dB /cdot /frac{I}{I_{0}}
+ \beta = 10 dB \cdot \frac{I}{I_{0}}
 $$
 
-Wobei $/beta$ der resultierende Schalldruckpegel ist. I beschreibt die Intensität der gemessenen Schallwelle und $I_{0}$ beschreibt einen Standardisierten Referenzwert für die Intensität ($ = 10^{-12} /frac{W}{m^{2}}$). {cite:p}`Halliday`
+Wobei $/beta$ der resultierende Schalldruckpegel ist. I beschreibt die Intensität der gemessenen Schallwelle und $I_{0}$ beschreibt einen Standardisierten Referenzwert für die Intensität ($ = 10^{-12} \frac{W}{m^{2}} $). {cite:p}`Halliday`
 
 Um einen Ton zu erzeugen muss diese (De-) Komrimierung der Luft mit einer definierten Frequenz erzeugt werden. Um den Kammerton C zu erzeugen muss ein Ton mit einer Frequenz von $ f=440 Hz $ erzeugt werden. Idealerweise sähe dieser Ton aus wie in [Abbildung 17]( 01_fig_015) dargestellt.
 
@@ -312,11 +312,7 @@ Das oben beschrieben Funktionsprinzip wird im nächsten Abschnitt getestet. Für
     </div>
 </div>
 
-Betrachtet man zu den Beobachtungen nun das Frequenzsspektrum zu den ersten sieben Buchstaben des Alphabets ist zu erkennen, dass der größete Schallpegel bei Frequenzen zwischen $f=60 Hz$ und $f=400 Hz$ zu finden ist. Der Buchstabe "C" ist in dieser [Abbildung 23]( 01_fig_021) der dritte Balken von links. Das Diagramm ist ein Frequenz-Zeit-Diagramm. Hierbei sind auf der Y-Achse die unterschiedlichen Frequenzanteile aufgeführt. Auf der X-Achse findet sich die Zeit der Audiospur. Die Codierung des Schallwellenpegels ist in der Helligkeit der der Balken zu erkennen. Diese Darstellung war die beste für diese Anwendung, da durch die Art des Versuchs verschiedene Töne zu unterschiedlichen Zeiten auftreffen. Dieses Diagramm bietet eine übersichtliche Darstellung für diese Zwecke. Für den Buchstaben C ist zu erkennen, dass zu Beginn des Buchstaben ein höherer Schalldruckpegel zu erkennen ist. Diese reicht von einer Frequenz von $f=4 kHz$ bis zu über $f= 16 kHz$. Interessanterweise ist eine konträre Beobachtung beim Buchstaben "F" zu erkennen. Der zweite Balken von rechts hat zu Beginn des Buchstabens ein ähnliches Frequenzmuster wie die anderen. Nach einer kurzen Zeit verteilt sich der Schalldruckpegel gleichmäßig auf eine größere Bandbreite an Frequenzen. Hier konnte jedoch eine gute Funktion des Mojo beobachtet werden. Der Schalldruckpegel bei diesem Versuch konnte etwa zwischen $ \beta=60 dB$ und $\beta 70 dB$ mit dem Schalldruckpegelmesser gemessen werden.
-
-$$
- /frac{A}{B}
-$$
+Betrachtet man zu den Beobachtungen nun das Frequenzsspektrum zu den ersten sieben Buchstaben des Alphabets ist zu erkennen, dass der größete Schallpegel bei Frequenzen zwischen $f=60 Hz$ und $f=400 Hz$ zu finden ist. Der Buchstabe "C" ist in dieser [Abbildung 23]( 01_fig_021) der dritte Balken von links. Das Diagramm ist ein Frequenz-Zeit-Diagramm. Hierbei sind auf der Y-Achse die unterschiedlichen Frequenzanteile aufgeführt. Auf der X-Achse findet sich die Zeit der Audiospur. Die Codierung des Schallwellenpegels ist in der Helligkeit der der Balken zu erkennen. Diese Darstellung war die beste für diese Anwendung, da durch die Art des Versuchs verschiedene Töne zu unterschiedlichen Zeiten auftreffen. Dieses Diagramm bietet eine übersichtliche Darstellung für diese Zwecke. Für den Buchstaben C ist zu erkennen, dass zu Beginn des Buchstaben ein höherer Schalldruckpegel zu erkennen ist. Diese reicht von einer Frequenz von $f=4 kHz$ bis zu über $f= 16 kHz$. Interessanterweise ist eine konträre Beobachtung beim Buchstaben "F" zu erkennen. Der zweite Balken von rechts hat zu Beginn des Buchstabens ein ähnliches Frequenzmuster wie die anderen. Nach einer kurzen Zeit verteilt sich der Schalldruckpegel gleichmäßig auf eine größere Bandbreite an Frequenzen. Hier konnte jedoch eine gute Funktion des Mojo beobachtet werden. Der Schalldruckpegel bei diesem Versuch konnte etwa zwischen $ \beta=60 dB $ und $ \beta = 70 dB $ mit dem Schalldruckpegelmesser gemessen werden.
 
 
 ```{figure} img/MojoLab/AlphaG.png 
@@ -338,7 +334,7 @@ Nach dieser Beobachtung ist ein weiterer grundsätzlicher Funktionstest mit eine
     </div>
 </div>
 
-Das Frequenzspektrum ist in der nachfolgenden [Abbildung 24]( 01_fig_022) zu erkennen. Die Energie der Frequenzen scheint hier weniger breit gefächert zu sein als bei dem vorangegangenen Funktionstest. Die Funktion konnte auch hierbei im Wesentlichen nachgewiesen werden, auch wenn es bei diesem Test zum leuchten der gegenüberliegenden LED gekommen ist. Der Schalldruckpegel der während des Versuchs gemsesen wurde lag bei rund $/beta = 70 dB$. 
+Das Frequenzspektrum ist in der nachfolgenden [Abbildung 24]( 01_fig_022) zu erkennen. Die Energie der Frequenzen scheint hier weniger breit gefächert zu sein als bei dem vorangegangenen Funktionstest. Die Funktion konnte auch hierbei im Wesentlichen nachgewiesen werden, auch wenn es bei diesem Test zum leuchten der gegenüberliegenden LED gekommen ist. Der Schalldruckpegel der während des Versuchs gemsesen wurde lag bei rund $ \beta = 70 dB $. 
 
 ```{figure} img/MojoLab/comeasyouare.png 
 :name: 01_fig_022
@@ -346,7 +342,7 @@ Das Frequenzspektrum ist in der nachfolgenden [Abbildung 24]( 01_fig_022) zu erk
 Frequenzspektrum für das Intro von "Come as you are" von Nirvana
 ```
 
-Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiments ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in [Abbildung 25]( 01_fig_023) zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde 10 cm oberhalb des Mojoboards aufgestellt worden. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrophons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu $/beta = 111 dB$ getestet wurden.
+Die Funktionstest konnte die prinzipielle Funktion nachweisen. Die Frage nach den Grenzen der Erkennung ist allerdings hiermit noch nicht geklärt. Um die Grenzen der Sounderkennung zu ermitteln wurde sich in diesem Experiment dazu entschieden dieses im privaten Wohnzimmer durchzuführen und nicht in einem speziell eingerichtetem Schallarmen Raum, da die Sounderkennung dazu dienen soll Geräuschquellen zu unterscheiden und die Richtung des gewollten Sounds zu ermitteln. Der Aufbau für dieses Experiments ist in den vorangegangenen Videos schon erkennbar ist schematisch jedoch nochmal in [Abbildung 25]( 01_fig_023) zu erkennen. Das Mojo Board mitsamt des Microphone Shield ist im Zentrum des Aufbaus platziert. Die Soundquelle ist eine Bluetoothbox der Firma Bose und wurde $ l = 10 cm $ oberhalb des Mojoboards aufgestellt worden. Hier wird ein Sinussignal einer defenierten Frequenz und Lautstärke ausgegeben. Um die Lautsärke in dB gegenprüfen zu können wird ein Schalldruckpegel Messgerät auf der gleichen Höhe wie das zentrale Mikrophons auf dem Microphone Shield platziert um möglichst genau die Lautstärke einstellen bzw. gegenprüfen zu können. Bei dem Experiment wurde Höhrschutz getragen, da Schalldruckpegel von bis zu $ \beta = 111 dB $ getestet wurden.
 
 :::{note}
 Bei so einem Versuch muss immer ein Gehörschutz getragen werden! Solche Lautstärken können das Hörvermögen verringern und gesundheitsschädlich sein!
@@ -358,13 +354,13 @@ Bei so einem Versuch muss immer ein Gehörschutz getragen werden! Solche Lautst�
 Versuchsaufbau für den Funktionstest
 ```
 
-Getestet werden mit diesem Aufbau zwei Grenzen. Zunächst wird die Grenze der Lautstärke ermittelt. Hierfür wird die Lautsärke einen Sinustones mit einer Frequenz von $f=1000 Hz$langsam von $/beta= 40 dB$ Schalldruckpegel bis 111dB Schaldruckpegel erhöht und die Funktion wird beobachtet. Jede Lautstärke wird für eine Zeit $t= 3$ Sekunden gehalten. Die Funktion gilt als sicher vorhanden, solange ausschließlich die LED leuchtet, die in die Richtung der Geräuschquelle ausgerichtet ist. Die gewählte Frequenz wurde anhand des Datenblattes der Mikrofone gewählt. Die angegebenen Testbedigungen für die Angaben im Datenblatt beziehen sich auf eine Frequenz von $f=1000 Hz$.
+Getestet werden mit diesem Aufbau zwei Grenzen. Zunächst wird die Grenze der Lautstärke ermittelt. Hierfür wird die Lautsärke einen Sinustones mit einer Frequenz von $ f=1000 Hz $langsam von $ \beta= 40 dB $ Schalldruckpegel bis 111dB Schaldruckpegel erhöht und die Funktion wird beobachtet. Jede Lautstärke wird für eine Zeit $ t= 3 s $ Sekunden gehalten. Die Funktion gilt als sicher vorhanden, solange ausschließlich die LED leuchtet, die in die Richtung der Geräuschquelle ausgerichtet ist. Die gewählte Frequenz wurde anhand des Datenblattes der Mikrofone gewählt. Die angegebenen Testbedigungen für die Angaben im Datenblatt beziehen sich auf eine Frequenz von $f=1000 Hz$.
 Für die Soundausgabe wurde folgendes Pythonscript mit dem Paket PyAudio genutzt.
 
 ```{literalinclude} ../files/ProjectFiles/Soundoutput.py
 :language: python
 ```
-Aus dem Code ist zu erkennen, dass mit jedem Schleifendurchlauf die Lautsärke um 0.1 also 10% erhöht wird. Der Versuch musste allerdings in vier Durchläufen durchgeführt werden wobei das Skript in jedem der Durchläufe einmal ausgeführt wurde. Bei jedem Durlauf wurde die Systemlautstärke des genutzten Laptops erhöht, da es nicht möglich war inerhalb einer Systemeinstellung den gesamten Lautstärkebereich von $ /beta = 40dB$ bis $beta = 111 dB$ zu durchlaufen. Die genutzten Systemlautstärken in Prozent sind am Ende des Pythonskriptes im Kommentar zu erkennen.
+Aus dem Code ist zu erkennen, dass mit jedem Schleifendurchlauf die Lautsärke um 0.1 also 10% erhöht wird. Der Versuch musste allerdings in vier Durchläufen durchgeführt werden wobei das Skript in jedem der Durchläufe einmal ausgeführt wurde. Bei jedem Durlauf wurde die Systemlautstärke des genutzten Laptops erhöht, da es nicht möglich war inerhalb einer Systemeinstellung den gesamten Lautstärkebereich von $ \beta = 40dB $ bis $ \beta = 111 dB $ zu durchlaufen. Die genutzten Systemlautstärken in Prozent sind am Ende des Pythonskriptes im Kommentar zu erkennen.
 
 
 <div class="video_container">
@@ -372,14 +368,14 @@ Aus dem Code ist zu erkennen, dass mit jedem Schleifendurchlauf die Lautsärke u
       <source src="../_static/videos/Projekt_dB_Test-1.mp4" label="dB-Sweep"/>
     </video>
     <div class="overlay">
-        <p>dB-Sweep von $/beta = 40 dB$ bis $ /beta = 111 dB$ Schallpegel</p>
+        <p>dB-Sweep von $ \beta = 40 dB $ bis $ \beta = 111 dB $ Schallpegel</p>
         </form>
     </div>
 </div>
 
-In dem Video ist zu erkennen, dass die Funktion sicher ab einem Schalldruckpegel von $/beta = 47dB$ zu erkennen ist. Mit steigender Lautstärke ist die Funktion immer deutlicher, bis zu einem Schalldruckpegel von $ /beta = 99,9 dB$ laut Anzeige des Schalldruckpegelmessers. Oberhalb dieses Pegels ist zu erkennen, dass auf dem Microphone Shield alle LEDs beginnen zu leuchten und damit keine eindeutige Erkennung des Sounds gegeben ist.
+In dem Video ist zu erkennen, dass die Funktion sicher ab einem Schalldruckpegel von $ \beta = 47 dB $ zu erkennen ist. Mit steigender Lautstärke ist die Funktion immer deutlicher, bis zu einem Schalldruckpegel von $ \beta = 99,9 dB $ laut Anzeige des Schalldruckpegelmessers. Oberhalb dieses Pegels ist zu erkennen, dass auf dem Microphone Shield alle LEDs beginnen zu leuchten und damit keine eindeutige Erkennung des Sounds gegeben ist.
 
-Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet werden. Die ersten Funktionstest durch Sprache und Gitarrenspiel führen zu der Annahme, dass die Grenzen nicht alleine von der Lautstärke abhängen sondern ebenfalls von der Frequenz des eingehenden Signals. Aus diesem Grund wurde ein weiteres Exeriment durchgeführt. Der Aufbau bleibt wie dargestellt in [Abbildung 22]( 01_fig_020). In diesem Experiment wird die Lautstärke konstant gehalten bei 91dB und die Frequenz wird angepasst. Der Grund für die 91dB Schalldruckpegel lassen sich ebenfalls im Datenblatt der Mikrofone finden, da diese ebenfalls die Testbediungen darstellen. Hierfür wird das Pythonskript insofern abgeändert, als dass lediglich eine Frequenz einmalig ausgegeben wird. Die For-Schleife wird für diesen Versuch ausgeblendet. Bei jeder Frequenz wurde die Lautstärke jedes mal auf 91dB Schalldruckpegeleingestellt, bevor das Video aufgenommen wurde.
+Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet werden. Die ersten Funktionstest durch Sprache und Gitarrenspiel führen zu der Annahme, dass die Grenzen nicht alleine von der Lautstärke abhängen sondern ebenfalls von der Frequenz des eingehenden Signals. Aus diesem Grund wurde ein weiteres Exeriment durchgeführt. Der Aufbau bleibt wie dargestellt in [Abbildung 22]( 01_fig_020). In diesem Experiment wird die Lautstärke konstant gehalten bei $ \beta = 91dB $ und die Frequenz wird angepasst. Der Grund für die $ \beta = 91 dB $ Schalldruckpegel lassen sich ebenfalls im Datenblatt der Mikrophone finden, da diese ebenfalls die Testbediungen darstellen. Hierfür wird das Pythonskript insofern abgeändert, als dass lediglich eine Frequenz einmalig ausgegeben wird. Die For-Schleife wird für diesen Versuch ausgeblendet. Bei jeder Frequenz wurde die Lautstärke jedes mal auf 91dB Schalldruckpegeleingestellt, bevor das Video aufgenommen wurde.
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true"                        title="Testtitel">
@@ -391,7 +387,7 @@ Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet wer
     </div>
 </div>
 
-Es ist zu beobachten, dass die Funktion im unteren Frequenzbereich ($f = 440 Hz$ bis $f = 700 Hz$) zwar zu erkennen ist, allerdings leuchten die Richtungs LEDs nur schwach. Ein eindeutiges Erkennen der LED ist ab einer Frequenz von $f= 710 Hz$ gegeben. Die höchste Frequenz bei der eine eindeutige Funktion beobachtet werden konnte war $f=4937 Hz$. Darüber hinaus kann beobachtet werden, dass nicht mehr die oberste LED leuchtet oder aber, dass mehrere LEDs gleichzeitig leuchten.
+Es ist zu beobachten, dass die Funktion im unteren Frequenzbereich ($ f = 440 Hz $ bis $ f = 700 Hz $) zwar zu erkennen ist, allerdings leuchten die Richtungs LEDs nur schwach. Ein eindeutiges Erkennen der LED ist ab einer Frequenz von $f= 710 Hz$ gegeben. Die höchste Frequenz bei der eine eindeutige Funktion beobachtet werden konnte war $ f=4937 Hz $. Darüber hinaus kann beobachtet werden, dass nicht mehr die oberste LED leuchtet oder aber, dass mehrere LEDs gleichzeitig leuchten.
 
 Das Frequenzspectrum der Audioline des Videos ist in [Abbildung 26]( 01_fig_024) zu sehen. Es ist zu erkennen, dass die Energiedichte bei den unteren Frequenzen erwartungsgemäß höher ist, als bei den oberen. Interessanterweise sind bei den nierigeren Frequenzen außerdem Oberwellen/Harmonische erkennbar. Die Funktion war gegeben, allerdings nicht den aufgestellten Kriterien entsprechend.
 
@@ -403,7 +399,7 @@ Spectrumsverlauf des Frequenztests
 
 ## Zusammenfassung
 
-Ziel des Projektes war es das Sound Locator Projekt mit dem Mojo FPGA-Board sowie dem dazugehörigen Microfone shield in Betrieb zu nehmen und die Funktion des Aufbaus zu evaluieren. Hierfür wurde die Toolchain bestehend aus dem ISE WEB Pack von Xilinx sowie Alchitry Labs auf einem Linux Debian System installiert. Das bauen des Projektes führte zunächst zu Problemen, da Laut Felermeldung diverse Dateien nicht gelesen werden konnten. Diese Dateien wurde im Laufe der Analyse gefunden und in die nötigen Archive übertragen. Dadurch war es möglich das Projekt zu bauen und auf den FPGA zu flashen. Die Funktion des Mojo konnte mit über einen Sprachtest in Form des des Buchstabierens des Alphabets verifiziert werden. Außerdem konnte eine grundsätzliche Funktion beim erkennen von Gitarrenspiel erkannt werden. Im Anschluss an den grundsätzlichen Funktionstest wurden zwei Experimente durchgeführt um die Grenzen der Sounderkennung im Hinblick auf die Lautsärke und im Hinblick auf die Frequenz. Im Hinblick auf die Lautstärke konnte eine sichere Funktion im Bereich von $/beta = 47dB-91dB$ Schalldruckpegel festgestellt werden. Beim Frequenztest konnte bei einer konstanten Lautstärke von 90dB eine sichere Funktion im Bereich von $ f=710Hz$ bis $f = 4937 Hz$ beobachtet werden. Insgesamt konnte beim Umgang mit dem Mojo und dem Microphone Shield erkannt werden, dass die Funktion eindeutiger war je eindeutiger das eingehende Signal war.
+Ziel des Projektes war es das Sound Locator Projekt mit dem Mojo FPGA-Board sowie dem dazugehörigen Microfone shield in Betrieb zu nehmen und die Funktion des Aufbaus zu evaluieren. Hierfür wurde die Toolchain bestehend aus dem ISE WebPack von Xilinx sowie Alchitry Labs auf einem Linux Debian System installiert. Das bauen des Projektes führte zunächst zu Problemen, da Laut Felermeldung diverse Dateien nicht gelesen werden konnten. Diese Dateien wurde im Laufe der Analyse gefunden und in die nötigen Archive übertragen. Dadurch war es möglich das Projekt zu bauen und auf den FPGA zu flashen. Die Funktion des Mojo konnte mit über einen Sprachtest in Form des des Buchstabierens des Alphabets verifiziert werden. Außerdem konnte eine grundsätzliche Funktion beim erkennen von Gitarrenspiel erkannt werden. Im Anschluss an den grundsätzlichen Funktionstest wurden zwei Experimente durchgeführt um die Grenzen der Sounderkennung im Hinblick auf die Lautsärke und im Hinblick auf die Frequenz. Im Hinblick auf die Lautstärke konnte eine sichere Funktion im Bereich von $ \beta = 47dB-91dB $ Schalldruckpegel festgestellt werden. Beim Frequenztest konnte bei einer konstanten Lautstärke von $ \beta = 90dB $ eine sichere Funktion im Bereich von $ f=710Hz $ bis $ f = 4937 Hz $ beobachtet werden. Insgesamt konnte beim Umgang mit dem Mojo und dem Microphone Shield erkannt werden, dass die Funktion eindeutiger war je eindeutiger das eingehende Signal war.
 
 Folgende Aufgaben können für zukünftige Projekte interessant sein:
 
@@ -411,7 +407,7 @@ Folgende Aufgaben können für zukünftige Projekte interessant sein:
 2. Ein weiterer Versuch könnte sein zu testen ob andere Frequenzgrenzen erreicht werden können, wenn andere Lautstärkepegel genutzt werden können.
 3. Das Gleiche gilt umgekehrt bei der Frage ob andere Lautstärkepegel erreicht werden können, wenn eine andere Frequenz für den Versuch genutzt wird. 
 
-
+## Literatur
 
 ```{bibliography}
 :style: unsrt
