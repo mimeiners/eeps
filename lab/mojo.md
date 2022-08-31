@@ -31,7 +31,7 @@ Grenzen der Sounderkennung gehen wird.
 
 ## [Der Mojo](https://www.adafruit.com/product/1553) [Baby](https://www.youtube.com/watch?v=c4ytuS8pVp4)
 
-```{figure} ../images/MojoLab/MojoBoard.png 
+```{figure} ../images/mojo/MojoBoard.png 
 :name: 01_fig_025
 
 Das Mojo Entwicklungsboard {cite:p}`sparkfun`
@@ -46,7 +46,7 @@ inputs und andee Funktionen des Mikrocontrollers zugreifen. Außerdem verfügt d
 Steckleisten herausgeführt sind und 8 LEDs die für allgemeine Programmierung genutzt werden können. {cite:p}`sparkfun`
 
 
-```{figure} ../images/MojoLab/MicrophoneShield.png 
+```{figure} ../images/mojo/MicrophoneShield.png 
 :name: 01_fig_026
 
 Das Microphone Shield {cite:p}`aliexpress`
@@ -124,7 +124,7 @@ Zustimmung zu den Terms and Conditions geben
 Nach der Zustimmung wird in [Abbildung 4]( 01_fig_02) gezeigt, welches Produkt für die Installation ausgewählt werden
 muss.
 
-```{figure} ../images/MojoLab/AuswahlISE.png
+```{figure} ../images/mojo/AuswahlISE.png
 :name: 01_fig_02
 
 Auswahl des ISE WebPACKs für die Installation
@@ -143,7 +143,7 @@ Beim erstmaligen Start öffnet sich zunächst der Lizenzmanager hier wird nochma
 wie in [Abbildung 5]( 01_fig_03) dargestellt.
 
 
-```{figure} ../images/MojoLab/Licence_Manager_1.png 
+```{figure} ../images/mojo/Licence_Manager_1.png 
 :name: 01_fig_03
 
 Möglichkeit zur Auswahl des Lizenztypes
@@ -153,7 +153,7 @@ Wurde die Lizenz heruntergeladen kann die unter "Manage License" hinzugefügt we
 [Abbildung 6]( 01_fig_04) kann zum Speicherort der Lizenzdatei navigiert werden.
 
 
-```{figure} ../images/MojoLab/Licence_Manager_2.png 
+```{figure} ../images/mojo/Licence_Manager_2.png 
 :name: 01_fig_04
 
 Unter Load Licence wird der Speicherort der Lizenzdatei ausgewählt
@@ -198,7 +198,7 @@ darauf zu achten, dass der Ordner mit der entsprechenden Versionsnummer ausgewä
 entsprechende Hinweise innerhalb des Dialoges.
 
 
-```{figure} ../images/MojoLab/Alchitry_Licence.png 
+```{figure} ../images/mojo/Alchitry_Licence.png 
 :name: 01_fig_05
 
 Auswahl des ISE WebPack Installationsortes
@@ -211,7 +211,7 @@ Ab diesem Zeitpunkt ist es möglich Projekte zu öffnen und zu erstellen.
 Beim ersten Starten von Alchitry Labs startet automatisch ein Dialog, in dem erfragt wird ob bereits ein Projekt
 vorhanden ist. Siehe: [Abbildung 8]( 01_fig_06)
 
-```{figure} ../images/MojoLab/First_Start.png 
+```{figure} ../images/mojo/First_Start.png 
 :name: 01_fig_06
 
 Erste Projektauswahl
@@ -230,7 +230,7 @@ Beispielprojekte sind auschließlich in Lucid geschrieben. Über ein Dropdown Me
 Projekt auszuwählen und zu laden.
 
 
-```{figure} ../images/MojoLab/New_Project.png 
+```{figure} ../images/mojo/New_Project.png 
 :name: 01_fig_07
 
 Einstellungen zum öffnen des Sound locator Beispiels
@@ -253,7 +253,7 @@ welches das Mojo Board beschreibt, die pdm-mics zur Definition der Mikrophone un
 Delay zur Sound Erkennung ermittelt wird.
 
 
-```{figure} ../images/MojoLab/Source.png 
+```{figure} ../images/mojo/Source.png 
 :name: 01_fig_08
 	
 Die Source-Dateien findest du zu oberst im Projekt
@@ -267,7 +267,7 @@ sich aber auch in der Xilinx Umgebung finden. Die in diesem Projekt genutzten si
 dargestellt.
 
 
-```{figure} ../images/MojoLab/Components.png 
+```{figure} ../images/mojo/Components.png 
 :name: 01_fig_09
 
 Als Zweites findest du die Components im Projekt
@@ -284,7 +284,7 @@ gibt es den mag_phase_calculator der aus den einkommenden Signalen die Amplitude
 den xfft_v8_0-core der die FFT auf die einkommenden Signale anwendet.
 
 
-```{figure} ../images/MojoLab/Cores.png 
+```{figure} ../images/mojo/Cores.png 
 :name: 01_fig_010
 
 Der dritte Reiter beinhaltet die IP-Cores
@@ -298,7 +298,7 @@ und Grenzen beschrieben. Diese Dateien werden benötigt um dem synthetisierungs 
 Informationen zu geben wie das Projekt erstellt werden soll.
 
 
-```{figure} ../images/MojoLab/Constraints.png 
+```{figure} ../images/mojo/Constraints.png 
 :name: 01_fig_011
 
 Als letztes gibt es noch die Constraints
@@ -321,7 +321,7 @@ kann. Ausgerechnet diese IP-Cores machen beim ersten Flash-Versuch Probleme und 
 14]( 01_fig_012).
 
 
-```{figure} ../images/MojoLab/Fehlermeldung_Cores.png 
+```{figure} ../images/mojo/Fehlermeldung_Cores.png 
 :name: 01_fig_012
 
 Angezeigte Fehlermeldung beim ersten Flashversuch
@@ -373,7 +373,7 @@ und damit die Erkennung. Am Ende steht die optische Ausgabe der erkannten Richtu
 
 
 
-```{figure} ../images/MojoLab/SignalFlow.png
+```{figure} ../images/mojo/SignalFlow.png
 :name: 01_fig_013
 
 Übersicht Signalfluss
@@ -387,7 +387,7 @@ Richtung der Schallwellen. Wellenfronten sind hierbei Flächen, bei der die Luft
 besitzen aufgrund der erzeugten Schwingung {cite:p}`Halliday`.
 
 
-```{figure} ../images/MojoLab/Schallwellen.png
+```{figure} ../images/mojo/Schallwellen.png
 :name: 01_fig_014
 
 Zweidimensionale Darstellung zur Ausbreitung einer Schallwelle {cite:p}`Halliday`
@@ -429,7 +429,7 @@ Kammerton C zu erzeugen muss ein Ton mit einer Frequenz von $ f=440 Hz $ erzeugt
 aus wie in [Abbildung 17](01_fig_015) dargestellt.
 
 
-```{figure} ../images/MojoLab/Sine_Only.png
+```{figure} ../images/mojo/Sine_Only.png
 :name: 01_fig_015
 
 Sinuswelle mit $f$=440 Hz
@@ -440,7 +440,7 @@ rekonstruieren. In der realen Welt ist die Wahrheit häufig nicht so eindeutig u
 Mikrofon ist in der Regel mit einem Rauschen belegt.
 
 
-```{figure} ../images/MojoLab/Noisy_Source_Signal.png
+```{figure} ../images/mojo/Noisy_Source_Signal.png
 :name: 01_fig_016
 
 Sinuswelle mit $f$=440 Hz überlagert mit Rauschen
@@ -456,7 +456,7 @@ Fast-Fourier-Transformation (FFT) in den Frequenzbereich zu überführen und ein
 
 Das Frequenzspektrum des Signals aus [Abbildung 18](01_fig_016) ist in [Abbildung 19](01_fig_017) zu finden.
 
-```{figure} ../images/MojoLab/FFT_Source.png
+```{figure} ../images/mojo/FFT_Source.png
 :name: 01_fig_017
 
 Frequenzspektrum des verrauschten Signals
@@ -487,7 +487,7 @@ auch um Puls-Dichte-Modulierte Signale handeln. Puls-Code-Modulierte Signale wer
 aber der Vollständigkeit halber Erwähnung finden. {cite:p}`DigiMEMS`
 
 
-```{figure} ../images/MojoLab/MEMS.png
+```{figure} ../images/mojo/MEMS.png
 :name: 01_fig_018
 
 Aufbau eines MEMS Mikrofons {cite:p}`DigiMEMS`
@@ -499,7 +499,7 @@ Information der Amplitude des Signals über die Puls-Dichte dargestellt. Das hei
 Wandlung durch ein MEMS Mikrophon kann die das PDM eines Sinussignals folgendermaßen aussehen.
 
 
-```{figure} ../images/MojoLab/Pulse_Density.png
+```{figure} ../images/mojo/Pulse_Density.png
 :name: 01_fig_019
 
 Übersicht zwischen analogem Signal und Puls-Dichte-moduliertem Signal {cite:p}`Devzone`
@@ -516,7 +516,7 @@ Richtung des Tons nur in einem zweidimensionalen Raster horizontal zum Mojo Boar
 dem physikalischen Aufbau des Microphone Shields geschuldet, da alle Mikrophone auf einer Ebene verbaut sind. Außerdem
 wird angenommen, dass es sich bei den auftreffenden Schallwellen um eine eine gerade Wellenfront handelt. Das heißt,
 dass sich jeder Punkt einer Welle mit der gleichen Geschwindigkeit ausbreitet.Die letzte Annahme ist, dass jede Frequenz
-eines Soundsamples aus einer einzigen Richtung kommt.{cite:p}`Rajewski`
+eines Soundsamples aus einer einzigen Richtung kommt {cite:p}`Rajewski`.
 
 
 Die Sounderkennung mit dem Mojo errechnet sich die Richtung aus der der Sound auf ihn trifft aus der Phasenverschiebung
@@ -534,10 +534,10 @@ bzw. mit der Phasenverschiebung zueinander ( die Verzögerung ist lediglich der 
 Frequenz wodurch diese beiden Werte proportinal zueniander sind) und der Positionsvectoren der unterschiedlichen
 Mikrophone kann nun die Richtung des Tons bestimmt werden. Hierzu werden die Ortsvektoren mit dem errechneten Delay
 Skaliert, wodurch die violetten skalierten Vektoren entstehen. Durch Vektoraddition dieser Vektoren kann ein
-Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt. (gelb){cite:p}`Rajewski`
+Summenvektor erstellt  werden, der in die Richtung der Tonquelle zeigt (gelb){cite:p}`Rajewski`.
 
 
-```{figure} ../images/MojoLab/SoundirectionPrinciple.png
+```{figure} ../images/mojo/SoundirectionPrinciple.png
 :name: 01_fig_020
 
 Vektorielle Darstellung des Erkennungsprinzips {cite:p}`Rajewski`
@@ -554,13 +554,10 @@ insgesamt eine eindeutige Antwort des Mojos verursacht.
 
 
 <div class="video_container">
-    <video width="320" height="240" controls="true" allowfullscreen="true" title="Testtitel">
-      <source src="../_static/videos/Alphabet.mp4" label="Alphabet"/>
-    </video>
-    <div class="overlay">
-        <p>Alphabet Test</p>
-        </form>
-    </div>
+	<video width="320" height="240" controls="true" allowfullscreen="true" title="Testtitel">
+		<source src="../mov/Alphabet.mp4" label="Alphabet"/>
+	</video>
+    <div class="overlay"> <p>Alphabet Test</p> </form>  </div>
 </div>
 
 
@@ -583,7 +580,7 @@ $$
 $$
 
 
-```{figure} ../images/MojoLab/AlphaG.png 
+```{figure} ../images/mojo/AlphaG.png 
 :name: 01_fig_021
 
 Frequenzspektrum für die Buchstaben A bis G
@@ -598,7 +595,7 @@ anderen Seite des Kreises aufleuchten.
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true" title="Testtitel">
-      <source src="../_static/videos/Come_as_you_are.mp4" label="Gitarren Spiel"/>
+      <source src="../mov/Come_as_you_are.mp4" label="Gitarren Spiel"/>
     </video>
     <div class="overlay">
         <p>Test mit Gitarrenspiel</p>
@@ -613,7 +610,7 @@ im Wesentlichen nachgewiesen werden, auch wenn es bei diesem Test zum leuchten d
 ist. Der Schalldruckpegel der während des Versuchs gemsesen wurde lag bei rund $\beta$ = 70 dB.
 
 
-```{figure} ../images/MojoLab/comeasyouare.png 
+```{figure} ../images/mojo/comeasyouare.png 
 :name: 01_fig_022
 
 Frequenzspektrum des Intros von "Come as you are" von Nirvana
@@ -638,7 +635,7 @@ und gesundheitsschädlich sein!
 :::
 
 
-```{figure} ../images/MojoLab/Setup_experiment.png 
+```{figure} ../images/mojo/Setup_experiment.png 
 :name: 01_fig_023
 	
 Versuchsaufbau für den Funktionstest
@@ -654,7 +651,7 @@ angegebenen Testbedigungen für die Angaben im Datenblatt beziehen sich auf eine
 Für die Soundausgabe wurde folgendes Pythonscript mit dem Paket PyAudio genutzt.
 
 
-```{literalinclude} ../files/ProjectFiles/Soundoutput.py
+```{literalinclude} ../files/math/mojo/Soundoutput.py
 :language: python
 ```
 
@@ -667,12 +664,9 @@ Systemlautstärken in Prozent sind am Ende des Pythonskriptes im Kommentar zu er
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true" title="Testtitel">
-      <source src="../_static/videos/Projekt_dB_Test-1.mp4" label="dB-Sweep"/>
+      <source src="../mov/Projekt_dB_Test-1.mp4" label="dB-Sweep"/>
     </video>
-    <div class="overlay">
-        <p>dB-Sweep von $\beta$=40 dB bis $\beta$=111 dB Schallpegel</p>
-        </form>
-    </div>
+    <div class="overlay"> <p>dB-Sweep von 40 dB bis 111 dB Schallpegel</p> </form> </div>
 </div>
 
 
@@ -686,21 +680,18 @@ Mit diesem Versuch konnten die Grenzen in Bezug auf die Lautstärke getestet wer
 Sprache und Gitarrenspiel führen zu der Annahme, dass die Grenzen nicht alleine von der Lautstärke abhängen sondern
 ebenfalls von der Frequenz des eingehenden Signals. Aus diesem Grund wurde ein weiteres Exeriment durchgeführt. Der
 Aufbau bleibt wie dargestellt in [Abbildung 22]( 01_fig_020). In diesem Experiment wird die Lautstärke konstant gehalten
-bei 91dB und die Frequenz wird angepasst. Der Grund für die 91dB Schalldruckpegel lassen sich ebenfalls im Datenblatt
+bei 91 dB und die Frequenz wird angepasst. Der Grund für die 91dB Schalldruckpegel lassen sich ebenfalls im Datenblatt
 der Mikrofone finden, da diese ebenfalls die Testbediungen darstellen. Hierfür wird das Pythonskript insofern
 abgeändert, als dass lediglich eine Frequenz einmalig ausgegeben wird. Die For-Schleife wird für diesen Versuch
-ausgeblendet. Bei jeder Frequenz wurde die Lautstärke jedes mal auf 91dB Schalldruckpegeleingestellt, bevor das Video
+ausgeblendet. Bei jeder Frequenz wurde die Lautstärke jedes mal auf 91 dB Schalldruckpegeleingestellt, bevor das Video
 aufgenommen wurde.
 
 
 <div class="video_container">
     <video width="320" height="240" controls="true" allowfullscreen="true" title="Testtitel">
-      <source src="../_static/videos/Projekt_Frequenz_test.mp4" label="Frequenz Test"/>
+      <source src="../mov/Projekt_Frequenz_test.mp4" label="Frequenz Test"/>
     </video>
-    <div class="overlay">
-        <p>Test Frequenzmessung</p>
-        </form>
-    </div>
+    <div class="overlay"> <p>Test Frequenzmessung</p> </form> </div>
 </div>
 
 
@@ -711,13 +702,13 @@ hinaus kann beobachtet werden, dass nicht mehr die oberste LED leuchtet oder abe
 leuchten.
 
 
-Das Frequenzspectrum der Audioline des Videos ist in [Abbildung 26]( 01_fig_024) zu sehen. Es ist zu erkennen, dass die
+Das Frequenzspectrum der Audioline des Videos ist in [Abbildung 26](01_fig_024) zu sehen. Es ist zu erkennen, dass die
 Energiedichte bei den unteren Frequenzen erwartungsgemäß höher ist, als bei den oberen. Interessanterweise sind bei den
 nierigeren Frequenzen außerdem Oberwellen/Harmonische erkennbar. Die Funktion war gegeben, allerdings nicht den
 aufgestellten Kriterien entsprechend.
 
 
-```{figure} ../images/MojoLab/Spec_project.png 
+```{figure} ../images/mojo/Spec_project.png 
 :name: 01_fig_024
 
 Spectrumsverlauf des Frequenztests
