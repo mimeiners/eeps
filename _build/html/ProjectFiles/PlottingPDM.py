@@ -93,17 +93,18 @@ plt.ylabel("Magnitude")
 plt.suptitle("Derived Signal Frequency Components")
 plt.show()
 #%%
-q=64
-n=2
+q=2
+n=8
 ftype= 'iir'
 
-wave_duration = 1
+wave_duration = 0.05
 sample_rate = 44000
-freq = 2816000
-bandwidth = freq/64
-samples_decimated = int(len(pdmPulses)/q)+1
+freq = 44000 #np.arange(len(pdmPulses)*sample_rate/len(pdmPulses))
+bandwidth = freq/(q*q)
+samples_decimated = int(len(pdmPulses)/(q*q))+1
 
 pdmnew = decimate(pdmPulses,q,n,ftype)
+pdmnew = decimate(pdmnew,q,n,ftype)
 xnew = np.linspace(0, wave_duration, samples_decimated, endpoint=False)
 
 
@@ -113,14 +114,17 @@ plt.xlabel('Time, Seconds')
 plt.legend(['data', 'decimated'], loc='best')
 plt.show()
 
-fftFreqs= np.arange(freq/2)
+fftFreqs= np.arange(bandwidth)
 fftValues= (np.fft.fft(pdmnew)/freq)[:int(bandwidth)]
 
 plt.figure('New FFT')
 plt.plot(fftFreqs, np.absolute(fftValues))
-plt.xlim(0, bandwidth*2)
+plt.xlim(0, bandwidth)
 plt.ylim(0, 0.03)
 plt.xlabel("Frequency")
 plt.ylabel("Magnitude")
 plt.suptitle("Derived Signal Frequency Components")
-plt.show()
+#plt.show()
+
+
+#%%
