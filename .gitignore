@@ -124,4 +124,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+<<<<<<< HEAD
 tags
+=======
+>>>>>>> 980a8f1fb148fe3d70605ee9ace5762852e548d4
