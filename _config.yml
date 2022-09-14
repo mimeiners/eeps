@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Electrical Engineering Projects with FPGA's
-author: M. Meiners (HSB) 
+author: E. Müller and M. Meiners(HSB) 
 copyright: ""
 logo: images/hsb-logo.png
 exclude_patterns: ["LICENSE.md", "README.md"]
