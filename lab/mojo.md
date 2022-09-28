@@ -738,8 +738,8 @@ Was hier ebenfalls sichtbar wird ist, dass die Amplituden Differenz nicht eindeu
 Ein grund für das schlechte SNR kann am Aufbau des Versuchs liegen. Die Ausgangsfrequenz des PDM Mikrofons betrug Messtechnisch $f_{Out} = 5.8 \, MHz$ und für die Verbindung von 
 Logic Analyzer und Microphone Shield wurden Jumper Wire verwendet. Das kann dazu geführt haben, dass andere Signale auf die Leitung eingekoppelt haben und sich somit weitere Frequenzanteile
 mitgemessen wurden.
-
-[Comment]<## Zusammenfassung
+<!---
+ "## Zusammenfassung
 
 Ziel des Projektes war es das Sound Locator Projekt mit dem Mojo FPGA-Board sowie dem dazugehörigen Microfone shield in
 Betrieb zu nehmen und die Funktion des Aufbaus zu evaluieren. Hierfür wurde die Toolchain bestehend aus dem ISE WEB Pack
@@ -753,7 +753,7 @@ Lautstärke und im Hinblick auf die Frequenz. Im Hinblick auf die Lautstärke ko
 $\beta$ = 47 dB bis 91 dB Schalldruckpegel festgestellt werden. Beim Frequenztest konnte bei einer konstanten Lautstärke von
 90 dB eine sichere Funktion im Frequenzband von 710 Hz bis 4937 Hz beobachtet werden. Insgesamt konnte beim Umgang
 mit dem Mojo und dem Microphone Shield erkannt werden, dass die Funktion eindeutiger war je eindeutiger das eingehende
-Signal war.>s
+Signal war. -->
 
 
 ### Fazit
