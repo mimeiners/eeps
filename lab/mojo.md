@@ -669,7 +669,7 @@ $f$=1 kHz und einem Schalldruckpegel $\beta$=91 dB angegeben.
 Für die Soundausgabe wurde folgendes Pythonskript mit dem Paket PyAudio genutzt.
 
 
-```{literalinclude} ../files/math/mojo/Soundoutput.py
+```{literalinclude} ../files/math/mojo/SoundOutput.py
 :language: python
 ```
 
