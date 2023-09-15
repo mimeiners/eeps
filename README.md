@@ -1,1 +1,1 @@
-# Jupyter-Book for Analog/Mixed-Signal Design with FPGA's
+# HSB MScEE Electrical Engineering Projects (EEPs) with FPGA's
