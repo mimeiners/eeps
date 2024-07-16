@@ -2,7 +2,7 @@
 
 ## Einleitung
 Diese Projektarbeit beschäftigt sich mit der Evaluation des [Sound Erkennungs](https://alchitry.com/sound-locating-mojo)
-Tutorials der Webiste [Alchitry](https:E//alchitry.com/). 
+Tutorials der Webiste [Alchitry](https://alchitry.com/). 
 
 In diesem Tutorial nutzt Alchitry ihr eigens entwickeltes Mojo V3 Board (XILINX SPARTAN FPGA) und Soundshield mit sieben
 Mikrofonen, um Audioquelle zu lokalisieren. 
