@@ -10,12 +10,21 @@ parts:
 #     - file: about/accommodations
 #     - file: about/doing_well
 #     - file: about/faq
-- caption: Lecture
-  chapters:
-    - file: class/01_lec
-      title: Introduction and Survey
-    - file: class/02_lec
-      title: References
-- caption: Design Projects
+#- caption: About this course
+#  chapters:
+#    - file: class/01_lec
+#      title: Introduction and Survey
+#    - file: class/02_lec
+#      title: References
+- caption: Projects
   chapters:
     - file: lab/mojo
+      title: Evaluation of Mojo FPGA
+    - file: lab/osic-tools
+      title: Analog Circuit Design with OSIC-Tools
+- caption: Appendix
+  chapters: 
+    - file: _bibliography/references
+      title: References
+
+

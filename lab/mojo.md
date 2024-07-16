@@ -790,9 +790,4 @@ zukünfitge Projekte interessant sein:
    
 3. Das Gleiche gilt umgekehrt bei der Frage, ob andere Lautstärkepegel erreicht werden können, wenn eine andere Frequenz
    für den Versuch genutzt wird. 
-   
 
-
-```{bibliography}
-:style: unsrt
-```
