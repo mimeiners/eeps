@@ -669,7 +669,7 @@ $f$=1 kHz und einem Schalldruckpegel $\beta$=91 dB angegeben.
 Für die Soundausgabe wurde folgendes Pythonskript mit dem Paket PyAudio genutzt.
 
 
-```{literalinclude} ../files/math/mojo/Soundoutput.py
+```{literalinclude} ../files/math/mojo/SoundOutput.py
 :language: python
 ```
 
@@ -790,9 +790,4 @@ zukünfitge Projekte interessant sein:
    
 3. Das Gleiche gilt umgekehrt bei der Frage, ob andere Lautstärkepegel erreicht werden können, wenn eine andere Frequenz
    für den Versuch genutzt wird. 
-   
 
-
-```{bibliography}
-:style: unsrt
-```
