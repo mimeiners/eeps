@@ -86,7 +86,7 @@ sphinx:
       PREREQS: ""
       COREQS: ""
       TERM: "Summer and Winter"
-      ROOM: "E 507"
+      ROOM: ""
       MEETING_TIMES: "By Arrangement"
       GRACE_PERIOD: ""
       W_DATE_1: ""
