@@ -18,13 +18,12 @@ parts:
 #      title: References
 - caption: Projects
   chapters:
-    - file: lab/mojo
+    - file: docs/mojo
       title: Evaluation of Mojo FPGA
-    - file: lab/osic-tools
+    - file: docs/osic-tools
       title: Analog Circuit Design with OSIC-Tools
-- caption: Appendix
-  chapters: 
-    - file: _bibliography/references
+    - file: docs/references
       title: References
-
-
+        
+        
+        
