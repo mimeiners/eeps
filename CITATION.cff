@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this material, please cite it as below."
+authors:
+  - family-names: Meiners 
+    given-names: Mirco
+    orcid: https://orcid.org/0000-0002-9709-4191
+  - family-names: Müller
+    given-names: Erik
+    orcid:
+  - familiy-name: Padiya
+    given-names: Abishek
+    orcid:
+title: "MScEE@HSB Electrical Engineering Projects (EEPs) in Mixed-Technology Systems"
+date-released: 2025-02-11
+url: https://mimeiners.github.io/eeps/
+identifiers:
+  - type: doi
+    value: 

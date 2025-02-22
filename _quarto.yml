@@ -5,30 +5,42 @@ project:
 lang: en
 
 book:
-  title: "MScEE Electrical Engineering Projects (EEP)"
+  title: "MScEE Electrical Engineering Projects (EEP) in Mixed-Tefhnology Systems"
   date: 2024-11-11
   author:
     - name: Mirco Meiners
+      orcid: 0000-0002-9709-4191
       email: Mirco.Meiners@hs-bremen.de
+      corresponding: true
+      roles: "Lead author"
       affiliation:
-        - name: Hochschule Bremen - City University of Applied Sciences
+        - name: Hochschule Bremen - City University of Applied Sciences (HSB)
           city: Bremen
-          country: Germany
-          url: www.hs-bremen.de
+          state: Germany
+          url: https://www.hs-bremen.de/person/mimeiners/ 
+    - name: Erik Müller
+      email: emueller@stud.hs-bremen.de
+      roles: "Supporting author"
+    - name: Abishek Padiya
+      email: apadiya@stud.hs-bremen.de
+      roles: "Supporting author"
+  date: last-modified
+  license: "Apache-2.0 license"
 
   reader-mode: true
 
   page-footer:
     left: |
-      MScEE Electrical Engineering Project (EEP), M. Meiners.
+      MScEE Electrical Engineering Project (EEP), M. Meiners, HSB.
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
 #  cover-image: images/hsb-logo.png
 #  favicon: images/hsb-logo.png
   site-url: https://mimeiners.github.io/eeps/
   repo-url: https://github.com/mimeiners/eeps/
-  repo-branch: main
+  repo-branch: quarto
   repo-actions: [edit, issue]
+  downloads: [pdf,epub]
 
   chapters:
     - index.qmd
@@ -68,4 +80,3 @@ format:
 execute:
   freeze: auto
 
-editor: visual
