@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Electrical Engineering Projects in Mixed-Technology System Design 
+title: MScEE Electrical Engineering Projects (EEPs) in Mixed-Technology System Design 
 author: M. Meiners 
 copyright: ""
 logo: images/hsb-logo.png
@@ -76,30 +76,11 @@ sphinx:
 
     myst_substitutions:
       INSTRUCTOR: "Prof. Dr.-Ing. Mirco Meiners (he/his/him)"
-      PRONOUNCE: ""
       OFFICE: "E 508"
       PHONE: "N/A"
       COURSE_CODE: "Electrical Engineering Projects"
-      SECTION: ""
       CREDITS: "6"
       TITLE: "Electrical Engineering Projects in Mixed-Technolgy System Design"
-      PREREQS: ""
-      COREQS: ""
       TERM: "Summer and Winter"
-      ROOM: ""
       MEETING_TIMES: "By Arrangement"
-      GRACE_PERIOD: ""
-      W_DATE_1: ""
-      W_DATE_2: ""
-      W_DATE_3: ""
-      EXAM_PERIOD: ""
-      CANVAS_ID: ""
-      CANVAS_LINK: ""
-      ZOOM_LINK: ""
-      ANNOUNCEMENTS_LINK: ""
-      COURSE_LINK: ""
-      FORUM_LINK: ""
-      ANALYTICS_OPTOUT: ""
-      FORMAT: "Design Project"
       ASSOCIATE_HEAD: "Tim Ziemann [tim.ziemann@hs-bremen.de](mailto:tim.ziemann@hs-bremen.de)"
-      ANON_FEEDBACK: ""

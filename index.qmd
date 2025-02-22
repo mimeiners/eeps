@@ -1,8 +1,0 @@
-# Unsyllabus {.unnumbered}
-
-| Name              | Description                      |
-|-------------------|----------------------------------|
-| Course            | M 5.3 Elektronik (ELK)           |
-| Term              | WiSe24/25                        |
-| Instructor        | Prof. Dr.-Ing. M. Meiners        |
-| Lectures          | Die., 9 Uhr bis 13 Uhr, E 507    |

@@ -1,21 +1,8 @@
 # Table of contents
 
 format: jb-book
-root: about/unsyllabus
+root: index
 parts:
-# - caption: About this course
-#   chapters:
-#     - file: about/syllabus
-#     - file: about/course_schedule
-#     - file: about/accommodations
-#     - file: about/doing_well
-#     - file: about/faq
-#- caption: About this course
-#  chapters:
-#    - file: class/01_lec
-#      title: Introduction and Survey
-#    - file: class/02_lec
-#      title: References
 - caption: Projects
   chapters:
     - file: docs/mojo

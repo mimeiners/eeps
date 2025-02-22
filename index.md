@@ -7,4 +7,3 @@
 | Lecturer      | {{ INSTRUCTOR }}                 |
 | Lecture       | {{ MEETING_TIMES }}: {{ ROOM }}  |
 
-
